@@ -63,5 +63,12 @@ public class PlayerMouvements : KinematicBody2D
         {
           canMove = false;
         }
+    if (Input.IsActionJustPressed("mouse1")){
+
+        Vector2 pos = GetGlobalMousePosition();
+        SolarPanel sp = (SolarPanel)Building.prefabs[Building.Type.SolarPanel].Instance();
+        sp.Place(pos);
+        
+    }
   }
 }
