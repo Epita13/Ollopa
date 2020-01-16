@@ -49,6 +49,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
     <Compile Include="Assets\Scenes\SceneGeneration\SceneGenerationScript.cs" />
     <Compile Include="Assets\Scripts/Objects/Block.cs" />

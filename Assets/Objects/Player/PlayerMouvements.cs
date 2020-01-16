@@ -54,14 +54,14 @@ public class PlayerMouvements : KinematicBody2D
 
         MoveAndSlide(vel,UP);
     }
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
   public override void _Process(float delta)
   {
       Player.RemoveEnergy(2*delta);
-      Player.PrintEnergy();
       if(Player.energy==0)
-      {
+        {
           canMove = false;
-      }
+        }
   }
 }

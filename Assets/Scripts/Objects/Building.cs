@@ -1,8 +1,31 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
-public class Building
+public class Building : Node2D
 {
+    // Les differents type de batiments
+    public enum Type
+    {
+        SolarPanel
+    }
+    // Dictionaire donnant les prefabs des batiments correspondant
+    public static Dictionary<Type, PackedScene> prefabs = new Dictionary<Type, PackedScene>
+    {
+        {Type.SolarPanel, GD.Load<PackedScene>("res://Assets/Objects/Buildings/SolarPanel/SolarPanel.tscn")}
+    };
+
+
+
+    public static Node parent;
+    public static int zIndex = -1;
+    /// Initialise les variables pour le fonctionnement des batiments (OBLIGATOIRE)
+    public static void Init(Node parent, int zIndex = -1)
+    {
+        Building.parent = parent;
+        Building.zIndex = zIndex;
+    }
+
     public Vector2 location;
     public bool isPlaced = false;
 
@@ -22,7 +45,9 @@ public class Building
             return;
         this.location = location;
         isPlaced = true;
-        // A FINIR //
+        SetZIndex(zIndex);
+        SetPosition(location);
+        parent.AddChild(this);
         return;
     }
 
@@ -33,7 +58,7 @@ public class Building
             return;
         this.location = new Vector2(-1,-1);
         isPlaced = false;
-        // A FINIR //
+        parent.RemoveChild(this);
         return;
     }
 
@@ -41,7 +66,7 @@ public class Building
     public void Destroy()
     {
         Remove();
-        Destroy();
+        Free();
     }
 
     /// Donne des dégats à la structure
