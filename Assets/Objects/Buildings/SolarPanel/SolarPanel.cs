@@ -10,7 +10,12 @@ public class SolarPanel : Building
     public float energy = 0;
 
     public static bool isDay = true;
-    public static float sunPower = 1.0f;
+    public static float sunPower = 10.0f;
+
+    /* Signal pour les voyants */
+    [Signal] public delegate void EnergyChange(float energy, float energyMax);
+
+    private Timer timer;
 
     public SolarPanel() : base (100)
     {
@@ -18,15 +23,23 @@ public class SolarPanel : Building
         nbSolarPanel+=1;
     }
 
-    public override void _Process(float delta)
+    public override void _EnterTree()
+    {
+        timer = GetNode<Timer>("Timer");
+        EmitSignal("EnergyChange", energy, energyMax);
+    }
+
+
+    public void _on_Timer_timeout()
     {
         if (isPlaced && isDay)
         {
-            AddEnergy(sunPower*delta);
+            AddEnergy(sunPower*timer.WaitTime);
             PrintEnergy();
         }
-        
+        EmitSignal("EnergyChange", energy, energyMax);
     }
+
 
     private void AddEnergy(float amount)
     {
