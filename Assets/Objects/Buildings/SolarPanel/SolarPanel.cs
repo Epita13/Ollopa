@@ -10,7 +10,7 @@ public class SolarPanel : Building
     public float energy = 0;
 
     public static bool isDay = true;
-    public static float sunPower = 10.0f;
+    public static float sunPower = 0.5f;
 
     /* Signal pour les voyants */
     [Signal] public delegate void EnergyChange(float energy, float energyMax);

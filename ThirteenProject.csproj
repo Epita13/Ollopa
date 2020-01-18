@@ -56,6 +56,10 @@
     <Compile Include="Assets\Scripts/Objects/World.cs" />
     <Compile Include="Assets\Scripts/Objects/Chunk.cs" />
     <Compile Include="Assets\Scripts\Objects\Building.cs" />
+    <Compile Include="Assets\Scripts\Objects\InventoryLiquids.cs" />
+    <Compile Include="Assets\Scripts\Objects\InventoryItems.cs" />
+    <Compile Include="Assets\Scripts\Objects\Item.cs" />
+    <Compile Include="Assets\Scripts\Objects\Liquid.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
     <Compile Include="Assets\Scripts\Tools\SlideBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

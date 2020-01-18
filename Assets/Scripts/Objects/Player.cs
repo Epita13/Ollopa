@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public static class Player
 {
@@ -12,6 +13,8 @@ public static class Player
     public static float energyMax = 100.0f;
     public static float energy = 100.0f;
 
+    public static InventoryItems inventoryItems = new InventoryItems(200);
+    public static InventoryLiquids inventoryLiquids = new InventoryLiquids(30.0f);
 
     /// Ajoute de la vie au joueur. 
     public static void AddHealth(float amount)
@@ -72,9 +75,6 @@ public static class Player
     {
         energy = energyMax;
     }
-
-
-
 
     public static void PrintEnergy(){
         GD.Print("Le Joueur a " + energy + "/" + energyMax + " d'energie.");
