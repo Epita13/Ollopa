@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class InventoryLiquids
+public class StorageLiquids
 {
     public float max;
 
@@ -12,7 +12,7 @@ public class InventoryLiquids
         {Liquid.Type.Fuel, 0.0f}
     };
 
-    public InventoryLiquids(float max)
+    public StorageLiquids(float max)
     {
         this.max = max;
     }

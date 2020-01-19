@@ -13,8 +13,12 @@ public static class Player
     public static float energyMax = 100.0f;
     public static float energy = 100.0f;
 
-    public static InventoryItems inventoryItems = new InventoryItems(200);
-    public static InventoryLiquids inventoryLiquids = new InventoryLiquids(30.0f);
+    // Ex : laser, blocks..
+    public static  StorageUsables inventoryUsables = new StorageUsables(30);
+    // Ex : bois, composite (matieres premieres)
+    public static StorageItems inventoryItems = new StorageItems(200);
+    // Ex : eau, petrole (Liquide)
+    public static StorageLiquids inventoryLiquids = new StorageLiquids(30.0f);
 
     /// Ajoute de la vie au joueur. 
     public static void AddHealth(float amount)

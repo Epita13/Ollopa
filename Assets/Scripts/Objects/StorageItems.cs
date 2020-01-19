@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class InventoryItems : Node
+public class StorageItems : Node
 {
     public int max;
 
@@ -12,7 +12,7 @@ public class InventoryItems : Node
         {Item.Type.Dirt, 0}
     };
 
-    public InventoryItems(int max)
+    public StorageItems(int max)
     {
         this.max = max;
     }
