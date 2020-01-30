@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
+    <Compile Include="Assets\Objects\Buildings\Rafinery\Rafinery.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ItemBox.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ToolBar.cs" />

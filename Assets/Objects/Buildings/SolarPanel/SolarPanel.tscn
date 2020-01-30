@@ -26,7 +26,6 @@ max = 1.0
 texture = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 autostart = true
-[connection signal="EnergyChange" from="." to="EnergyBar/Slide" method="Change"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
