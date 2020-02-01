@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Objects\Item.cs" />
     <Compile Include="Assets\Scripts\Objects\Liquid.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
+    <Compile Include="Assets\Scripts\Objects\PlayerState.cs" />
     <Compile Include="Assets\Scripts\Objects\StorageUsables.cs" />
     <Compile Include="Assets\Scripts\Objects\StorageItems.cs" />
     <Compile Include="Assets\Scripts\Objects\StorageLiquids.cs" />
