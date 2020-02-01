@@ -68,7 +68,7 @@ public class PlayerMouvements : KinematicBody2D
         Vector2 pos = GetGlobalMousePosition();
         Storage sp = (Storage)Building.prefabs[Building.Type.Storage].Instance();
         sp.Place(pos);
-        
+        Player.inventoryItems.Add(Item.Type.Stone, 10);
     }
   }
 }
