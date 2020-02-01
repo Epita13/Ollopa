@@ -23,11 +23,13 @@ public static class PlayerState
         Dead
     }
 
+    /// Retourne l'etat du joueur 
     public static State GetState()
     {
         return state;
     }
 
+    /// Change l'etat du joueur
     public static void SetState(State st)
     {
         state = st;
