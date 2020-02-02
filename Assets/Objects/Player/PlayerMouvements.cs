@@ -6,7 +6,7 @@ public class PlayerMouvements : KinematicBody2D
     
 
     public static float GRAVITY = 10; 
-    public static float SPEED = 120;
+    public static float SPEED = 250;
     public static float JUMP_POWER = -250;
     public static bool canMove = true;
 
@@ -58,7 +58,7 @@ public class PlayerMouvements : KinematicBody2D
 
   public override void _Process(float delta)
   {
-      Player.RemoveEnergy(2*delta);
+      Player.RemoveEnergy(0.1f*delta);
       if(Player.energy==0)
         {
           canMove = false;
