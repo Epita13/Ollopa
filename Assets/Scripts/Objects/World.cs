@@ -55,10 +55,88 @@ public static class World
         }
     }
 
-    /// Dessine le monde sur la scene.
+    /// Affiche tous les Chunks de la map
     public static void Draw()
     {
         foreach (Chunk chunk in chunks)
-            chunk.Draw();
+            DrawChunkc(chunk);
+    }
+
+    /// Cache tous les Chunks de la map
+    public static void Hide()
+    {
+        foreach (Chunk chunk in chunks)
+            HideChunkc(chunk);
+    }
+
+    /// Retourne le chunk correspondant a la position x
+    public static Chunk GetChunk(int x)
+    {
+        if (x<0 || x>=size*Chunk.size)
+            return null;
+        return chunks[x/Chunk.size];
+    }
+    /// Retourne le chunk correspondant a la position x
+    public static Chunk GetChunkv(Vector2 location)
+    {
+        location = new Vector2(Mathf.Floor(location.x), Mathf.Floor(location.y));
+        int x = (int)location.x;
+        if (x<0 || x>=size*Chunk.size)
+            return null;
+        return chunks[x/Chunk.size];
+    }
+
+    /// Retourne le block aux coordonées misent en parametres. retourne null si pas de block
+    public static Block GetBlock(int x, int y)
+    {
+        Chunk c = GetChunk(x);
+        if (c==null)
+            return null;
+        return c.GetBlock(x%Chunk.size,y);
+    }
+    /// Retourne le block aux coordonées misent en parametres. retourne null si pas de block
+    public static Block GetBlockv(Vector2 location)
+    {
+        location = new Vector2(Mathf.Floor(location.x), Mathf.Floor(location.y));
+        int x = (int)location.x;
+        int y = (int)location.y;
+        Chunk c = GetChunk(x);
+        if (c==null)
+            return null;
+        return c.GetBlock(x%Chunk.size,y);
+    }
+
+    /// Verifie si il y a un block
+    public static bool HasBlock(int x, int y)
+    {
+        Block b = GetBlock(x,y);
+        return (b!=null);
+    }
+    /// Verifie si il y a un block
+    public static bool HasBlockv(Vector2 location)
+    {
+        Block b = GetBlockv(location);
+        return (b!=null);
+    }
+
+    /// Cache le chunk d'id id
+    public static void HideChunk(int id)
+    {
+        chunks[id].Hide();
+    }
+    /// Affiche le chunk d'id id
+    public static void DrawChunk(int id)
+    {
+        chunks[id].Draw();
+    }
+    /// Cache le chunk d'id id
+    public static void HideChunkc(Chunk c)
+    {
+        c.Hide();
+    }
+    /// Affiche le chunk d'id id
+    public static void DrawChunkc(Chunk c)
+    {
+        c.Draw();
     }
 }
