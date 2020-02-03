@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts/Objects/World.cs" />
     <Compile Include="Assets\Scripts/Objects/Chunk.cs" />
     <Compile Include="Assets\Scripts\Objects\Building.cs" />
+    <Compile Include="Assets\Scripts\Objects\Convertions.cs" />
     <Compile Include="Assets\Scripts\Objects\Item.cs" />
     <Compile Include="Assets\Scripts\Objects\Liquid.cs" />
     <Compile Include="Assets\Scripts\Objects\Player.cs" />
