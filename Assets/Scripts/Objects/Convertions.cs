@@ -18,4 +18,11 @@ public static class Convertions
         return new Vector2(location.x, (1-location.y)+(Chunk.height) );
     }
 
+    /// Convertie une location de repere World vers le repere Godot
+    public static Vector2 World2Location(Vector2 location)
+    {
+        location.y = -((location.y - Chunk.height) - 1);
+        location *= World.tilemp_blocks.CellSize.x;
+        return location;
+    }
 }
