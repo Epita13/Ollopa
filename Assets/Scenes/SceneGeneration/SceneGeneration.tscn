@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scenes/SceneGeneration/SceneGenerationScript.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Objects/Tilesets/BlocksTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Objects/Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Objects/UI/TestsTemporaire/ValuesPanel.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/Ressources/Fonts/American Captain.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = SubResource( 1 )
 
 [node name="SceneGeneration" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,8 +25,7 @@ scale = Vector2( 1000, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
-position = Vector2( 493.294, -350.015 )
+position = Vector2( 2048, 641.655 )
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2( 0.527893, -1.90234 )
@@ -30,4 +35,12 @@ zoom = Vector2( 0.7, 0.7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ValuesPanel" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_right = 582.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 2 )
+text = "Generation V1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

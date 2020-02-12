@@ -62,8 +62,8 @@ public class Building : Node2D
             return;
         this.location = location;
         isPlaced = true;
-        SetZIndex(zIndex);
-        SetPosition(location);
+        ZIndex = zIndex;
+        Position = location;
         parent.AddChild(this);
         return;
     }
