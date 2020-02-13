@@ -14,6 +14,8 @@ public static class World
             - Utiliser la fonction Init()
             - Verification d'initialisation : le getter IsInit
 
+         /!\ Classe Initialisées necessaire : None
+         
         Description de l'object :
             Le World est une map constituée, de plusieurs chunks formant une partition de celui-ci.
             Ca creation repose sur une generation aleatoire dependant d'un SimplexNoise "noise".
