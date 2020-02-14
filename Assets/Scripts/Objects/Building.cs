@@ -49,6 +49,11 @@ public abstract class Building : Node2D
 
     private static bool isInit = false;
     public static bool IsInit => isInit;
+    public static void IsInitBuildingTest(string funcName)
+    {
+        if (!isInit)
+            throw new UninitializedException(funcName, "Building");
+    } 
 
     /// Initialise les variables pour le fonctionnement des batiments (OBLIGATOIRE)
     public static void Init(Node parent, int zIndex = -1)
@@ -74,6 +79,7 @@ public abstract class Building : Node2D
     /// Place le batiment sur la map
     public void Place(Vector2 location)
     {
+        IsInitBuildingTest("Place");
         if (isPlaced)
             return;
         this.location = location;
@@ -87,6 +93,7 @@ public abstract class Building : Node2D
     /// Enleve le batiment de la map
     public void Remove()
     {
+        IsInitBuildingTest("Remove");
         if (!isPlaced)
             return;
         this.location = new Vector2(-1,-1);

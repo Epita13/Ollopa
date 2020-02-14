@@ -6,8 +6,8 @@ public class Usable
 {
     public static int nbUsables = 2;
     public enum Type{
-        laser,
-        dirt
+        Laser,
+        Dirt
     }
 
     public enum Category
@@ -18,14 +18,19 @@ public class Usable
 
     public static Dictionary<int, Texture> textures = new Dictionary<int, Texture>
     {
-        {(int)Type.laser, GD.Load<Texture>("res://Assets/Ressources/Imgs/Usables/laser.png")},
-        {(int)Type.dirt, GD.Load<Texture>("res://Assets/Ressources/Imgs/Usables/dirt.png")}
+        {(int)Type.Laser, GD.Load<Texture>("res://Assets/Ressources/Imgs/Usables/laser.png")},
+        {(int)Type.Dirt, GD.Load<Texture>("res://Assets/Ressources/Imgs/Usables/dirt.png")}
+    };
+
+    public static Dictionary<Type, Block.Type> blocks = new Dictionary<Type, Block.Type>
+    {
+        {Type.Dirt, Block.Type.Dirt}
     };
 
     public static Dictionary<int, Category> category = new Dictionary<int, Category>
     {
-        {(int)Type.laser, Category.Tool},
-        {(int)Type.dirt, Category.Block}
+        {(int)Type.Laser, Category.Tool},
+        {(int)Type.Dirt, Category.Block}
     };
 
 }

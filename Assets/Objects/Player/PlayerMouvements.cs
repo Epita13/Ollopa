@@ -4,7 +4,7 @@ using System;
 public class PlayerMouvements : KinematicBody2D
 {
     
-
+    public static PlayerMouvements instance;
     public static float GRAVITY = 10; 
     public static float SPEED = 250;
     public static float JUMP_POWER = -250;
@@ -18,6 +18,7 @@ public class PlayerMouvements : KinematicBody2D
     public override void _Ready()
     {
         depopos = Position;
+        instance = this;
     }
 
 
