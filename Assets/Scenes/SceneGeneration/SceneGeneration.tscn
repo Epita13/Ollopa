@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Scenes/SceneGeneration/SceneGenerationScript.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Objects/Tilesets/BlocksTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Objects/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Liquid/Liquid.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Ressources/Fonts/American Captain.otf"
@@ -19,6 +20,8 @@ script = ExtResource( 1 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
+
+[node name="Liquid" parent="." instance=ExtResource( 5 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1000, 0.1 )
