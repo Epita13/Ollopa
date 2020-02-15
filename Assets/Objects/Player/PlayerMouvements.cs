@@ -5,6 +5,8 @@ public class PlayerMouvements : KinematicBody2D
 {
     
     public static PlayerMouvements instance;
+    public static Vector2 size = new Vector2(1.625f,3);
+
     public static float GRAVITY = 10; 
     public static float SPEED = 250;
     public static float JUMP_POWER = -250;
@@ -60,10 +62,10 @@ public class PlayerMouvements : KinematicBody2D
 
   public override void _Process(float delta)
   {
-    if (Convertion.Location2World(Position).y<Chunk.chunkMin)
+    /*if (Convertion.Location2World(Position).y<Chunk.chunkMin)
     {
         Position = depopos;
-    }
+    }*/
     Player.RemoveEnergy(0.1f*delta);
     if(Player.energy==0)
     {

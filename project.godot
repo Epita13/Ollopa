@@ -47,6 +47,10 @@ mouse2={
  ]
 }
 
+[mono]
+
+debugger_agent/wait_timeout=10000
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
