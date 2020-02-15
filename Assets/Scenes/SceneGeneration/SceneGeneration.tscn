@@ -4,11 +4,7 @@
 [ext_resource path="res://Assets/Objects/World/Tilemaps.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Objects/Player/Player.tscn" type="PackedScene" id=4]
-<<<<<<< HEAD
 [ext_resource path="res://Assets/Objects/UI/ToolBar/ToolBar.tscn" type="PackedScene" id=5]
-=======
-[ext_resource path="res://Assets/Scenes/Liquid/Liquid.tscn" type="PackedScene" id=5]
->>>>>>> aff5a9354e2e6352c95a0d5e119bba470ff6eae1
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Ressources/Fonts/American Captain.otf"
@@ -20,16 +16,10 @@ font_data = SubResource( 1 )
 [node name="SceneGeneration" type="Node2D"]
 script = ExtResource( 1 )
 
-<<<<<<< HEAD
-=======
 [node name="Ground" type="TileMap" parent="."]
-tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Liquid" parent="." instance=ExtResource( 5 )]
-
->>>>>>> aff5a9354e2e6352c95a0d5e119bba470ff6eae1
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1000, 0.1 )
 texture = ExtResource( 3 )

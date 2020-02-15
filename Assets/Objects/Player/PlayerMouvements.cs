@@ -71,13 +71,6 @@ public class PlayerMouvements : KinematicBody2D
     {
         canMove = false;
     }
-    if (Input.IsActionJustPressed("mouse1"))
-    {
-        Vector2 pos = GetGlobalMousePosition();
-        Vector2 pos2 = Convertion.Location2WorldFloor(pos);
-		Liquid water =  (Liquid)GetTree().GetRoot().GetNode("SceneGeneration").GetNode("Liquid").GetNode("WaterMap");
-        water.PlaceWater((int)pos2.x, (int)pos2.y);
-    }
   }
 
   
