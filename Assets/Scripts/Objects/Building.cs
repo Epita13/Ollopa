@@ -46,6 +46,8 @@ public abstract class Building : Node2D
     public static Node parent;
     public static int zIndex = -1;
 
+    public int size = 4;
+    public Vector2[] corners = new Vector2[4];
 
     private static bool isInit = false;
     public static bool IsInit => isInit;
@@ -82,10 +84,11 @@ public abstract class Building : Node2D
         IsInitBuildingTest("Place");
         if (isPlaced)
             return;
-        this.location = location;
+        this.location = Convertion.World2Location(location);
+        corners = SetCorners(location);
         isPlaced = true;
         ZIndex = zIndex;
-        Position = location;
+        Position = this.location;
         parent.AddChild(this);
         return;
     }
@@ -123,6 +126,18 @@ public abstract class Building : Node2D
         health += value;
         if (health>healthMax)
             health = healthMax;
+    }
+    
+    private Vector2[] SetCorners(Vector2 location)
+    {
+        Vector2[] l = new Vector2[4]
+        {
+            new Vector2(location.x - size / 2, location.y - size / 2),
+            new Vector2(location.x - size / 2, location.y + size / 2),
+            new Vector2(location.x + size / 2, location.y + size / 2),
+            new Vector2(location.x + size / 2, location.y - size / 2)
+        };
+        return l;
     }
 
 }
