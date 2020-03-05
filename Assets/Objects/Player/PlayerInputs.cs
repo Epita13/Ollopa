@@ -37,7 +37,7 @@ public class PlayerInputs : Node2D
 
 		mousePos = Convertion.Location2WorldFloor(GetGlobalMousePosition());
 
-		/*Affichage*/
+		//Affichage
 		if (PlayerState.GetState() == PlayerState.State.Normal)
 		{
 			NormalState();
@@ -48,7 +48,7 @@ public class PlayerInputs : Node2D
 		}
 
 
-		/*Inputs*/
+		//Inputs
 
 		if (Input.IsActionJustPressed("mouse1"))
 		{

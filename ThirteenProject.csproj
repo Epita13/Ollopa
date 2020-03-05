@@ -59,6 +59,7 @@
     <Compile Include="Assets\Objects\UI\TestsTemporaire\ValuesPanel.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ItemBox.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ToolBar.cs" />
+    <Compile Include="Assets\Scenes\Menus\MenuPlay.cs" />
     <Compile Include="Assets\Scenes\SceneGeneration\SceneGenerationScript.cs" />
     <Compile Include="Assets\Scripts/Objects/Block.cs" />
     <Compile Include="Assets\Scripts/Objects/World.cs" />
