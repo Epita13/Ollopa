@@ -17,11 +17,13 @@ public class PlayerInputs : Node2D
 		Player.inventoryUsables.Add(Usable.Type.Grass, 10);
 		Player.inventoryUsables.Add(Usable.Type.Stone, 10);
 		ConnectSignals();
+		
 	}
 
 	private void ConnectSignals()
 	{
-		Connect("BlockPlaced", (Node)GetTree().GetNodesInGroup("ToolBar")[0], "SendRefresh"); // Pour Actualisation de la ToolBar
+		if (GetTree().GetNodesInGroup("ToolBar").Count==1)
+			Connect("BlockPlaced", (Node)GetTree().GetNodesInGroup("ToolBar")[0], "SendRefresh"); // Pour Actualisation de la ToolBar
 	}
 
   
@@ -60,6 +62,7 @@ public class PlayerInputs : Node2D
 			{
 				ClickBuildState();
 			}
+			
 		}
 		else if (Input.IsActionJustPressed("mouse2"))
 		{

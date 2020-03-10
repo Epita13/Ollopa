@@ -39,4 +39,16 @@ position = Vector2( -72.3728, -16.8008 )
 scale = Vector2( 1, 928.922 )
 texture = SubResource( 4 )
 centered = false
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 279.152, -16.801 )
+scale = Vector2( 0.0950882, 928.922 )
+texture = SubResource( 4 )
+centered = false
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 1315.63, -14.2161 )
+scale = Vector2( 0.0950882, 928.922 )
+texture = SubResource( 4 )
+centered = false
 [connection signal="button_down" from="CanvasLayer/Button" to="." method="Play"]

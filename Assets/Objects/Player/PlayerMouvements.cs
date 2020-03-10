@@ -8,8 +8,8 @@ public class PlayerMouvements : KinematicBody2D
     public static Vector2 size = new Vector2(1.625f,3);
 
     public static float GRAVITY = 10; 
-    public static float SPEED = 125;
-    public static float JUMP_POWER = -250;
+    public static float SPEED = 125*2.5f;
+    public static float JUMP_POWER = -250*1.4f;
     public static bool canMove = true;
 
     Vector2 UP = new Vector2(0,-1);
@@ -74,10 +74,6 @@ public class PlayerMouvements : KinematicBody2D
 
   public override void _Process(float delta)
   {
-        /*if (Convertion.Location2World(Position).y<Chunk.chunkMin)
-        {
-            Position = depopos;
-        }*/
         if (World.IsInit)
         {
             WorldEndTeleportation();

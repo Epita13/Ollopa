@@ -51,7 +51,7 @@ public static class World
     private static int seed;
     private const int octave = 3;
     private const float periode = 20.0f;
-    private const float persistence = 0.25f;
+    private const float persistence = 0.1f;
     private const float lacunarity = 3.5f;
     
     public static int size;
