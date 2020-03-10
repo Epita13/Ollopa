@@ -17,7 +17,8 @@ public class PlayerInputs : Node2D
 		Player.inventoryUsables.Add(Usable.Type.Grass, 10);
 		Player.inventoryUsables.Add(Usable.Type.Stone, 10);
 		ConnectSignals();
-		
+		Player.inventoryItems.Add(Item.Type.Composite, 12);
+
 	}
 
 	private void ConnectSignals()
@@ -50,8 +51,13 @@ public class PlayerInputs : Node2D
 		}
 
 
+		/* Inventory Click */
+		if (Input.IsActionJustPressed("inventory"))
+		{
+			InventoryClick();
+		}		
+		
 		//Inputs
-
 		if (Input.IsActionJustPressed("mouse1"))
 		{
 			if (PlayerState.GetState() == PlayerState.State.Normal)
@@ -220,7 +226,19 @@ public class PlayerInputs : Node2D
 	}
 
 
-
+	private void InventoryClick()
+	{
+		if (PlayerState.GetState() != PlayerState.State.Inventory)
+		{
+			PlayerState.SetState(PlayerState.State.Inventory);
+			UI_PlayerInventory.Display();
+		}
+		else
+		{
+			PlayerState.SetState(PlayerState.State.Normal);
+			UI_PlayerInventory.Hide();
+		}
+	}
 
 
 }

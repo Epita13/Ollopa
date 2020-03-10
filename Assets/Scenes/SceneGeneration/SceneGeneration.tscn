@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scenes/SceneGeneration/SceneGenerationScript.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Objects/World/Tilemaps.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Objects/Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Objects/UI/ToolBar/ToolBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Objects/UI/PlayerInventory/PlayerInventory.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Ressources/Fonts/American Captain.otf"
@@ -37,7 +38,6 @@ __meta__ = {
 }
 
 [node name="ToolBar" parent="CanvasLayer" instance=ExtResource( 5 )]
-visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -46,6 +46,9 @@ margin_left = -640.0
 margin_top = -240.0
 margin_right = 640.0
 margin_bottom = 6.10352e-05
+
+[node name="PlayerInventory" parent="CanvasLayer" instance=ExtResource( 6 )]
+position = Vector2( 1168.29, 15.3481 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 scale = Vector2( 0.1, 1000 )
