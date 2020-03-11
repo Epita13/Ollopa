@@ -33,6 +33,7 @@ __meta__ = {
 }
 
 [node name="ToolBar" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -43,7 +44,7 @@ margin_right = 640.0
 margin_bottom = 6.10352e-05
 
 [node name="PlayerInventory" parent="CanvasLayer" instance=ExtResource( 6 )]
-position = Vector2( 1168.29, 15.3481 )
+position = Vector2( 295.387, 468.584 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1000, 0.1 )
