@@ -13,7 +13,7 @@ public class Game : Node2D
         TileMap back = GetNode("Tilemaps").GetNode<TileMap>("0");
         TileMap ground = GetNode("Tilemaps").GetNode<TileMap>("1");
         TileMap uiground = GetNode("Tilemaps").GetNode<TileMap>("2");
-        World.Init(5, ground, uiground, back);
+        World.Init(20, ground, uiground, back);
         World.Draw();
         Building.Init(this);
     }

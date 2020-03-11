@@ -114,6 +114,20 @@ public class PlayerMouvements : KinematicBody2D
       }
   }
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   
 }
