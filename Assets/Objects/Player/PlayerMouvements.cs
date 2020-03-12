@@ -3,6 +3,8 @@ using System;
 
 public class PlayerMouvements : KinematicBody2D
 {
+
+    public static bool HasPlayer = false;
     
     public static PlayerMouvements instance;
     public static Vector2 size = new Vector2(1.625f,3);
@@ -19,6 +21,7 @@ public class PlayerMouvements : KinematicBody2D
     Vector2 depopos;
     public override void _Ready()
     {
+        HasPlayer = true;
         depopos = Position;
         instance = this;
         if (!World.IsInit)

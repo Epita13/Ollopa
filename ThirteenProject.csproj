@@ -51,8 +51,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Objects\Buildings\Barrel\Barrel.cs" />
     <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
     <Compile Include="Assets\Objects\Buildings\Rafinery\Rafinery.cs" />
+    <Compile Include="Assets\Objects\Buildings\Spaceship\Spaceship.cs" />
     <Compile Include="Assets\Objects\Buildings\Storage\Storage.cs" />
     <Compile Include="Assets\Objects\Player\PlayerInputs.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Assets\Scripts/Objects/World.cs" />
     <Compile Include="Assets\Scripts/Objects/Chunk.cs" />
     <Compile Include="Assets\Scripts\Autres\Environement.cs" />
+    <Compile Include="Assets\Scripts\Autres\Paralax.cs" />
     <Compile Include="Assets\Scripts\Objects\Building.cs" />
     <Compile Include="Assets\Scripts\Tools\Convertion.cs" />
     <Compile Include="Assets\Scripts\Objects\Item.cs" />
