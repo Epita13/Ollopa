@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Objects/Player/PlayerMouvements.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Ressources/Imgs/Joueur/astronaute.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Objects/Player/PlayerInputs.cs" type="Script" id=3]
+[ext_resource path="res://Assets/Ressources/Imgs/Joueur/PointLigth.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13, 24 )
@@ -22,3 +23,8 @@ shape = SubResource( 1 )
 
 [node name="Inputs" type="Node2D" parent="."]
 script = ExtResource( 3 )
+
+[node name="light" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+energy = 0.0
+shadow_enabled = true

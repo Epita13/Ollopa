@@ -8,13 +8,14 @@
 [ext_resource path="res://Assets/Scripts/Autres/CurrentCamera.cs" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Ressources/Shaders/fog.shader" type="Shader" id=8]
-[ext_resource path="res://Assets/Ressources/Imgs/Joueur/PointLigth.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Scripts/Autres/Environement.cs" type="Script" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 8 )
-shader_param/color = Vector3( 0.33, 0.15, 0.82 )
-shader_param/OCTAVES = 4
+shader_param/color = Vector3( 0.1, 0.15, 0.7 )
+shader_param/OCTAVES = 3
 shader_param/size = 20.0
+shader_param/mult = 0.7
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -35,20 +36,17 @@ zoom = Vector2( 0.7, 0.7 )
 drag_margin_v_enabled = true
 script = ExtResource( 6 )
 
-[node name="Light2D" type="Light2D" parent="Player"]
-texture = ExtResource( 9 )
-energy = 1.5
-shadow_enabled = true
-
 [node name="Paralax1" type="Node2D" parent="."]
 script = ExtResource( 4 )
 texture = ExtResource( 5 )
 zIndex = -100
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.427451, 0.427451, 0.427451, 1 )
+[node name="Environement" type="Node2D" parent="."]
+script = ExtResource( 10 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Canvas_DayNight" type="CanvasModulate" parent="Environement"]
+
+[node name="fog" type="Sprite" parent="Environement"]
 material = SubResource( 1 )
 scale = Vector2( 100, 100 )
 texture = ExtResource( 7 )
