@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts/Objects/Block.cs" />
     <Compile Include="Assets\Scripts/Objects/World.cs" />
     <Compile Include="Assets\Scripts/Objects/Chunk.cs" />
+    <Compile Include="Assets\Scripts\Autres\CurrentCamera.cs" />
     <Compile Include="Assets\Scripts\Autres\Environement.cs" />
     <Compile Include="Assets\Scripts\Autres\Paralax.cs" />
     <Compile Include="Assets\Scripts\Objects\Building.cs" />

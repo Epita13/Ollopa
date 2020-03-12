@@ -60,7 +60,6 @@ public class PlayerInputs : Node2D
 		//Inputs
 		if (Input.IsActionJustPressed("mouse1"))
 		{
-			DrawCircle(GetGlobalMousePosition(), 5.0f, Colors.Aqua);
 			if (PlayerState.GetState() == PlayerState.State.Normal)
 			{
 				ClickNormalState();
