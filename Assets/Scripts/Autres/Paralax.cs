@@ -8,6 +8,7 @@ public class Paralax : Node2D
     [Export] public float speed = 0.5f;
     [Export] public Texture texture;
     [Export] public int zIndex;
+    [Export] public float y;
     
     List<Sprite> childs = new List<Sprite>();
 
@@ -28,8 +29,8 @@ public class Paralax : Node2D
         s2.ZIndex = zIndex;
         s1.Centered = true;
         s2.Centered = true;
-        s1.Position = new Vector2(PlayerMouvements.instance.Position.x, 1000);
-        s2.Position = new Vector2(PlayerMouvements.instance.Position.x+texture.GetSize().x, 1000);
+        s1.Position = new Vector2(PlayerMouvements.instance.Position.x, y);
+        s2.Position = new Vector2(PlayerMouvements.instance.Position.x+texture.GetSize().x, y);
         AddChild(s1);
         AddChild(s2);
         childs.Add(s1);
