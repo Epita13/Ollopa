@@ -112,7 +112,6 @@ public class BasicPlacement : Node2D
 	///place un batiment selon les regles
 	public static void PlaceWithMouse(Building building,Vector2 mouse,bool right)
 	{
-		GD.Print("fe");
 		Vector2 mouseC = Convertion.Location2WorldFloor(mouse);
 		if (right)
 		{

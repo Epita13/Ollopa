@@ -4,6 +4,8 @@ using System;
 public class PlayerInputs : Node2D
 {
 
+	public static bool playerInputActive = true;
+	
 
 	[Signal] delegate void BlockPlaced();
 
@@ -30,6 +32,8 @@ public class PlayerInputs : Node2D
   
 	public override void _Process(float delta)
 	{
+		if (!playerInputActive)
+			return;
 		
 		if (lastState!=PlayerState.GetState() || lastSelectedUsable!=Player.UsableSelected)
 		{

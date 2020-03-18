@@ -4,6 +4,7 @@ using System;
 public class PlayerMouvements : KinematicBody2D
 {
 
+
     public static bool HasPlayer = false;
     
     public static PlayerMouvements instance;
@@ -28,7 +29,6 @@ public class PlayerMouvements : KinematicBody2D
         {
             GD.Print("Player : Warning, le monde n'est pas initialisé");
         }
-        GD.Print((-3)%16);
     }
 
     public static float GetX() => Convertion.Location2World(instance.Position).x;
@@ -87,7 +87,10 @@ public class PlayerMouvements : KinematicBody2D
         {
             canMove = false;
         }
+        
+            
   }
+
 
 
   private void WorldEndTeleportation()
