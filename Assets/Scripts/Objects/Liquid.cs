@@ -71,7 +71,7 @@ public class Liquid : TileMap
 		 {
 			 for (int y = 1; y <= map.GetUpperBound(1); y++)
 			 {
-				 if (Block.GetIDTile(World.GetBlock(x, Chunk.height - y).type) != -1)
+				 if (Block.GetIDTile(World.GetBlock(x, Chunk.height - y).GetType) != -1)
 					 map[x, y] = 0;
 				 else
 					 map[x, y] = -1;

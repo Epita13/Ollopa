@@ -16,7 +16,7 @@ public class Environement : Node2D
     
     
     private static float length_day = 60*5;  // seconde
-    private float time = length_day / 2 + 16*5; // seconde
+    private float time = length_day / 2; // seconde
     private int nb_day = 0;
 
     private static int hourNight = 19;
@@ -64,8 +64,7 @@ public class Environement : Node2D
         int minute = GetMin(time);
         if (hour >= 24)
             time = time % length_day;
-        GD.Print(hour + ":" + minute);
-        
+
         if (hour>hourNight || hour==hourNight && minute>=minNight || hour<hourDay || hour==hourDay && minute<minDay)
         {
             if (cycle == TimeState.DAY)

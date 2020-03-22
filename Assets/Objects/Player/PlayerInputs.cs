@@ -15,9 +15,9 @@ public class PlayerInputs : Node2D
 
 	public override void _Ready()
 	{
-		Player.inventoryUsables.Add(Usable.Type.Dirt, 10);
-		Player.inventoryUsables.Add(Usable.Type.Grass, 10);
-		Player.inventoryUsables.Add(Usable.Type.Stone, 10);
+		Player.inventoryUsables.Add(Usable.Type.Dirt, 30);
+		Player.inventoryUsables.Add(Usable.Type.Grass, 30);
+		Player.inventoryUsables.Add(Usable.Type.Stone, 30);
 		ConnectSignals();
 		Player.inventoryItems.Add(Item.Type.Composite, 12);
 
@@ -194,14 +194,13 @@ public class PlayerInputs : Node2D
 				}
 			}else
 			{
-				World.GetChunk((int)mousePos.x).RemoveBlock(Chunk.GetLocaleX((int)mousePos.x), (int)mousePos.y);
+				//World.GetChunk((int)mousePos.x).RemoveBlock(Chunk.GetLocaleX((int)mousePos.x), (int)mousePos.y);
 			}
 		}
 	}
 
 	private void ClickBuildState()
 	{
-		//GD.Print(MouseInRange(9,true));
 		Vector2 playerPos = Convertion.Location2World(PlayerMouvements.instance.Position);
 		bool right = playerPos.x-1 < mousePos.x;
 		if (MouseInRange(10,true))
@@ -236,6 +235,7 @@ public class PlayerInputs : Node2D
 		{
 			PlayerState.SetState(PlayerState.State.Inventory);
 			UI_PlayerInventory.Open("item");
+			GD.Print("okok");
 		}
 		else
 		{

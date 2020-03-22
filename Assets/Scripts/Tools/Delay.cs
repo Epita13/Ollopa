@@ -5,20 +5,20 @@ public class Delay : Node
 {
     private float time;
     private Action end;
-    private Action step;
+    private Action<float, float> step;
 
     private bool start = false;
     private float s;
 
 
-    public static void StartDelay(Node n, float time, Action end, Action step = null)
+    public static void StartDelay(Node n, float time, Action end, Action<float, float> step = null)
     {
         Delay d = new Delay(time, end, step);
         n.AddChild(d);
         d.Start();
     }
     
-    public Delay(float time, Action end, Action step = null)
+    public Delay(float time, Action end, Action<float, float> step = null)
     {
         this.end = end;
         this.step = step;
@@ -36,13 +36,16 @@ public class Delay : Node
     {
         if (start)
         {
-            if (step != null)
-                step();
-            s += delta;
             if (s >= time)
             {
                 end();
                 QueueFree();
+            }
+            else
+            {
+                if (step != null)
+                    step(s, time);
+                s += delta;
             }
         }
     }
