@@ -64,7 +64,7 @@ public class Raygun : Node2D
 
         Block block_hit = World.GetBlock((int) block_posF.x, (int) block_posF.y);
         if (block_hit.GetType != Block.Type.Air)
-            block_hit.Damage(2.5f);
+            block_hit.Damage(3.5f);
     }
 
 

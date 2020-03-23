@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scenes/Menus/MenuPlay.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/Tools/ScreenAdapt.cs" type="Script" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Ressources/Fonts/American Captain.otf"
@@ -51,4 +52,7 @@ position = Vector2( 690.949, -56.5122 )
 scale = Vector2( 0.0950882, 928.922 )
 texture = SubResource( 4 )
 centered = false
+
+[node name="ScreenAjust" type="Node2D" parent="."]
+script = ExtResource( 2 )
 [connection signal="button_down" from="CanvasLayer/Button" to="." method="Play"]

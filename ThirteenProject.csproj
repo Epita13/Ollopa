@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Tools\Exeception\UninitializedException.cs" />
     <Compile Include="Assets\Scripts\Tools\PlaceBlock.cs" />
     <Compile Include="Assets\Scripts\Tools\BasicPlacement.cs" />
+    <Compile Include="Assets\Scripts\Tools\ScreenAdapt.cs" />
     <Compile Include="Assets\Scripts\Tools\SlideBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
