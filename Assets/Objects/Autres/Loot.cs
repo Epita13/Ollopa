@@ -12,7 +12,7 @@ public class Loot : Node2D
          - Utiliser la fonction Init()
          - Verification d'initialisation : le getter IsInit
 
-      /!\ Classe Initialisées necessaire : None
+      /!\ Classe Initialisées necessaire : World
       
      Description de l'object :
         A faire
@@ -190,12 +190,10 @@ public class Loot : Node2D
                 if (Convertion.Location2World(Position).x < 0)
                 {
                     Position = Position + new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
-                    GD.Print("+++");
                 }
                 else
                 {
                     Position = Position - new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
-                    GD.Print("---");
                 }
 
                 mirrored = false;
