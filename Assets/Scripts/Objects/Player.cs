@@ -18,12 +18,14 @@ public static class Player
     // Ex : laser, blocks..
     public static  StorageUsables inventoryUsables = new StorageUsables(100);
     // Ex : bois, composite (matieres premieres)
-    public static StorageItems inventoryItems = new StorageItems(200);
+    public static StorageItems inventoryItems = new StorageItems(20000);
     // Ex : eau, petrole (Liquide)
     public static StorageLiquids inventoryLiquids = new StorageLiquids(30.0f);
+    public static StorageBuildings inventoryBuildings = new StorageBuildings(10);
 
 
     public static Usable.Type UsableSelected = Usable.Type.Laser;
+    public static Building.Type BuildingSelected = Building.Type.SolarPanel;
 
     /// Ajoute de la vie au joueur. 
     public static void AddHealth(float amount)

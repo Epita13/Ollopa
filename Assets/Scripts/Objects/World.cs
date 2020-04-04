@@ -109,6 +109,7 @@ public static class World
             Chunk instance_chunk = new Chunk(x);
             chunks.Add(instance_chunk);
         }
+        OreGenerate();
     }
 
     /// Affiche tous les Chunks de la map
@@ -174,5 +175,25 @@ public static class World
     public static void DrawChunkc(Chunk c)
     {
         c.Draw();
+    }
+
+
+    private static void OreGenerate()
+    {
+        for (int x = 0; x < World.size * Chunk.size; x++)
+        {
+            foreach (var ore in Ore.ores)
+            {
+                float p = (float)random.NextDouble();
+                if (p <= Ore.probabilities[ore])
+                {
+                    int height = random.Next(1, Ore.heights[ore] + 1);
+                    if (World.GetBlock(x, height).GetType == Block.Type.Stone)
+                    {
+                        Ore.CreateVein(ore, x, height);
+                    }
+                }
+            }
+        }
     }
 }

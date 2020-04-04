@@ -32,7 +32,7 @@ public class Environement : Node2D
         DAY,
         NIGHT
     }
-    public TimeState cycle = TimeState.DAY;
+    public static TimeState cycle = TimeState.DAY;
 
     private int GetHour(float seconds) => Mathf.FloorToInt(seconds * 24 / length_day);
     private int GetMin(float seconds) => Mathf.FloorToInt(((seconds%(length_day/24))*60)/(length_day/24));

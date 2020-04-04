@@ -51,7 +51,7 @@ public class Loot : Node2D
     public const float SPEEDMIN = 1.4f;
     public const float SPEEDMAX = 2.0f;
     public const float LIFETIME = 30.0f;
-    public const int STACKSIZE = 24;
+    public const int STACKSIZE = 48;
 
     private float time;
     public bool dead = false;
@@ -120,6 +120,8 @@ public class Loot : Node2D
         Vector2 p = GetViewportTransform().origin * CurrentCamera.GetXZoom();
         Vector2 vecMin = Convertion.Location2World(p) * -1;
         prev_x_viewport = vecMin.x;
+        
+        World.IsInitWorldTest("Loot constructor");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -153,7 +155,6 @@ public class Loot : Node2D
                 }
             }else if (-vecMin.x+prev_x_viewport >= 0.90f * World.size * Chunk.size)
             {
-                prev_x_viewport = vecMin.x;
                 int i = (int) Mathf.Abs(vecMin.x / Chunk.size) + 1;
                 if (Convertion.Location2World(Position).x >= (World.size - i) * Chunk.size)
                 {
@@ -174,7 +175,6 @@ public class Loot : Node2D
                 }
             } else if (vecMin.x-prev_x_viewport >= 0.90f * World.size * Chunk.size)
             {
-                prev_x_viewport = vecMin.x;
                 int i = (int) Mathf.Abs((vecMax.x - World.size * Chunk.size) / Chunk.size) + 1;
                 if (Convertion.Location2World(Position).x <= i * Chunk.size)
                 {
@@ -199,6 +199,7 @@ public class Loot : Node2D
                 mirrored = false;
             }
         }
+        prev_x_viewport = vecMin.x;
         /*----------------------*/
         
         var bodies = area.GetOverlappingBodies();

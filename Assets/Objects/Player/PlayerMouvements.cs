@@ -64,7 +64,7 @@ public class PlayerMouvements : KinematicBody2D
     public override void _PhysicsProcess(float delta)
     {
         vel.x = 0;
-        if (canMove){
+        if (canMove && PlayerState.GetState()!=PlayerState.State.Inventory){
             HorizontalMouvement();
             JUMP();
         }

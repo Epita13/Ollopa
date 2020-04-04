@@ -18,6 +18,8 @@ public class PlayerInputs : Node2D
 		Player.inventoryUsables.Add(Usable.Type.Dirt, 30);
 		Player.inventoryUsables.Add(Usable.Type.Grass, 30);
 		Player.inventoryUsables.Add(Usable.Type.Stone, 30);
+		Player.inventoryBuildings.Add(Building.Type.SolarPanel, 2);
+		Player.inventoryBuildings.Add(Building.Type.Storage, 3);
 		ConnectSignals();
 		Player.inventoryItems.Add(Item.Type.Composite, 12);
 
@@ -149,9 +151,13 @@ public class PlayerInputs : Node2D
 		World.UIBlockTilemap.Clear();
 		Vector2 playerPos = Convertion.Location2World(PlayerMouvements.instance.Position);
 		bool right = playerPos.x-1 < mousePos.x;
+		
+		Building.Type type = Player.BuildingSelected;
+		bool haveBuilding = Player.inventoryBuildings.GetItemCount(type) >= 1;
+		
 		if (right)
 		{
-			if (BasicPlacement.IsPlacableRight(x, y, 4, 4) && MouseInRange(9, true))
+			if (haveBuilding && BasicPlacement.IsPlacableRight(x, y, 4, 4) && MouseInRange(9, true))
 			{
 				PrintBatRight(1);
 			}
@@ -162,7 +168,7 @@ public class PlayerInputs : Node2D
 		}
 		else 
 		{
-			if (BasicPlacement.IsPlacableLeft(x, y, 4, 4) && MouseInRange(9, true))
+			if (haveBuilding && BasicPlacement.IsPlacableLeft(x, y, 4, 4) && MouseInRange(9, true))
 			{
 				PrintBatLeft(1);
 			}
@@ -189,12 +195,12 @@ public class PlayerInputs : Node2D
 					if (succeed)
 					{
 						Player.inventoryUsables.Remove(type, 1);
-						EmitSignal("BlockPlaced");
+						if (ToolBar.GetInstance() != null)
+						{
+							ToolBar.SendRefresh();
+						}
 					}
 				}
-			}else
-			{
-				//World.GetChunk((int)mousePos.x).RemoveBlock(Chunk.GetLocaleX((int)mousePos.x), (int)mousePos.y);
 			}
 		}
 	}
@@ -205,8 +211,16 @@ public class PlayerInputs : Node2D
 		bool right = playerPos.x-1 < mousePos.x;
 		if (MouseInRange(10,true))
 		{
-			Storage sk = (Storage) Building.prefabs[Building.Type.Storage].Instance();
-			BasicPlacement.PlaceWithMouse(sk, GetGlobalMousePosition(),right);
+			Building.Type type = Player.BuildingSelected;
+			if (Player.inventoryBuildings.GetItemCount(type) >= 1)
+			{
+				Building building = (Building) Building.prefabs[type].Instance();
+				bool succeed = BasicPlacement.PlaceWithMouse(building, GetGlobalMousePosition(), right);
+				if (succeed)
+				{
+					Player.inventoryBuildings.Remove(type, 1);
+				}
+			}
 		}
 	}
 
@@ -217,8 +231,6 @@ public class PlayerInputs : Node2D
 		float ymin = Mathf.Floor(playerPos.y-PlayerMouvements.size.y/2);
 		float xmax = Mathf.Floor(playerPos.x+PlayerMouvements.size.x/2);
 		float ymax = Mathf.Floor(playerPos.y+PlayerMouvements.size.y/2);
-		GD.Print(mousePos);
-		GD.Print(xmin, " ", xmax, "  -  ", ymin, " ", ymax);
 		if (!onPlayer)
 			if (Mathf.Floor(mousePos.x)<=xmax && Mathf.Floor(mousePos.x)>=xmin && Mathf.Floor(mousePos.y)<=ymax && Mathf.Floor(mousePos.y)>=ymin)
 				return false;
@@ -234,12 +246,11 @@ public class PlayerInputs : Node2D
 		if (PlayerState.GetState() != PlayerState.State.Inventory)
 		{
 			PlayerState.SetState(PlayerState.State.Inventory);
-			UI_PlayerInventory.Open("item");
-			GD.Print("okok");
+			UI_PlayerInventory2.Open();
 		}
 		else
 		{
-			UI_PlayerInventory.Close();
+			UI_PlayerInventory2.Close();
 		}
 	}
 

@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Objects\Autres\Loot.cs" />
+    <Compile Include="Assets\Objects\Autres\Tree\Tree.cs" />
     <Compile Include="Assets\Objects\Buildings\Barrel\Barrel.cs" />
     <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
     <Compile Include="Assets\Objects\Buildings\Rafinery\Rafinery.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Assets\Objects\Tools\Raygun\Raygun.cs" />
     <Compile Include="Assets\Objects\UI\Notification\Notifications.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory.cs" />
+    <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory2.cs" />
     <Compile Include="Assets\Objects\UI\TestsTemporaire\ValuesPanel.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ItemBox.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ToolBar.cs" />
@@ -79,6 +81,8 @@
     <Compile Include="Assets\Scripts\Autres\Paralax.cs" />
     <Compile Include="Assets\Scripts\Objects\Building.cs" />
     <Compile Include="Assets\Scripts\Objects\Drop.cs" />
+    <Compile Include="Assets\Scripts\Objects\Ore.cs" />
+    <Compile Include="Assets\Scripts\Objects\StorageBuildings.cs" />
     <Compile Include="Assets\Scripts\Tools\Convertion.cs" />
     <Compile Include="Assets\Scripts\Objects\Item.cs" />
     <Compile Include="Assets\Scripts\Objects\Liquid.cs" />

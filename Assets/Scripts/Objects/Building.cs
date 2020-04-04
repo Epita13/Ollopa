@@ -17,6 +17,11 @@ public abstract class Building : Node2D
         {Type.SolarPanel, GD.Load<PackedScene>("res://Assets/Objects/Buildings/SolarPanel/SolarPanel.tscn")},
 		{Type.Storage, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Storage/Storage.tscn")}
     };
+    public static Dictionary<Type, Texture> textures = new Dictionary<Type, Texture>
+    {
+        {Type.SolarPanel, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/SolarPanel/SolarPanel.png")},
+        {Type.Storage, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Storage/Stockage.png")}
+    };
 
     /*
         Object abstract:  Building
@@ -41,10 +46,10 @@ public abstract class Building : Node2D
             bool isPlaced : true si le batiment est placer dans la scene; false sinon.
             int health, maxGHealth : represente la vie du joueur et son maximum de vie.
     */
-
-
+    
+    public static List<Building> placedBuildings = new List<Building>();
+    
     public static Node parent;
-    public static int zIndex = -1;
 
     public int size = 4;
     public Vector2[] corners = new Vector2[4];
@@ -58,11 +63,10 @@ public abstract class Building : Node2D
     } 
 
     /// Initialise les variables pour le fonctionnement des batiments (OBLIGATOIRE)
-    public static void Init(Node parent, int zIndex = -1)
+    public static void Init(Node parent)
     {
         isInit = true;
         Building.parent = parent;
-        Building.zIndex = zIndex;
     }
 
 
@@ -71,6 +75,9 @@ public abstract class Building : Node2D
 
     public int healthMax = 100;
     public int health;
+
+    private bool mirrored = false;
+    private float prev_x_viewport;
 
     public Building(int healthMax)
     {
@@ -84,13 +91,13 @@ public abstract class Building : Node2D
         IsInitBuildingTest("Place");
         if (isPlaced)
             return;
-        this.location = Convertion.World2Location(location);
-        corners = SetCorners(location);
+        this.location = Convertion.World2WorldBorn(location);
+        corners = SetCorners(this.location);
         isPlaced = true;
-        ZIndex = zIndex;
-        Position = this.location;
+        Position = Convertion.World2Location(location);
         parent.AddChild(this);
-        return;
+        placedBuildings.Add(this);
+        GD.Print(this.location);
     }
 
     /// Enleve le batiment de la map
@@ -102,14 +109,14 @@ public abstract class Building : Node2D
         this.location = new Vector2(-1,-1);
         isPlaced = false;
         parent.RemoveChild(this);
-        return;
+        placedBuildings.Remove(this);
     }
 
     // Détruit le batmiment
     public void Destroy()
     {
         Remove();
-        Free();
+        QueueFree();
     }
 
     /// Donne des dégats à la structure
@@ -140,4 +147,91 @@ public abstract class Building : Node2D
         return l;
     }
 
+    public bool IsInBuilding(float x, float y)
+    {
+        bool res = false;
+        if (x >= corners[0].x && x < corners[2].x)
+        {
+            if (y < corners[1].y && y >= corners[3].y)
+            {
+                res = true;
+            }
+        }
+        return res;
+    }
+
+
+    public override void _Ready()
+    {
+        Vector2 p = GetViewportTransform().origin * CurrentCamera.GetXZoom();
+        Vector2 vecMin = Convertion.Location2World(p) * -1;
+        prev_x_viewport = vecMin.x;
+    }
+
+    public override void _Process(float delta)
+    {
+         /*Teleportation Tree*/
+        Vector2 p = GetViewportTransform().origin * CurrentCamera.GetXZoom();
+        int viewportSizeX = Mathf.FloorToInt(GetViewport().Size.x * CurrentCamera.GetXZoom());
+        Vector2 vecMin = Convertion.Location2World(p) * -1;
+        Vector2 vecMax = Convertion.Location2World(new Vector2(p.x*-1+viewportSizeX, p.y));
+        if (vecMin.x < 0)
+        {
+            if (!mirrored)
+            {
+                int i = (int) Mathf.Abs(vecMin.x / Chunk.size) + 1;
+                if (Convertion.Location2World(Position).x >= (World.size - i) * Chunk.size)
+                {
+                    Position = Position - new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
+                    mirrored = true;
+                }
+            }else if (-vecMin.x+prev_x_viewport >= 0.90f * World.size * Chunk.size)
+            {
+                int i = (int) Mathf.Abs(vecMin.x / Chunk.size) + 1;
+                if (Convertion.Location2World(Position).x >= (World.size - i) * Chunk.size)
+                {
+                    Position = Position - new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
+                    mirrored = false;
+                }
+            }
+        }
+        else if (vecMax.x >= World.size*Chunk.size)
+        {
+            if (!mirrored)
+            {
+                int i = (int) Mathf.Abs((vecMax.x - World.size * Chunk.size) / Chunk.size) + 1;
+                if (Convertion.Location2World(Position).x <= i * Chunk.size)
+                {
+                    Position = Position + new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
+                    mirrored = true;
+                }
+            } else if (vecMin.x-prev_x_viewport >= 0.90f * World.size * Chunk.size)
+            {
+                int i = (int) Mathf.Abs((vecMax.x - World.size * Chunk.size) / Chunk.size) + 1;
+                if (Convertion.Location2World(Position).x <= i * Chunk.size)
+                {
+                    Position = Position + new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
+                    mirrored = false;
+                }
+            }
+        }
+        else if (vecMax.x < World.size*Chunk.size && vecMin.x >= 0)
+        {
+            if (mirrored)
+            {
+                if (Convertion.Location2World(Position).x < 0)
+                {
+                    Position = Position + new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
+                }
+                else
+                {
+                    Position = Position - new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
+                }
+
+                mirrored = false;
+            }
+        }
+        prev_x_viewport = vecMin.x;
+        /*----------------------*/
+    }
 }

@@ -14,6 +14,7 @@ public static class PlayerState
 
 
     public static State state = State.Normal;
+    public static State prec_state = State.Normal;
 
     public enum State
     {
@@ -32,6 +33,8 @@ public static class PlayerState
     /// Change l'etat du joueur
     public static void SetState(State st)
     {
+        if (st == State.Build || st == State.Normal)
+            prec_state = st;
         state = st;
     }
 
