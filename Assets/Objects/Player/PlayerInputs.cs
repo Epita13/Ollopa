@@ -20,6 +20,7 @@ public class PlayerInputs : Node2D
 		Player.inventoryUsables.Add(Usable.Type.Stone, 30);
 		Player.inventoryBuildings.Add(Building.Type.SolarPanel, 2);
 		Player.inventoryBuildings.Add(Building.Type.Storage, 3);
+		Player.inventoryBuildings.Add(Building.Type.Printer3D, 3);
 		ConnectSignals();
 		Player.inventoryItems.Add(Item.Type.Composite, 12);
 
@@ -61,7 +62,28 @@ public class PlayerInputs : Node2D
 		if (Input.IsActionJustPressed("inventory"))
 		{
 			InventoryClick();
-		}		
+		}
+		
+		/*Escape*/
+		if (Input.IsActionJustPressed("escape"))
+		{
+			if (PlayerState.GetState() == PlayerState.State.Inventory)
+			{
+				UI_PlayerInventory2.Close();
+			}
+			else if (PlayerState.GetState() == PlayerState.State.Build)
+			{
+				PlayerState.SetState(PlayerState.State.Normal);
+			}else if (PlayerState.GetState() == PlayerState.State.BuildingInterface)
+			{
+				BuildingInterface.CloseInterface();
+			}else if (PlayerState.GetState() == PlayerState.State.Link)
+			{
+				Link._Link();
+				Link.Reset();
+				PlayerState.SetState(PlayerState.State.Normal);
+			}
+		}
 		
 		//Inputs
 		if (Input.IsActionJustPressed("mouse1"))
@@ -74,17 +96,19 @@ public class PlayerInputs : Node2D
 			{
 				ClickBuildState();
 			}
-			
-		}
-		else if (Input.IsActionJustPressed("mouse2"))
-		{
-			if (PlayerState.GetState() == PlayerState.State.Normal)
+			if (PlayerState.GetState() == PlayerState.State.Normal || PlayerState.GetState() == PlayerState.State.Build || PlayerState.GetState() == PlayerState.State.BuildingInterface)
 			{
-				PlayerState.SetState(PlayerState.State.Build);
+				if (Building.HasBuildingSelected)
+				{
+					ClickOnBuilding();
+				}
 			}
-			else
+			if (PlayerState.GetState() == PlayerState.State.Link)
 			{
-				PlayerState.SetState(PlayerState.State.Normal);
+				if (Building.HasBuildingSelected)
+				{
+					ClickOnBuilding2Link();
+				}
 			}
 		}
 	}
@@ -215,12 +239,37 @@ public class PlayerInputs : Node2D
 			if (Player.inventoryBuildings.GetItemCount(type) >= 1)
 			{
 				Building building = (Building) Building.prefabs[type].Instance();
+				building.SetType(type);
 				bool succeed = BasicPlacement.PlaceWithMouse(building, GetGlobalMousePosition(), right);
 				if (succeed)
 				{
 					Player.inventoryBuildings.Remove(type, 1);
 				}
 			}
+		}
+	}
+
+
+	private void ClickOnBuilding()
+	{
+		if (MouseInRange(10, true))
+		{
+			if (BuildingInterface.interfaceOpen && BuildingInterface.buildingInterface.building == Building.BuildingSelected)
+			{
+				BuildingInterface.CloseInterface();
+			}
+			else
+			{
+				BuildingInterface.OpenInterface(Building.BuildingSelected);
+			}
+		}
+	}
+
+	private void ClickOnBuilding2Link()
+	{
+		if (Building.buildingReceiverOfEnergy.Contains(Building.BuildingSelected.type))
+		{
+				Link.AddOrRemoveLink(Building.BuildingSelected);
 		}
 	}
 
@@ -246,6 +295,7 @@ public class PlayerInputs : Node2D
 		if (PlayerState.GetState() != PlayerState.State.Inventory)
 		{
 			PlayerState.SetState(PlayerState.State.Inventory);
+			BuildingInterface.CloseInterface();
 			UI_PlayerInventory2.Open();
 		}
 		else

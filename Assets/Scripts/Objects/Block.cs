@@ -12,7 +12,7 @@ public class Block
         Dirt = 2,
         WestStone = 3,
         SonarOre = 4,
-        OspiritOre = 5
+        OspiritOre = 5,
     }
     
     public static Dictionary<Type, Drop> drops = new Dictionary<Type, Drop>

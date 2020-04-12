@@ -9,7 +9,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Ressources/Shaders/fog.shader" type="Shader" id=8]
 [ext_resource path="res://Assets/Ressources/Imgs/Environement/mountains.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Scripts/Autres/Environement.cs" type="Script" id=10]
+[ext_resource path="res://Assets/Objects/Autres/Environement/Environement.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Objects/UI/ToolBar/ToolBar.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Objects/UI/PlayerInventory/PlayerInventory2.tscn" type="PackedScene" id=12]
 
@@ -53,8 +53,7 @@ texture = ExtResource( 9 )
 zIndex = -99
 y = 1344.0
 
-[node name="Environement" type="Node2D" parent="."]
-script = ExtResource( 10 )
+[node name="Environement" parent="." instance=ExtResource( 10 )]
 
 [node name="Canvas_DayNight" type="CanvasModulate" parent="Environement"]
 

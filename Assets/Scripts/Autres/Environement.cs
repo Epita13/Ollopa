@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class Environement : Node2D
 {
@@ -15,17 +16,23 @@ public class Environement : Node2D
     
     
     
-    private static float length_day = 60*5;  // seconde
+    private static float length_day = 60*5.0f;  // seconde
     private float time = length_day /2; // seconde
     private int nb_day = 0;
 
     private static int hourNight = 19;
-    private static int minNight = 30;
+    private static int minNight = 00;
     
     private static int hourDay = 7;
     private static int minDay = 0;
 
     private static float transition = 4.5f; // %
+
+    public const float MAXPOWERSUN = 1.0f; // energy/seconds
+    public static float sunPower = 0;
+    
+    /*Variable de donnees graphiques*/
+    public static List<float> sunPowerhistory = new List<float>();
     
     public enum TimeState
     {
@@ -84,6 +91,13 @@ public class Environement : Node2D
                 Day();
             }
         }
+
+        sunPower = GetSunPower(hour, minute);
+    }
+
+    public void _on_Timer_timeout()
+    {
+        History<float>.Add(sunPowerhistory, sunPower);
     }
 
 
@@ -136,5 +150,17 @@ public class Environement : Node2D
                 PLAYERLIGHT_N,PLAYERLIGHT_D, transition*length_day/100,Tween.TransitionType.Sine,Tween.EaseType.In);
         }
         twe.Start();
+    }
+
+    private float GetSunPower(int heure, int minute)
+    {
+        float H = heure + (minute / 60.0f);
+        float w = Mathf.Pi * (1 - (H / 12.0f));
+        float sunP = 0;
+        if (w >= -Mathf.Pi / 2 && w <= Mathf.Pi / 2)
+        {
+            sunP = Mathf.Cos(w) * MAXPOWERSUN;
+        }
+        return sunP;
     }
 }

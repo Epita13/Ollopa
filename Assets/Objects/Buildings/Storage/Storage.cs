@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 
@@ -13,35 +14,41 @@ public class Storage : Building
 	private Node2D LED;
 	private Sprite oxygeneSprite;
 	
-	//energy
-	public float energy = 0;
-	public float maxEnergy  = 1000f;
 	//oxygéne
 	public float oxygene = 0;
-	public float maxOxygene = 1000f;
+	public static float maxOxygene = 1000f;
 	 
 	
 	//ID de chaque batiment
-	public int nbStorage = 0;
-	public int id;
+	public static int nbStorage = 0;
+
+
 
 	//Initialisation
-    public Storage() : base (150)
+    public Storage() : base (150, 750.0f)
     {
-        this.id = nbStorage;
-		nbStorage += 1;
     }
 	
-	 public override void _Ready()
+    public override void _EnterTree()
     {
-	    EmitSignal("OxygeneChange", energy, maxEnergy);
-	    EmitSignal("EnergyChange", energy, maxEnergy);
+	    this.id = nbStorage;
+	    nbStorage += 1;
+	    
+	    EmitSignal("OxygeneChange", energy, energyMax);
+	    EmitSignal("EnergyChange", energy, energyMax);
 	    LED = GetNode<Node2D>("LED");
 	    oxygeneSprite = GetNode<Sprite>("Image/oxygene");
 	    RefreshLED();
 	    RefreshOxygene();
     }
 	 
+    
+    
+    public void _on_Timer_timeout()
+    {
+	    TransferToLink(timer.WaitTime);
+	    EmitSignal("EnergyChange", energy, energyMax);
+    }
 
 	 private void RefreshOxygene()
 	 {
@@ -53,7 +60,7 @@ public class Storage : Building
 	 
 	 private void RefreshLED()
 	 {
-		 if (energy >= maxEnergy && oxygene >= maxOxygene)
+		 if (energy >= energyMax && oxygene >= maxOxygene)
 		 {
 			 Color color = Color.Color8(255,0,0);
 			 LED.GetNode<Sprite>("led").Modulate = color;
@@ -67,48 +74,29 @@ public class Storage : Building
 		 }
 	 }
 	 
-	public void AddEnergy(float amount)
+	public float AddEnergy(float amount)
 	{
 		energy += amount;
-		if(energy >= maxEnergy)
-			energy = maxEnergy;
+		float reste = 0;
+		if (energy >= energyMax)
+		{
+			reste = energy - energyMax;
+			energy = energyMax;
+		}
 		RefreshLED();
-		EmitSignal("EnergyChange", energy, maxEnergy);
+		return reste;
 	}
 	
 	public bool RemoveEnergy(float amount)
 	{
-			bool verif = false;
-			if (energy - amount >= 0)
-			{
-				energy -= amount;
-				verif = true;
-			}
-			EmitSignal("EnergyChange", energy, maxEnergy);
-			RefreshLED();
-			return verif;
-	}
-	public void AddOxygene(float amount)
-	{
-		oxygene += amount;
-		if(oxygene >= maxEnergy)
-			oxygene = maxEnergy;
-		EmitSignal("OxygeneChange", oxygene, maxOxygene);
-		RefreshLED();
-		RefreshOxygene();
-	}
-
-	public bool RemoveOxygene(float amount)
-	{
 		bool verif = false;
-		if (oxygene - amount >= 0)
-		{
-			oxygene -= amount;
+		if (energy - amount >= 0)
+		{ 
+			energy -= amount;
 			verif = true;
 		}
-		EmitSignal("OxygeneChange", oxygene, maxOxygene);
 		RefreshLED();
-		RefreshOxygene();
 		return verif;
 	}
+	
 }

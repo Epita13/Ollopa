@@ -17,6 +17,7 @@ public class Game : Node2D
         Building.Init(this);
         Loot.Init(this);
         Tree.Init(this);
+        BuildingInterface.Init(GetNode("CanvasLayer"));
         World.Init(20, ground, uiground, uiground2, back);
         World.Draw();
     }

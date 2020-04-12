@@ -41,7 +41,7 @@ public class Chunk
     public const int maxYGeneration = seaLevel + 20;
 
     /*Trees*/
-    public const float TREE_FREQUENCY = 2.5f / 16.0f; 
+    public const float TREE_FREQUENCY = 1.5f / 16.0f; 
 
     private List<List<Block>> blocks;
 

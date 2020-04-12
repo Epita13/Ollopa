@@ -31,7 +31,7 @@ public class Liquid : TileMap
 		World.IsInitWorldTest("Liquid");
 		width = World.size * Chunk.size;
 		DrawWaterLevel();
-		PlaceWater(130, 50);
+		PlaceWater(25,30);
 	}
 	
 	public override void _Ready()

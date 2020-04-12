@@ -44,7 +44,6 @@ public class UI_PlayerInventory2 : Control
         GetInstance().Visible = false;
         if (state == PlayerState.State.Inventory)
         {
-            GD.Print(PlayerState.prec_state);
             PlayerState.SetState(PlayerState.prec_state);
         }
         else
