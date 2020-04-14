@@ -133,7 +133,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="TimerEnergy" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.4
 autostart = true
 [connection signal="EnergyChange" from="." to="Energy/slide" method="Change"]
 [connection signal="OxygeneChange" from="." to="Oxygene/slide" method="Change"]

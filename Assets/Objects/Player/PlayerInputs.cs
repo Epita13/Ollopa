@@ -17,12 +17,12 @@ public class PlayerInputs : Node2D
 	{
 		Player.inventoryUsables.Add(Usable.Type.Dirt, 30);
 		Player.inventoryUsables.Add(Usable.Type.Grass, 30);
-		Player.inventoryUsables.Add(Usable.Type.Stone, 30);
+		Player.inventoryUsables.Add(Usable.Type.Stone, 300);
 		Player.inventoryBuildings.Add(Building.Type.SolarPanel, 2);
 		Player.inventoryBuildings.Add(Building.Type.Storage, 3);
 		Player.inventoryBuildings.Add(Building.Type.Printer3D, 3);
 		ConnectSignals();
-		Player.inventoryItems.Add(Item.Type.Composite, 12);
+		Player.inventoryItems.Add(Item.Type.Composite, 120);
 
 	}
 

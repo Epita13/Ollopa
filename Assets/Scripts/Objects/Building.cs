@@ -6,6 +6,7 @@ public abstract class Building : Node2D
 {
     
     // Enumeration : Type de batiment disponible
+    public static int nbBuildings = 3;
     public enum Type
     {
         SolarPanel,
@@ -24,6 +25,27 @@ public abstract class Building : Node2D
         {Type.SolarPanel, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/SolarPanel/SolarPanel.png")},
         {Type.Storage, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Storage/Stockage.png")},
         {Type.Printer3D, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Printer3D/Printer3D.png")}
+    };
+    
+    public static Dictionary<Type, string> descriptions = new Dictionary<Type, string>
+    {
+        {Type.SolarPanel, "Generate energy from the sun's energy"},
+        {Type.Storage, "Stores energy and oxygen"},
+        {Type.Printer3D, "Create buildings"}
+    };
+    
+    public static Dictionary<Type, float> times2Create = new Dictionary<Type, float>
+    {
+        {Type.SolarPanel, 20.0f},
+        {Type.Storage, 120.0f},
+        {Type.Printer3D, 300.0f}
+    };
+    
+    public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
+    {
+        {Type.SolarPanel, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone, 10))},
+        {Type.Storage, new Drop(new Drop.Loot(Item.Type.Composite, 45), new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Wood, 5))},
+        {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 60))}
     };
     
     public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>{Type.Storage, Type.Printer3D};
@@ -125,9 +147,10 @@ public abstract class Building : Node2D
     /*Variable de donnees graphiques*/
     public List<float> energyhistory = new List<float>();
     public float powerIn;
-    private float sumPowerIn;
+    private float sumEnergyIn;
     public List<float> powerInhistory = new List<float>();
     public float powerOut;
+    private float sumEnergyOut;
     public List<float> powerOuthistory = new List<float>();
     
     public const float POWERMAXOUT = 0.8f; // e/s
@@ -231,7 +254,10 @@ public abstract class Building : Node2D
         Vector2 vecMin = Convertion.Location2World(p) * -1;
         prev_x_viewport = vecMin.x;
         GetNode<Sprite>("OUTLINE").Material = (Material)GetNode<Sprite>("OUTLINE").Material.Duplicate();
+
+        GetNode<Timer>("TimerEnergy").WaitTime = 1.0f;
         timerEnergyWaitTime = GetNode<Timer>("TimerEnergy").WaitTime;
+        
         timer = GetNode<Timer>("Timer");
     }
 
@@ -302,7 +328,7 @@ public abstract class Building : Node2D
         /*----------------------*/
     }
     
-    public float AddEnergy(float amount)
+    public float AddEnergy(float amount, bool correction = false)
     {
         energy += amount;
         float reste = 0;
@@ -311,11 +337,19 @@ public abstract class Building : Node2D
             reste = energy - energyMax;
             energy = energyMax;
         }
-        sumPowerIn += amount - reste;
+
+        if (correction)
+        {
+            sumEnergyOut -= amount - reste;
+        }
+        else
+        {
+            sumEnergyIn += amount - reste;
+        }
         return reste;
     }
 
-    public float RemoveEnergy(float amount)
+    public float RemoveEnergy(float amount, bool correction = false)
     {
         energy -= amount;
         float reste = 0;
@@ -324,6 +358,15 @@ public abstract class Building : Node2D
             reste = Mathf.Abs(energy);
             energy = 0;
         }
+
+        if (correction)
+        {
+            sumEnergyIn -= amount - reste;
+        }
+        else
+        {
+            sumEnergyOut += amount - reste;
+        }
         return amount - reste;
     }
 
@@ -331,8 +374,8 @@ public abstract class Building : Node2D
     {
         if (isLinked && energy!=0)
         {
-            powerOut = GetPowerOut(delta);
-            float energyByBuildings = powerOut * delta / linkedBuildings.Count;
+            float power = GetPowerOut(delta);
+            float energyByBuildings = power * delta / linkedBuildings.Count;
             float energyNotAdd = 0;
             foreach (var linkedBuilding in linkedBuildings)
             {
@@ -340,11 +383,8 @@ public abstract class Building : Node2D
                 energyNotAdd = linkedBuilding.AddEnergy(energyNotAdd);
                 energyNotAdd += linkedBuilding.AddEnergy(energyRemove);
             }
-            AddEnergy(energyNotAdd);
-        }
-        else
-        {
-            powerOut = 0;
+            //sumEnergyOut +=  (energyByBuildings * linkedBuildings.Count) - energyNotAdd;
+            AddEnergy(energyNotAdd, true);
         }
     }
     
@@ -376,8 +416,10 @@ public abstract class Building : Node2D
     private float timerEnergyWaitTime;
     public void _on_TimerEnergy_timeout()
     {
-        powerIn = sumPowerIn / timerEnergyWaitTime;
-        sumPowerIn = 0;
+        powerIn = sumEnergyIn / timerEnergyWaitTime;
+        powerOut = sumEnergyOut / timerEnergyWaitTime;
+        sumEnergyIn = 0;
+        sumEnergyOut = 0;
     }
     
     /*OUTLINE buildings*/

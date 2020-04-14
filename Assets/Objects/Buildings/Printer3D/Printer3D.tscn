@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/Printer3D/Printer3D.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Objects/Buildings/Printer3D/Printer3D.cs" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Ressources/Shaders/outline.shader" type="Shader" id=5]
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/Printer3D/nozzle.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/SolarPanel/SolarPanel.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Ressources/Shaders/mask.shader" type="Shader" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ENDPRINT"
@@ -41,6 +42,11 @@ tracks/0/keys = {
 "values": [ Vector2( 28, 3 ), Vector2( 5, 3 ), Vector2( 28, 3 ) ]
 }
 
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 8 )
+shader_param/y = 1.0
+shader_param/hasMaskTexture = false
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 30.65, 32.0258 )
 
@@ -73,6 +79,13 @@ centered = false
 anims/ENDPRINT = SubResource( 1 )
 anims/PRINT = SubResource( 2 )
 
+[node name="printImage" type="Sprite" parent="Image"]
+material = SubResource( 5 )
+position = Vector2( 0, -3 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 16.657, 64, 46.536 )
+
 [node name="ZONE" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZONE"]
@@ -92,7 +105,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="TimerEnergy" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 autostart = true
 
 [node name="SolarPanel" type="Sprite" parent="."]

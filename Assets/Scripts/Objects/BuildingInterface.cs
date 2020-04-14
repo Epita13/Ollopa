@@ -78,7 +78,7 @@ public class BuildingInterface : Control
         GetNode<Graph>("back2/Graph2").SetParams(0.8f, Colors.Green, "e/s", "t");
         GetNode<Graph>("back2/Graph3").SetValue(building.powerOuthistory, 1.2f);
         GetNode<Graph>("back2/Graph3").SetParams(0.8f, Colors.Red, "e/s", "t");
-        idLabel = GetNode<Label>("back/VSplit/id");
+        idLabel = GetNode<Label>("back/id");
         Refresh();
     }
     public void Close()

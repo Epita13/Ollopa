@@ -84,7 +84,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="TimerEnergy" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.4
 autostart = true
 [connection signal="EnergyChange" from="." to="EnergyBar/slide" method="Change"]
 [connection signal="mouse_entered" from="ZONE" to="." method="_on_ZONE_mouse_entered"]
