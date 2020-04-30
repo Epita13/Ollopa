@@ -13,9 +13,17 @@ public static class Save
 
     public static string savesPath = Path.Combine(OS.GetUserDataDir(), "saves");
 
+    public static void InitDirectoriesSave()
+    {
+        if (!Directory.Exists(savesPath))
+        {
+            Directory.CreateDirectory(savesPath);
+        }
+    }
 
     public static List<string> GetSaves()
     {
+        InitDirectoriesSave();
         List<string> res = new List<string>();
         foreach (var path in  Directory.GetDirectories(savesPath))
         {
@@ -29,6 +37,7 @@ public static class Save
     
     public static void _Save(string saveName)
     {
+        InitDirectoriesSave();
         string savePath = Path.Combine(savesPath, saveName);
         Directory.CreateDirectory(savePath);
         saveConfig(savePath, saveName);
@@ -37,6 +46,7 @@ public static class Save
     }
     public static void _Load(string saveName)
     {
+        InitDirectoriesSave();
         List<string> saves = Save.GetSaves();
         if (!saves.Contains(saveName))
         {
