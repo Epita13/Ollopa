@@ -4,18 +4,26 @@
 [ext_resource path="res://Assets/Scripts/Objects/Liquid.cs" type="Script" id=2]
 
 [node name="Liquid" type="Node2D"]
-
-[node name="WaterMap" type="TileMap" parent="."]
 position = Vector2( 1, 0 )
+script = ExtResource( 2 )
+
+[node name="TimerWater" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="TimerOil" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Watermap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+occluder_light_mask = 0
 format = 1
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+tile_data = PoolIntArray( 327676, 0, 0, 524324, 0, 0, 1769477, 0, 0, 1769478, 0, 0, 1769479, 0, 0, 1769480, 0, 0, 1769481, 0, 0, 1769482, 0, 0 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
-[connection signal="timeout" from="Timer" to="WaterMap" method="_on_Timer_timeout"]
+[node name="Oilmap" type="TileMap" parent="."]
+cell_size = Vector2( 16, 16 )
+format = 1
+[connection signal="timeout" from="TimerWater" to="." method="TimeOutWater"]
+[connection signal="timeout" from="TimerOil" to="." method="TimeOutOil"]
