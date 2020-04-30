@@ -43,7 +43,7 @@ public class Chunk
     /*Trees*/
     public const float TREE_FREQUENCY = 1.5f / 16.0f; 
 
-    private List<List<Block>> blocks;
+    public List<List<Block>> blocks;
 
     public Chunk(int id)
     {
@@ -125,14 +125,7 @@ public class Chunk
     /// Affiche le chunk sur la tilemap de la scene
     public void Draw()
     {
-        foreach (var colon in blocks)
-        {
-            foreach (var block in colon)
-            {
-                DrawBlock(block);
-                DrawBlockBack(block);
-            }
-        }
+        DrawClone(id*size);
     }
     
     /// Affiche le chunk sur la tilemap de la scene a une position specifique
@@ -146,6 +139,7 @@ public class Chunk
                 DrawBlockBackClone(block, x);
             }
         }
+        World.visibleChunks.Add(this);
     }
 
     /// Cache le chunk du tilemap de la scene
@@ -159,6 +153,7 @@ public class Chunk
                 HideBlockBack(block);
             }
         }
+        World.visibleChunks.Remove(this);
     }
 
     /// Verifie si les coordonées sont correct

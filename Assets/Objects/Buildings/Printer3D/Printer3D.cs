@@ -6,7 +6,7 @@ public class Printer3D : Building
 {
     /* Signal pour les voyants */
     
-    public static float power = 1.4f; // e/s
+    public static float power = 0.7f; // e/s
     //ID de chaque batiment
     public static int nbPrinter3D = 0;
 
@@ -45,9 +45,13 @@ public class Printer3D : Building
     {
         if (isPrinting)
         {
-            if (!isFinish && !isInPause)
+            if (!isFinish && !isInPause && power * timer.WaitTime > energy)
+            {
+                PauseOrResume();
+            }else if (!isFinish && !isInPause)
             {
                 printingLevel += timer.WaitTime;
+                RemoveEnergy(power * timer.WaitTime);
                 SetBar(printingLevel / times2Create[printingType]);
                 SetPrintImage(printingLevel / times2Create[printingType]);
                 if (printingLevel >= times2Create[printingType])
@@ -107,6 +111,7 @@ public class Printer3D : Building
         isInPause = false;
         printingLevel = 0.0f;
         SetPrintImage(0);
+        barAnimationP.CurrentAnimation = "ENDPRINT";
     }
     private void Finish()
     {

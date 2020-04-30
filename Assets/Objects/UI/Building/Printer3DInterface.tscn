@@ -10,7 +10,8 @@
 [ext_resource path="res://Assets/Objects/UI/Sliders/Energy/PowerInBar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Objects/UI/Sliders/Energy/PowerOutBar.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/SolarPanel/SolarPanel.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Ressources/Imgs/Buildings/Storage/stockage.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Ressources/Imgs/Buildings/Storage/Stockage.png" type="Texture" id=13]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

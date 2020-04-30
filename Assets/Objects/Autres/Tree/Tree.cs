@@ -29,7 +29,6 @@ public class Tree : StaticBody2D
             GD.Load<Texture>("res://Assets/Ressources/Imgs/Environement/Tree/treetop2.png"))
     };
     
-    public static List<Tree> trees = new List<Tree>();
 
     /*public static bool HasTree(float x, float y)
     {
@@ -38,6 +37,10 @@ public class Tree : StaticBody2D
             tree.GetNode<CollisionPolygon2D>("CollisionPolygon2D").
         }   
     }*/
+    
+    
+
+    
     
     
     private static Node parent;
@@ -61,14 +64,40 @@ public class Tree : StaticBody2D
     public static void SpawnTree(Vector2 loc)
     {
         Tree t = (Tree)GD.Load<PackedScene>("res://Assets/Objects/Autres/Tree/Tree.tscn").Instance();
-        trees.Add(t);
+        World.trees.Add(t);
+
+        t.treeNumber = World.random.Next(trees_textures.Count);
+        t.treeSize = (float) World.random.NextDouble() * 0.25f + 0.1f;
+        
         t.Place((int)loc.x, (int)loc.y);
     }
+    
+    
+    /*Structure de sauvegarde*/
+    public struct SaveStruct
+    {
+        public Vector2 location;
+        public int treeNumber;
+        public float treeSize;
+    }
+
+    public SaveStruct GetSaveStruct()
+    {
+        SaveStruct s = new SaveStruct();
+        s.location = location;
+        s.treeNumber = treeNumber;
+        s.treeSize = treeSize;
+        return s;
+    }
+    /*************************/
     
     
     private float health;
     private Drop drop;
     public Vector2 location;
+
+    public int treeNumber;
+    public float treeSize;
 
     private AnimationPlayer ap;
 
@@ -77,7 +106,7 @@ public class Tree : StaticBody2D
     private bool mirrored;
     private float prev_x_viewport;
 
-    public override void _Ready()
+    public override void _EnterTree()
     {
         World.IsInitWorldTest("Tree constructor");
         IsInitTreeTest("Tree constructor");
@@ -86,15 +115,13 @@ public class Tree : StaticBody2D
         prev_x_viewport = vecMin.x;
         ap = GetNode<AnimationPlayer>("AnimationPlayer");
         ap.CurrentAnimation = "";
+        
+        GetNode<Sprite>("bot").Texture = trees_textures[treeNumber].Item1;
+        GetNode<Sprite>("top").Texture = trees_textures[treeNumber].Item2;
 
-        int tree_number = World.random.Next(trees_textures.Count);
-        GetNode<Sprite>("bot").Texture = trees_textures[tree_number].Item1;
-        GetNode<Sprite>("top").Texture = trees_textures[tree_number].Item2;
-
-        float tree_size = (float) World.random.NextDouble() * 0.25f + 0.1f;
-        Scale = new Vector2(tree_size, tree_size);
-        health = tree_size * 750 / 0.3f;
-        drop = new Drop(new Drop.Loot(Item.Type.Wood, Mathf.CeilToInt(tree_size*4/0.3f)));
+        Scale = new Vector2(treeSize, treeSize);
+        health = treeSize * 750 / 0.3f;
+        drop = new Drop(new Drop.Loot(Item.Type.Wood, Mathf.CeilToInt(treeSize*4/0.3f)));
     }
 
 
@@ -122,7 +149,7 @@ public class Tree : StaticBody2D
     {
         World.IsInitWorldTest("Tree/Destroy");
         GetNode<CollisionPolygon2D>("CollisionPolygon2D").Disabled = true;
-        trees.Remove(this);
+        World.trees.Remove(this);
         if (withLoot)
         {
             var pos = Convertion.Location2World(Position);

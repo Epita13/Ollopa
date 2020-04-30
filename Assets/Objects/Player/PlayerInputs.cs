@@ -35,6 +35,7 @@ public class PlayerInputs : Node2D
   
 	public override void _Process(float delta)
 	{
+		
 		if (!playerInputActive)
 			return;
 		

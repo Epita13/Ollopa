@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Objects/Buildings/Storage/Storage.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Ressources/Imgs/Buildings/Storage/stockage.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Ressources/Imgs/Buildings/Storage/Stockage.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Ressources/Shaders/fog.shader" type="Shader" id=3]
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/Storage/stockageMask1.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Ressources/Shaders/outline.shader" type="Shader" id=5]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/Storage/voyant.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Scripts/Tools/Sliders/SlideBar.cs" type="Script" id=12]
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/Storage/mask.png" type="Texture" id=13]
+
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1

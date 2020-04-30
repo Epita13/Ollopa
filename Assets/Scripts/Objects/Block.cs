@@ -22,7 +22,7 @@ public class Block
         {Type.Grass, new Drop(new Drop.Loot(Item.Type.Dirt,1))},
         {Type.Dirt, new Drop(new Drop.Loot(Item.Type.Dirt,1))},
         {Type.WestStone, null},
-        {Type.SonarOre, new Drop(new Drop.Loot(Item.Type.Composite, 1))},
+        {Type.SonarOre, new Drop(new Drop.Loot(Item.Type.Sonar, 1))},
         {Type.OspiritOre, new Drop(new Drop.Loot(Item.Type.Composite, 1))}
     };
     
@@ -65,7 +65,7 @@ public class Block
 
     public int x,y;
     
-    private Type type;
+    public Type type;
     public Type GetType => type;
         
     public float health;

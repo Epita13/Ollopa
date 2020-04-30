@@ -42,15 +42,15 @@ tracks/0/keys = {
 "values": [ Vector2( 28, 3 ), Vector2( 5, 3 ), Vector2( 28, 3 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 8 )
 shader_param/y = 1.0
 shader_param/hasMaskTexture = false
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 30.65, 32.0258 )
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 5 )
 shader_param/width = 0.0
 shader_param/outline_color = Color( 0, 0.588235, 1, 1 )
@@ -70,7 +70,7 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="nozzle" type="Sprite" parent="Image/bar"]
-position = Vector2( 28, 3 )
+position = Vector2( 10.6446, 3 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
 centered = false
@@ -80,7 +80,7 @@ anims/ENDPRINT = SubResource( 1 )
 anims/PRINT = SubResource( 2 )
 
 [node name="printImage" type="Sprite" parent="Image"]
-material = SubResource( 5 )
+material = SubResource( 3 )
 position = Vector2( 0, -3 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 7 )
@@ -89,10 +89,10 @@ region_rect = Rect2( 0, 16.657, 64, 46.536 )
 [node name="ZONE" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZONE"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="OUTLINE" type="Sprite" parent="."]
-material = SubResource( 4 )
+material = SubResource( 5 )
 z_index = 10
 texture = ExtResource( 3 )
 
@@ -107,12 +107,6 @@ autostart = true
 [node name="TimerEnergy" type="Timer" parent="."]
 wait_time = 0.4
 autostart = true
-
-[node name="SolarPanel" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0, -3 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 7 )
 [connection signal="mouse_entered" from="ZONE" to="." method="_on_ZONE_mouse_entered"]
 [connection signal="mouse_exited" from="ZONE" to="." method="_on_ZONE_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
