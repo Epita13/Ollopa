@@ -36,8 +36,8 @@ public class Chunk
     public const int chunkMax = 100;
     public const int chunkMin = 0;
     public const int height = (chunkMax-chunkMin)+1;
-    public const int seaLevel = chunkMin + 20;
-    public const int minYGeneration = seaLevel - 5;
+    public const int seaLevel = chunkMin + 30;
+    public const int minYGeneration = seaLevel - 10;
     public const int maxYGeneration = seaLevel + 20;
 
     /*Trees*/
@@ -101,12 +101,12 @@ public class Chunk
         }
     }
 
-    private int GetGroundY(int x)
+    public int GetGroundY(int x)
     {
-        int y = 0;
-        while (y < height && blocks[x][y].GetType!=Block.Type.Air)
-            y++;
-        return y;
+        int y = maxYGeneration + 1;
+        while (y >= minYGeneration && blocks[x][y].GetType==Block.Type.Air)
+            y--;
+        return y+1;
     }
     
     private int GetMaximumY(int x, OpenSimplexNoise noise)

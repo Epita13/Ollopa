@@ -29,8 +29,8 @@ float noise(vec2 coord){
 
 void fragment(){
 	
-	vec2 noisecoord1 = UV * sprite_scale * scale_x;
-	vec2 noisecoord2 = UV * sprite_scale * scale_x + 4.0;
+	vec2 noisecoord1 = SCREEN_UV * sprite_scale * scale_x;
+	vec2 noisecoord2 = SCREEN_UV * sprite_scale * scale_x + 4.0;
 	
 	
 	vec2 motion1 = vec2(TIME * 0.3, TIME * -0.4);

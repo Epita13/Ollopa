@@ -23,14 +23,17 @@ public class Liquid : Node2D
     { Water, Oil, Fuel }
 
     private int test = 0;
-    public override void _Ready()
+    public static void Init()
     {
-        Watermap = GetNode<TileMap>("Watermap");
-        Oilmap = GetNode<TileMap>("Oilmap");
         list.Add(Type.Water, new LiquidMove(Type.Water));
         list.Add(Type.Oil, new LiquidMove(Type.Oil));
         listMap.Add(Type.Water, Watermap);
         listMap.Add(Type.Oil, Oilmap);
+    }
+    public override void _EnterTree()
+    {
+        Watermap = GetNode<TileMap>("Watermap");
+        Oilmap = GetNode<TileMap>("Oilmap");
         TimerWater = GetNode<Timer>("TimerWater");
         TimerOil = GetNode<Timer>("TimerOil");
     }
@@ -44,10 +47,9 @@ public class Liquid : Node2D
         {
             res = list[type].Place(x,y);
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            Console.WriteLine("Error, maybe arg out of bounds ? PlaceWater() in Liquid.cs");
-            GD.Print("Error, maybe arg out of bounds ? PlaceWater() in Liquid.cs");
+            GD.Print(e.Message);
         }
 
         return res;
@@ -68,7 +70,6 @@ public class Liquid : Node2D
         }
         catch (Exception)
         {
-            Console.WriteLine("Unknow error from LiquidMove.cs");
             GD.Print("Unknow error from LiquidMove.cs");
         }
     }

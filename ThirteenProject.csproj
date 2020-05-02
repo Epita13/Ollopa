@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\Objects\Link.cs" />
     <Compile Include="Assets\Scripts\Objects\Ore.cs" />
     <Compile Include="Assets\Scripts\Objects\StorageBuildings.cs" />
+    <Compile Include="Assets\Scripts\Objects\Structure.cs" />
     <Compile Include="Assets\Scripts\Tools\Convertion.cs" />
     <Compile Include="Assets\Scripts\Objects\Item.cs" />
     <Compile Include="Assets\Scripts\Objects\Liquid.cs" />

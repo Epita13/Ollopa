@@ -128,6 +128,7 @@ public static class World
             chunks.Add(instance_chunk);
         }
         OreGenerate();
+        SeasGenerate();
     }
 
     /// Affiche tous les Chunks de la map
@@ -209,6 +210,20 @@ public static class World
                         Ore.CreateVein(ore, x, height);
                     }
                 }
+            }
+        }
+    }
+
+    private static void SeasGenerate()
+    {
+        for (int x = 0; x < World.size * Chunk.size - 1; x++)
+        {
+            Chunk c = GetChunk(x);
+            int yground = c.GetGroundY(Chunk.GetLocaleX(x)) + 5;
+            for (int y = Chunk.seaLevel; y >= yground; y--)
+            {
+                GD.Print(y);
+                Liquid.PlaceLiquid(x, y, Liquid.Type.Water);
             }
         }
     }

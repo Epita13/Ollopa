@@ -32,7 +32,7 @@ texture = ExtResource( 7 )
 [node name="Tilemaps" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 113.786, 981.676 )
+position = Vector2( 113.786, 900 )
 z_index = -1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -59,6 +59,7 @@ y = 1344.0
 [node name="Canvas_DayNight" type="CanvasModulate" parent="Environement"]
 
 [node name="fog" type="Sprite" parent="Environement"]
+visible = false
 material = SubResource( 1 )
 position = Vector2( -4000, 0 )
 scale = Vector2( 800, 800 )

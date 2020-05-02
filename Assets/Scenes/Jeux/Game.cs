@@ -23,6 +23,7 @@ public class Game : Node2D
             CurrentCamera.Init(camera);
             BuildingInterface.Init(GetNode("CanvasLayer"));
             World.SetSize(10);
+            Liquid.Init();
             World.Init(ground, uiground, uiground2, back);
         }
         else
