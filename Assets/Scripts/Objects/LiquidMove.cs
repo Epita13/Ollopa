@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Thread = System.Threading.Thread;
 
 
-public class LiquidMove : Node2D
+public class LiquidMove 
 {
 	/*Pour utiliser l'eau, il suffit d'appeler la fonction DrawWaterLevel(), pour les niveaux, le niveau max est
 	 défini par capacity. Pour fonctionner correctement le TileSet associé doit contenir au minimum un sprite pour chaque
@@ -87,7 +87,7 @@ public class LiquidMove : Node2D
 		
 		if (map[x, y] == -1)
 		{
-			if (Liquid.listMap[type]!=null)
+			if (Liquid.listMap.Count!=0)
 				Liquid.listMap[type].SetCell(x, height - y, 8);
 			map[x, y] = 8;
 			listLiquid.Add(new Tuple<int, int>(x,y));
@@ -107,7 +107,7 @@ public class LiquidMove : Node2D
 		 {
 			 Tuple<int, int> block = listLiquid[i];
 			 
-
+			 map[block.Item1, block.Item2] = UpdateBlock(block.Item1, block.Item2, 'C');
 			 if(block.Item1 > 0)
 				 map[block.Item1 - 1, block.Item2] = UpdateBlock(block.Item1, block.Item2, 'L');
 			 else
@@ -219,7 +219,7 @@ public class LiquidMove : Node2D
 		 for(int i = 0; i < lgr; i++)
 		 {
 			 Tuple<int, int> block = listLiquid[i];
-
+			 map[block.Item1, block.Item2] = UpdateBlock(block.Item1, block.Item2, 'C');
 			 if(block.Item2 > 0)
 				map[block.Item1, block.Item2 - 1] = UpdateBlock(block.Item1, block.Item2, 'D');
 			 

@@ -15,6 +15,9 @@ public class PlayerMouvements : KinematicBody2D
     public static float JUMP_POWER = -250*1.4f;
     public static bool canMove = true;
 
+    public static bool isLeftEnd = false;
+    public static bool isRightEnd = false;
+
     Vector2 UP = new Vector2(0,-1);
     Vector2 vel;
     bool on_ground;
@@ -108,6 +111,9 @@ public class PlayerMouvements : KinematicBody2D
       
       Chunk NchunkLeft = World.GetChunk(Mathf.FloorToInt(vecMin.x));
       Chunk NchunkRight = World.GetChunk(Mathf.FloorToInt(vecMin.x));
+
+      isLeftEnd = vecMin.x < 0;
+      isRightEnd = vecMax.x > World.size * Chunk.size;
 
       if (chunkLeft != NchunkLeft || chunkRight != NchunkRight)
       {

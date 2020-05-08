@@ -16,7 +16,7 @@ public class Liquid : Node2D
     public static TileMap Watermap;
     public static TileMap Oilmap;
     
-
+    
     public const int nbLiquids = 3;
     public const int Capacity = 8;
     public enum Type 
@@ -27,8 +27,6 @@ public class Liquid : Node2D
     {
         list.Add(Type.Water, new LiquidMove(Type.Water));
         list.Add(Type.Oil, new LiquidMove(Type.Oil));
-        listMap.Add(Type.Water, Watermap);
-        listMap.Add(Type.Oil, Oilmap);
     }
     public override void _EnterTree()
     {
@@ -36,6 +34,8 @@ public class Liquid : Node2D
         Oilmap = GetNode<TileMap>("Oilmap");
         TimerWater = GetNode<Timer>("TimerWater");
         TimerOil = GetNode<Timer>("TimerOil");
+        listMap.Add(Type.Water, Watermap);
+        listMap.Add(Type.Oil, Oilmap);
     }
 
 
@@ -68,7 +68,7 @@ public class Liquid : Node2D
         {
              list[Type.Water].Move();
         }
-        catch (Exception)
+        catch (Exception e)
         {
             GD.Print("Unknow error from LiquidMove.cs");
         }

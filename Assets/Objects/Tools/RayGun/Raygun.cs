@@ -6,8 +6,8 @@ public class Raygun : Node2D
 {
 
 
-    public const float POWER = 1000000.5f;
-    public const float RADIUS = 2500;
+    public const float POWER = 1.5f;
+    public const float RADIUS = 250;
     
     [Signal]
     public delegate void hit(Vector2 xy,Vector2 az);

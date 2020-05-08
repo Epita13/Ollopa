@@ -22,7 +22,7 @@ public class Game : Node2D
             Tree.Init(this);
             CurrentCamera.Init(camera);
             BuildingInterface.Init(GetNode("CanvasLayer"));
-            World.SetSize(10);
+            World.SetSize(40);
             Liquid.Init();
             World.Init(ground, uiground, uiground2, back);
         }
@@ -40,6 +40,7 @@ public class Game : Node2D
             BuildingInterface.Init(GetNode("CanvasLayer"));
             World.Init(ground, uiground, uiground2, back, false);
             Save._Load(saveName);
+            Liquid.Init();
         }
     }
 
