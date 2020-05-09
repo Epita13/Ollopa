@@ -37,7 +37,7 @@ public class Chunk
     public const int chunkMin = 0;
     public const int height = (chunkMax-chunkMin)+1;
     public const int seaLevel = chunkMin + 30;
-    public const int minYGeneration = seaLevel - 10;
+    public const int minYGeneration = seaLevel - 12;
     public const int maxYGeneration = seaLevel + 20;
 
     /*Trees*/
@@ -96,7 +96,10 @@ public class Chunk
             if (r <= TREE_FREQUENCY)
             {
                 int y = GetGroundY(x);
-                Tree.SpawnTree(new Vector2(x+id*size,y));
+                if (y > seaLevel)
+                {
+                    Tree.SpawnTree(new Vector2(x + id * size, y));
+                }
             }
         }
     }
