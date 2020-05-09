@@ -265,7 +265,7 @@ public class LiquidMove
 	 {
 		 /*Dessine sur la Tilemap les niveaux d'eau correspondant à la matrice*/
 
-		 foreach (Tuple<int, int> block in ToRemove)
+			foreach (Tuple<int, int> block in ToRemove)
 		 {
 			 Liquid.listMap[type].SetCell(block.Item1, height - block.Item2, -1);
 			 listLiquid.Remove(block);

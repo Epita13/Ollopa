@@ -32,6 +32,13 @@ public class Usable
         {Type.Grass, Block.Type.Grass},
         {Type.Stone, Block.Type.Stone}
     };
+    
+    public static Dictionary<Type, float> energyToCreat = new Dictionary<Type, float>
+    {
+        {Type.Dirt, 1},
+        {Type.Grass, 2},
+        {Type.Stone, 4}
+    };
 
     public static Dictionary<int, Category> category = new Dictionary<int, Category>
     {
@@ -39,6 +46,13 @@ public class Usable
         {(int)Type.Dirt, Category.Block},
         {(int)Type.Grass, Category.Block},
         {(int)Type.Stone, Category.Block}
+    };
+    
+    public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
+    {
+        {Type.Dirt, new Drop(new Drop.Loot(Item.Type.Dirt, 2))},
+        {Type.Grass, new Drop(new Drop.Loot(Item.Type.Dirt, 2))},
+        {Type.Stone, new Drop(new Drop.Loot(Item.Type.Stone, 2))},
     };
 
 }

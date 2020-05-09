@@ -23,7 +23,8 @@ public class BuildingInterface : Control
     {
         {Building.Type.SolarPanel, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/SolarPanelInterface.tscn")},
         {Building.Type.Storage, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/StorageInterface.tscn")},
-        {Building.Type.Printer3D, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/Printer3DInterface.tscn")}
+        {Building.Type.Printer3D, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/Printer3DInterface.tscn")},
+        {Building.Type.Compactor, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/CompactorInterface.tscn")},
     };
 
     public static bool interfaceOpen = false;

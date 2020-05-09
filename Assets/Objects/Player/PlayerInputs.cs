@@ -21,6 +21,7 @@ public class PlayerInputs : Node2D
 		Player.inventoryBuildings.Add(Building.Type.SolarPanel, 2);
 		Player.inventoryBuildings.Add(Building.Type.Storage, 3);
 		Player.inventoryBuildings.Add(Building.Type.Printer3D, 3);
+		Player.inventoryBuildings.Add(Building.Type.Compactor, 3);
 		ConnectSignals();
 		Player.inventoryItems.Add(Item.Type.Composite, 120);
 
