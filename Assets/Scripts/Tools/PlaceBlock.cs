@@ -39,7 +39,6 @@ public static class PlaceBlock
         bool res;
         if (CanPlace(x, y, out res))
         {
-            Save._Save("saveThimot2");
             World.GetChunk(x).AddBlock(Chunk.GetLocaleX(x), y, displayX, displayY, type);
             Delay.StartDelay(World.BlockTilemap, 0.3f,
                 () =>

@@ -5,16 +5,21 @@ using System.Collections.Generic;
 public class PlayerMouvements : KinematicBody2D
 {
 
+	/*Sound*/
+	private AudioStreamPlayer2D audioStream;
 
     public static bool HasPlayer = false;
     
     public static PlayerMouvements instance;
-    public static Vector2 size = new Vector2(1.625f,3);
+    public static Vector2 size = new Vector2(1.5f,2.5f);
 
-    public static float GRAVITY = 10; 
+    public static float GRAVITY = 900;
+    public static float YLIMITESPEED = 400.0f;
     public static float SPEED = 125;
-    public static float JUMP_POWER = -250;
+    public static float JUMP_POWER = -16000;
     public static bool canMove = true;
+
+    public static float LiquidCoefMove = 1.0f; 
 
     public static Vector2 initialPosition = new Vector2(10,46f);
     
@@ -42,6 +47,8 @@ public class PlayerMouvements : KinematicBody2D
         {
             GD.Print("Player : Warning, le monde n'est pas initialisé");
         }
+
+        audioStream = GetNode<AudioStreamPlayer2D>("Stream");
     }
 
     public static float GetX() => Convertion.Location2World(instance.Position).x;
@@ -52,7 +59,30 @@ public class PlayerMouvements : KinematicBody2D
         instance.Position = Convertion.World2Location(new Vector2(x,y));
     }
 
-    private void HorizontalMouvement()
+    public static bool IsInWater()
+    {
+	    Vector2 playerPos = new Vector2(GetX(), GetY());
+	    int xmin = Mathf.FloorToInt(playerPos.x - size.x / 2);
+	    int ymin = Mathf.FloorToInt(playerPos.y-size.y/2);
+	    int xmax = Mathf.FloorToInt(playerPos.x+size.x/2);
+	    int ymax = Mathf.FloorToInt(playerPos.y+size.y/2);
+	    for (int x = xmin; x <= xmax; x++)
+	    {
+		    for (int y = ymin; y <= ymax; y++)
+		    {
+			    if (y < 0 || y >= Chunk.chunkMax)
+				    continue;
+			    int nx = x < 0 ? World.size * Chunk.size + x : x;
+			    nx = nx % (World.size * Chunk.size);
+			    if (Liquid.list[Liquid.Type.Water].map[nx, y] > 0)
+			    {
+				    return true;
+			    }
+		    }
+	    }
+	    return false;
+    }
+    private void HorizontalMouvement(float delta)
     {
         AnimationPlayer bond = GetNode<AnimationPlayer>("AnimationPlayer");
 		Sprite image = GetNode<Sprite>("Image");
@@ -69,7 +99,7 @@ public class PlayerMouvements : KinematicBody2D
 		{
 			move_right = true;
 			image.FlipH = false;
-			vel.x = SPEED;
+			vel.x = SPEED * LiquidCoefMove;
 			if(IsOnFloor())
 				bond.Play("Run");
 		}
@@ -91,7 +121,7 @@ public class PlayerMouvements : KinematicBody2D
 		{
 			move_left = true;
 			image.FlipH=true;
-			vel.x = -SPEED;
+			vel.x = -SPEED * LiquidCoefMove;
 			if(IsOnFloor())
 				bond.Play("Run");
 		}
@@ -103,7 +133,7 @@ public class PlayerMouvements : KinematicBody2D
 		}
     }
 
-    private void JUMP()
+    private void JUMP(float delta)
     {
 		AnimationPlayer bond = GetNode<AnimationPlayer>("AnimationPlayer");
 		Sprite image = GetNode<Sprite>("Image");
@@ -118,10 +148,14 @@ public class PlayerMouvements : KinematicBody2D
 			on_ground = false;
 		}
 
-		if (on_ground && Input.IsActionPressed("ui_up"))
+		if (LiquidCoefMove != 1.0f && Input.IsActionPressed("ui_up"))
+		{
+			vel.y += JUMP_POWER * 0.2f * LiquidCoefMove * delta;
+		}
+		else if (on_ground && Input.IsActionPressed("ui_up") && LiquidCoefMove==1.0f)
 		{
 			bond.Play("Start_Jump");
-			vel.y = JUMP_POWER;
+			vel.y += JUMP_POWER * LiquidCoefMove * delta;
 			on_ground = false;
 		}
 		else if (vel.y != 0 && (!bond.IsPlaying() || bond.CurrentAnimation=="Run"))
@@ -134,6 +168,15 @@ public class PlayerMouvements : KinematicBody2D
     {
         AnimationPlayer bond = GetNode<AnimationPlayer>("AnimationPlayer");
 		Sprite image = GetNode<Sprite>("Image");
+
+		if (IsInWater())
+		{
+			LiquidCoefMove = Liquid.density[Liquid.Type.Water];
+		}
+		else
+		{
+			LiquidCoefMove = 1.0f;
+		}
 		
 		vel.x = 0;
 		
@@ -141,13 +184,14 @@ public class PlayerMouvements : KinematicBody2D
 		{
 			bond.Play("Death");
 			canMove = false;
+			PlaySound(Player.Sounds.PlayerDeath);
 			PlayerState.SetState(PlayerState.State.Dead);
 		}
 		
 		if(canMove && (PlayerState.GetState()==PlayerState.State.Normal || PlayerState.GetState()==PlayerState.State.Build || PlayerState.GetState()==PlayerState.State.Link))
 		{
-			HorizontalMouvement();
-			JUMP();
+			HorizontalMouvement(delta);
+			JUMP(delta);
 			if (vel.x == 0)      ////////// Idle
 			{
 				if (!bond.IsPlaying())
@@ -158,13 +202,14 @@ public class PlayerMouvements : KinematicBody2D
 			}
 		}
 		
-		vel.y += GRAVITY;
-
+		vel.y += GRAVITY * LiquidCoefMove * delta;
+		vel.y = vel.y < -YLIMITESPEED ? -YLIMITESPEED : vel.y; 
+		vel.y = vel.y > YLIMITESPEED ? YLIMITESPEED : vel.y; 
+		
 		MoveAndSlide(vel,UP);
     }
 
-
-  public override void _Process(float delta)
+    public override void _Process(float delta)
   {
         if (World.IsInit)
         {
@@ -209,23 +254,28 @@ public class PlayerMouvements : KinematicBody2D
               nextVisbleChunksPos.Add(x);
               x += Chunk.size;
           }
-
           int a = 0;
           while (a < World.visibleChunks.Count)
           {
               Chunk c = World.GetChunkWithID(World.visibleChunks[a].Item1);
-              if (!nextVisbleChunks.Contains(c))
+              int index = nextVisbleChunks.IndexOf(c);
+              if (index == -1)
               {
-                  World.HideChunkc(c);
+	              World.HideChunkc(c);
                   a--;
+              }else if (nextVisbleChunksPos[index] != World.visibleChunks[a].Item2)
+              {
+	              World.HideChunkc(c);
+	              a--;
               }
               a++;
           }
+
           for (int i = 0; i < nextVisbleChunks.Count; i++)
           {
-              if (!World.visibleChunks.Contains((nextVisbleChunks[i].id, nextVisbleChunksPos[i])))
-              {
-                  nextVisbleChunks[i].DrawClone(nextVisbleChunksPos[i]);
+	          if (!World.visibleChunks.Contains((nextVisbleChunks[i].id, nextVisbleChunksPos[i])))
+	          {
+		          nextVisbleChunks[i].DrawClone(nextVisbleChunksPos[i]);
               }
           }
       }
@@ -254,11 +304,15 @@ public class PlayerMouvements : KinematicBody2D
 		  DeathMenu.ShowMenu();
 	  }
   }
-  
-  
-  
-  
-  
+
+
+
+
+  private void PlaySound(Player.Sounds sound)
+  {
+	  audioStream.Stream = Player.sounds[sound];
+	  audioStream.Playing = true;
+  }
   
   
   

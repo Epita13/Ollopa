@@ -6,8 +6,8 @@ public class Raygun : Node2D
 {
 
 
-    public const float POWER = 80000f;
-    public const float RADIUS = 2500;
+    public const float POWER = 80f;
+    public const float RADIUS = 250;
 
     private float delta;
     

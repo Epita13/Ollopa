@@ -190,5 +190,7 @@ shape = SubResource( 11 )
 [node name="Raygun" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2.63524, -2.89874 )
 scale = Vector2( 0.580428, 0.516497 )
+
+[node name="Stream" type="AudioStreamPlayer2D" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_shape_entered" from="Area2D" to="Area2D" method="_on_Area2D_area_shape_entered"]

@@ -4,19 +4,31 @@ using System.Collections.Generic;
 
 public static class Player
 {
+    
 
-
+    /*Player sounds*/
+    public enum Sounds
+    {
+        PlayerDeath,
+    }
+    public static Dictionary<Sounds, AudioStream> sounds = new Dictionary<Sounds, AudioStream>
+    {
+        {Sounds.PlayerDeath, GD.Load<AudioStream>("res://Assets/Ressources/Sounds/Player/player_death.wav")}
+    };
+    
+    
+    
     public static float healthMax = 100.0f;
     public static float health = 100.0f;
 
     public static float oxygeneMax = 100.0f;
     public static float oxygene = 100.0f;
-    public static float oxygeneLoss = 0.7f;
-    public static float oxygeneDamage = 10.0f;
+    public static float oxygeneLoss = 20.7f;
+    public static float oxygeneDamage = 210.0f;
 
     public static float energyMax = 100.0f;
     public static float energy = 100.0f;
-    public static float energyLoss = 10.4f;
+    public static float energyLoss = 0.4f;
     public static float energyDamage = 0.1f;
 
     // Ex : laser, blocks..

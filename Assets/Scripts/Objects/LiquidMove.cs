@@ -36,6 +36,13 @@ public class LiquidMove
 		height = Chunk.height;
 		width = World.size * Chunk.size - 1;
 		map = new int[width + 1,height];
+		for (int j = 0; j < map.GetLength(0); j++)
+		{
+			for (int k = 0; k < map.GetLength(1); k++)
+			{
+				map[j, k] = -1;
+			}
+		}
 	}
 
 	public void CloneWater(float viewportX, Vector2 origin)
@@ -106,7 +113,7 @@ public class LiquidMove
 		 for (int i = 0; i < lgr; i++)
 		 {
 			 Tuple<int, int> block = listLiquid[i];
-			 
+
 			 map[block.Item1, block.Item2] = UpdateBlock(block.Item1, block.Item2, 'C');
 			 if(block.Item1 > 0)
 				 map[block.Item1 - 1, block.Item2] = UpdateBlock(block.Item1, block.Item2, 'L');
