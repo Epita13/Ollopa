@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/Objects/Tilesets/Water.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Scripts/Objects/Liquid.cs" type="Script" id=2]
-[ext_resource path="res://Assets/Ressources/Shaders/waterShader.shader" type="Shader" id=3]
-
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 3 )
-shader_param/blue_tint = Color( 0.0392157, 0.913725, 0.584314, 1 )
 
 [node name="Liquid" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -21,7 +16,7 @@ wait_time = 0.2
 autostart = true
 
 [node name="Watermap" type="TileMap" parent="."]
-material = SubResource( 1 )
+modulate = Color( 0, 0.364706, 0.658824, 0.729412 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 occluder_light_mask = 0

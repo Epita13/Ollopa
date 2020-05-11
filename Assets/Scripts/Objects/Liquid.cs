@@ -9,8 +9,8 @@ public class Liquid : Node2D
 {
     private LiquidMove water;
     private LiquidMove oil;
-    public static readonly Dictionary<Liquid.Type, LiquidMove> list = new Dictionary<Type, LiquidMove>();
-    public static readonly Dictionary<Liquid.Type, TileMap> listMap = new Dictionary<Type, TileMap>();
+    public static Dictionary<Liquid.Type, LiquidMove> list = new Dictionary<Type, LiquidMove>();
+    public static Dictionary<Liquid.Type, TileMap> listMap = new Dictionary<Type, TileMap>();
     private Timer TimerWater;
     private Timer TimerOil;
     public static TileMap Watermap;

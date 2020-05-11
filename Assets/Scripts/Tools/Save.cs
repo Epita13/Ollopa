@@ -43,6 +43,7 @@ public static class Save
         saveConfig(savePath, saveName);
         saveEnvironementData(savePath);
         saveWorldData(savePath);
+        savePlayerData(savePath);
     }
     public static void _Load(string saveName)
     {
@@ -54,6 +55,7 @@ public static class Save
         }
         LoadEnvironementData(Path.Combine(savesPath, saveName));
         LoadWorldData(Path.Combine(savesPath, saveName));
+        LoadPlayerData(Path.Combine(savesPath, saveName));
     }
     
     
@@ -136,6 +138,39 @@ public static class Save
         catch
         {
             throw new Exception("saveEnvironementData: invalid syntaxe json");
+        }
+        data.SetValues();
+    }
+
+
+    private static void savePlayerData(string path)
+    {
+        string fileName = Path.Combine(path, "Player.data");
+        if (File.Exists(fileName))
+        {    
+            File.Delete(fileName);    
+        }
+        PlayerDataModel data = new PlayerDataModel();
+        data.GetValues();
+        string json = JsonConvert.SerializeObject(data);
+        using (StreamWriter sw = File.CreateText(fileName))
+        {
+            sw.Write(json);
+        }
+    }
+
+    private static void LoadPlayerData(string path)
+    {
+        string filePath = Path.Combine(path, "Player.data");
+        string jsonString = File.ReadAllText(filePath);
+        PlayerDataModel data;
+        try
+        {
+            data = PlayerDataModel.Deserialize(jsonString);
+        }
+        catch
+        {
+            throw new Exception("savePlayerData: invalid syntaxe json");
         }
         data.SetValues();
     }

@@ -55,6 +55,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Objects\Autres\Grass\Grass.cs" />
     <Compile Include="Assets\Objects\Autres\Loot.cs" />
     <Compile Include="Assets\Objects\Autres\Tree\Tree.cs" />
     <Compile Include="Assets\Objects\Buildings\Barrel\Barrel.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\Objects\UI\Building\SolarPanelInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\StorageInterface.cs" />
     <Compile Include="Assets\Objects\UI\Graphics\Graph.cs" />
+    <Compile Include="Assets\Objects\UI\Menus\DeathMenu.cs" />
     <Compile Include="Assets\Objects\UI\Notification\Notifications.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory2.cs" />

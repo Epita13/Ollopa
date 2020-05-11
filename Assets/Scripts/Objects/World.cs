@@ -57,7 +57,7 @@ public static class World
     
     public static int size = 10;
     public static List<Chunk> chunks;
-    public static List<Chunk> visibleChunks = new List<Chunk>();
+    public static List<(int,int)> visibleChunks = new List<(int,int)>();
     
     public static List<Tree> trees = new List<Tree>();
 
@@ -143,7 +143,7 @@ public static class World
     {
         while (visibleChunks.Count > 0)
         {
-            HideChunkc(visibleChunks[0]);
+            HideChunkc(GetChunkWithID(visibleChunks[0].Item1));
         }
     }
 

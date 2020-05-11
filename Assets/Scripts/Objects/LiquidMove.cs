@@ -14,13 +14,13 @@ public class LiquidMove
 	/*Petit bug que j'ai remarqué, le block contenant de l'eau ne se mets pas à jour donc si il est seul on peut mettre
 	 bloc dessus sans que ca le fasse disparaitre*/
 	
-	private List<Tuple<int,int>> listLiquid = new List<Tuple<int,int >>{};
+	public List<Tuple<int,int>> listLiquid = new List<Tuple<int,int >>{};
 	private List<Tuple<int,int>> ToRemove = new List<Tuple<int,int>>{};
 	private const int Capacity = Liquid.Capacity;
 	private static int width; 
 	private static int height;
 	private readonly Liquid.Type type;
-	private int[,] map;
+	public int[,] map;
 	private readonly Thread init;
 	private int i = 0;
 

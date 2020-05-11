@@ -93,6 +93,12 @@ public class Chunk
         for (int x = 0; x < size; x++)
         {
             float r = (float)World.random.NextDouble();
+            
+            
+            int yy = GetGroundY(x);
+            
+            Grass.Spawn(x+id*size, yy);
+            
             if (r <= TREE_FREQUENCY)
             {
                 int y = GetGroundY(x);
@@ -142,7 +148,7 @@ public class Chunk
                 DrawBlockBackClone(block, x);
             }
         }
-        World.visibleChunks.Add(this);
+        World.visibleChunks.Add((id,x));
     }
 
     /// Cache le chunk du tilemap de la scene
@@ -156,7 +162,19 @@ public class Chunk
                 HideBlockBack(block);
             }
         }
-        World.visibleChunks.Remove(this);
+
+        int index = -1;
+        int i = 0;
+        while (i < World.visibleChunks.Count && index==-1)
+        {
+            if (World.visibleChunks[i].Item1 == id)
+            {
+                index = i;
+            }
+            i++;
+        }
+        if (index!=-1)
+            World.visibleChunks.RemoveAt(index);
     }
 
     /// Verifie si les coordonées sont correct

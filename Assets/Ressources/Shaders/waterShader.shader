@@ -7,7 +7,7 @@ uniform vec4 blue_tint : hint_color;
 
 void fragment(){
 	
-	vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
+	/*vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
 	
 	color = mix(color, blue_tint, 0.8);
 	color.rgb = mix(vec3(0.5), color.rgb, 1.4);
@@ -17,5 +17,5 @@ void fragment(){
 		COLOR = curr_color;
 	}else{
 		COLOR = color;
-	}
+	}*/
 }
