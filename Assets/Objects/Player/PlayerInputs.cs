@@ -56,7 +56,8 @@ public class PlayerInputs : Node2D
 			}else if (PlayerState.GetState() == PlayerState.State.BuildingInterface)
 			{
 				BuildingInterface.CloseInterface();
-			}else if (PlayerState.GetState() == PlayerState.State.Link)
+			}
+			else if (PlayerState.GetState() == PlayerState.State.Link)
 			{
 				Link._Link();
 				Link.Reset();

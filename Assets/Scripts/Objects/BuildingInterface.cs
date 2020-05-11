@@ -54,6 +54,7 @@ public class BuildingInterface : Control
             interfaceOpen = false;
             PlayerState.SetState(PlayerState.prec_state);
         }
+        if (SpaceShip.inventoryOpen){SpaceShip.close_interface();}
     }
 
     /*-----*/
