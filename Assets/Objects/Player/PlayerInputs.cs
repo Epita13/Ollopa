@@ -7,24 +7,10 @@ public class PlayerInputs : Node2D
 	public static bool playerInputActive = true;
 	
 
-	[Signal] delegate void BlockPlaced();
-
 	private Vector2 mousePos;
 	private PlayerState.State lastState;
 	private Usable.Type lastSelectedUsable;
 
-	public override void _Ready()
-	{
-		ConnectSignals();
-	}
-
-	private void ConnectSignals()
-	{
-		if (GetTree().GetNodesInGroup("ToolBar").Count==1)
-			Connect("BlockPlaced", (Node)GetTree().GetNodesInGroup("ToolBar")[0], "SendRefresh"); // Pour Actualisation de la ToolBar
-	}
-
-  
 	public override void _Process(float delta)
 	{
 		
@@ -94,6 +80,11 @@ public class PlayerInputs : Node2D
 				if (Building.HasBuildingSelected)
 				{
 					ClickOnBuilding();
+				}
+
+				if (SpaceShip.ShipSelected)
+				{
+					SpaceShipClick();
 				}
 			}
 			if (PlayerState.GetState() == PlayerState.State.Link)
@@ -296,6 +287,17 @@ public class PlayerInputs : Node2D
 			UI_PlayerInventory2.Close();
 		}
 	}
-
+	
+	private void SpaceShipClick()
+	{
+		if (MouseInRange(10, true))
+		{
+			if(!SpaceShip.inventoryOpen)
+				SpaceShip.open_interface();
+			else
+				SpaceShip.close_interface();	
+		}
+		
+	}
 
 }

@@ -23,8 +23,8 @@ public static class Player
 
     public static float oxygeneMax = 100.0f;
     public static float oxygene = 100.0f;
-    public static float oxygeneLoss = 20.7f;
-    public static float oxygeneDamage = 210.0f;
+    public static float oxygeneLoss = 0.7f;
+    public static float oxygeneDamage = 10.0f;
 
     public static float energyMax = 100.0f;
     public static float energy = 100.0f;

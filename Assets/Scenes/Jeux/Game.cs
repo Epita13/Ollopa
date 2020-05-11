@@ -30,6 +30,7 @@ public class Game : Node2D
             World.SetSize(50);
             Liquid.Init();
             World.Init(ground, uiground, uiground2, back);
+            SpaceShip.Init();
             InitialiseIverntories();
         }
         else
@@ -44,6 +45,7 @@ public class Game : Node2D
             BuildingInterface.Init(GetNode("CanvasLayer"));
             World.Init(ground, uiground, uiground2, back, false);
             Save._Load(saveName);
+            SpaceShip.Init();
         }
     }
 

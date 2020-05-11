@@ -72,9 +72,11 @@
     <Compile Include="Assets\Objects\UI\Building\CompactorInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\Printer3DInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\SolarPanelInterface.cs" />
+    <Compile Include="Assets\Objects\UI\Building\SpaceShipInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\StorageInterface.cs" />
     <Compile Include="Assets\Objects\UI\Graphics\Graph.cs" />
     <Compile Include="Assets\Objects\UI\Menus\DeathMenu.cs" />
+    <Compile Include="Assets\Objects\UI\Menus\EndMenu.cs" />
     <Compile Include="Assets\Objects\UI\Notification\Notifications.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory2.cs" />
