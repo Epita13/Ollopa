@@ -235,24 +235,21 @@ public class Chunk
     public void DrawBlock(Block b)
     {
         World.IsInitWorldTest("DrawBlock");
-        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(b.GetType));
+        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(b.GetType, b.x, b.y));
     }
     /// Affiche un block au Chunk
     public void DrawBlock(Block b, int x, int y)
     {
         World.IsInitWorldTest("DrawBlock");
-        World.BlockTilemap.SetCell(x, -y+height, Block.GetIDTile(b.GetType));
+        World.BlockTilemap.SetCell(x, -y+height, Block.GetIDTile(b.GetType, b.x, b.y));
     }
-    
-    
-    
     
     
     /// Affiche un block au Chunk a une position specifique
     public void DrawBlock(Block b, int x)
     {
         World.IsInitWorldTest("DrawBlock");
-        World.BlockTilemap.SetCell(b.x-(id*size)+x, -b.y+height, Block.GetIDTile(b.GetType));
+        World.BlockTilemap.SetCell(b.x-(id*size)+x, -b.y+height, Block.GetIDTile(b.GetType, b.x, b.y));
     }
 
     
@@ -263,19 +260,19 @@ public class Chunk
     public void HideBlock(Block b)
     {
         World.IsInitWorldTest("HideBlock");
-        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(Block.Type.Air));
+        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(Block.Type.Air, 0, 0));
     }
     public void HideBlock(int displayX, int displayY)
     {
         World.IsInitWorldTest("HideBlock");
-        World.BlockTilemap.SetCell(displayX, -displayY+height, Block.GetIDTile(Block.Type.Air));
+        World.BlockTilemap.SetCell(displayX, -displayY+height, Block.GetIDTile(Block.Type.Air, 0, 0));
     }
     public void HideBlock3(Block b)
     {
         World.IsInitWorldTest("HideBlock");
-        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(Block.Type.Air));
-        World.BlockTilemap.SetCell(b.x+World.size*size, -b.y+height, Block.GetIDTile(Block.Type.Air));
-        World.BlockTilemap.SetCell(b.x-World.size*size, -b.y+height, Block.GetIDTile(Block.Type.Air));
+        World.BlockTilemap.SetCell(b.x, -b.y+height, Block.GetIDTile(Block.Type.Air, 0, 0));
+        World.BlockTilemap.SetCell(b.x+World.size*size, -b.y+height, Block.GetIDTile(Block.Type.Air, 0, 0));
+        World.BlockTilemap.SetCell(b.x-World.size*size, -b.y+height, Block.GetIDTile(Block.Type.Air, 0, 0));
     }
 
 

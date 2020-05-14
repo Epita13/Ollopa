@@ -31,6 +31,7 @@ public class Game : Node2D
             Liquid.Init();
             World.Init(ground, uiground, uiground2, back);
             SpaceShip.Init();
+            PlayerMouvements.initialPosition = World.spawn;
             InitialiseIverntories();
         }
         else
@@ -62,6 +63,11 @@ public class Game : Node2D
         Player.inventoryItems.Add(Item.Type.Composite, 120);
     }
 
+
+    public override void _Process(float delta)
+    {
+        WorldScreenSizeX = GetViewport().Size.x * CurrentCamera.GetXZoom();
+    }
 
     public static float GetScreenMinX() => PlayerMouvements.GetX() - (Convertion.Location2World(new Vector2(Game.WorldScreenSizeX/2, 0))).x;
     public static float GetScreenMaxX() => PlayerMouvements.GetX() + (Convertion.Location2World(new Vector2(Game.WorldScreenSizeX/2, 0))).x;

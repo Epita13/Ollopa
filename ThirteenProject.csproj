@@ -63,7 +63,7 @@
     <Compile Include="Assets\Objects\Buildings\Printer3D\Printer3D.cs" />
     <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
     <Compile Include="Assets\Objects\Buildings\Rafinery\Rafinery.cs" />
-    <Compile Include="Assets\Objects\Buildings\Spaceship\Spaceship.cs" />
+    <Compile Include="Assets\Objects\Buildings\Spaceship\SpaceShip.cs" />
     <Compile Include="Assets\Objects\Buildings\Storage\Storage.cs" />
     <Compile Include="Assets\Objects\Player\PlayerInputs.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
@@ -78,6 +78,7 @@
     <Compile Include="Assets\Objects\UI\Menus\DeathMenu.cs" />
     <Compile Include="Assets\Objects\UI\Menus\EndMenu.cs" />
     <Compile Include="Assets\Objects\UI\Notification\Notifications.cs" />
+    <Compile Include="Assets\Objects\UI\other\PlayerVariablesShow.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory2.cs" />
     <Compile Include="Assets\Objects\UI\Sliders\Energy\EnergyBar.cs" />

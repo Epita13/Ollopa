@@ -45,6 +45,8 @@ public static class World
     public static TileMap UI2BlockTilemap;
     /*********/
 
+    public static Vector2 spawn;
+
     public static Random random;
 
     // SimplexNoise

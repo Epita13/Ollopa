@@ -28,13 +28,18 @@ public class SpaceShip : Node2D
     public static Node canvas;
     private static SpaceShipInterface Interface = new SpaceShipInterface();
     
+    
     public override void _EnterTree()
     {
         canvas = Game.root.GetNode("CanvasLayer");
         instance = this;
         image = GetNode<Sprite>("Image");
         image.Visible = false;
-        pos = Structure.Generate(20, 19);
+
+        int size = 19;
+        int x = World.size * Chunk.size / 2 - (19/2);
+        pos = Structure.Generate(x, size);
+        World.spawn = new Vector2(x+size/2.0f, World.GetChunk(x+size/2).GetGroundY(Chunk.GetLocaleX(x+size/2))+1);
         Generate(Convertion.World2Location(new Vector2(pos.x + 4, pos.y + 1)));
     }
 

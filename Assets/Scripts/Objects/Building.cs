@@ -431,6 +431,7 @@ public abstract class Building : Node2D
     /*OUTLINE buildings*/
     public void _on_ZONE_mouse_entered()
     {
+        GD.Print("dede");
         Sprite p = GetNode<Sprite>("OUTLINE");
         if (PlayerState.Is(PlayerState.State.Normal, PlayerState.State.Build))
         {
