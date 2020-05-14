@@ -12,22 +12,26 @@ public abstract class Building : Node2D
         SolarPanel,
 		Storage,
         Printer3D,
-        Compactor
+        Compactor,
+        Infirmary
     }
+    
     // Dictionaire : Stock les scnenes batiment en fonction du type de batiment
     public static Dictionary<Type, PackedScene> prefabs = new Dictionary<Type, PackedScene>
     {
         {Type.SolarPanel, GD.Load<PackedScene>("res://Assets/Objects/Buildings/SolarPanel/SolarPanel.tscn")},
 		{Type.Storage, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Storage/Storage.tscn")},
 		{Type.Printer3D, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Printer3D/Printer3D.tscn")},
-		{Type.Compactor, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Compactor/Compactor.tscn")}
+		{Type.Compactor, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Compactor/Compactor.tscn")},
+        {Type.Infirmary, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Infirmary/Infirmary.tscn")}
     };
     public static Dictionary<Type, Texture> textures = new Dictionary<Type, Texture>
     {
         {Type.SolarPanel, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/SolarPanel/SolarPanel.png")},
         {Type.Storage, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Storage/Stockage.png")},
         {Type.Printer3D, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Printer3D/Printer3D.png")},
-        {Type.Compactor, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Compactor/Compactor.png")}
+        {Type.Compactor, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Compactor/Compactor.png")},
+        {Type.Infirmary, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Infirmary/Infirmary.png")}
     };
     
     public static Dictionary<Type, string> descriptions = new Dictionary<Type, string>
@@ -35,7 +39,8 @@ public abstract class Building : Node2D
         {Type.SolarPanel, "Generate energy from the sun's energy"},
         {Type.Storage, "Stores energy and oxygen"},
         {Type.Printer3D, "Create buildings"},
-        {Type.Compactor, "Create blocks"}
+        {Type.Compactor, "Create blocks"},
+        {Type.Infirmary, "Heal the player"}
     };
     
     public static Dictionary<Type, float> times2Create = new Dictionary<Type, float>
@@ -44,6 +49,7 @@ public abstract class Building : Node2D
         {Type.Storage, 120.0f},
         {Type.Printer3D, 300.0f},
         {Type.Compactor, 150.0f},
+        {Type.Infirmary, 30f}
     };
     
     public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
@@ -51,10 +57,11 @@ public abstract class Building : Node2D
         {Type.SolarPanel, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone, 10))},
         {Type.Storage, new Drop(new Drop.Loot(Item.Type.Composite, 45), new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Wood, 5))},
         {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 60))},
-        {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10))}
+        {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
+        {Type.Infirmary, new Drop(new Drop.Loot(Item.Type.Composite, 10))}
     };
     
-    public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>{Type.Storage, Type.Printer3D, Type.Compactor};
+    public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>{Type.Storage, Type.Printer3D, Type.Compactor, Type.Infirmary};
 
     /*
         Object abstract:  Building
@@ -431,7 +438,6 @@ public abstract class Building : Node2D
     /*OUTLINE buildings*/
     public void _on_ZONE_mouse_entered()
     {
-        GD.Print("dede");
         Sprite p = GetNode<Sprite>("OUTLINE");
         if (PlayerState.Is(PlayerState.State.Normal, PlayerState.State.Build))
         {
