@@ -56,4 +56,10 @@ public class DeathMenu : Control
         PlayerState.SetState(PlayerState.State.Normal);
         QueueFree();
     }
+
+    public void _on_BtnQuit_button_down()
+    {
+        Save._Save(World.saveName);
+        GetTree().Quit();
+    }
 }

@@ -17,12 +17,11 @@ public class SpaceShip : Node2D
     
     public static SpaceShip instance;
     
-    public static int composite = 0;
-    public static float fuel = 0;
-    public static float energy = 0;
+    public static int composite;
+    public static float fuel;
+    public static float energy;
     private static Sprite image;
     private static Control inventory;
-    private static Vector2 pos = new Vector2(0,0);
     public static bool ShipSelected = false;
     public static bool inventoryOpen = false;
     public static Node canvas;
@@ -35,12 +34,7 @@ public class SpaceShip : Node2D
         instance = this;
         image = GetNode<Sprite>("Image");
         image.Visible = false;
-
-        int size = 19;
-        int x = World.size * Chunk.size / 2 - (19/2);
-        pos = Structure.Generate(x, size);
-        World.spawn = new Vector2(x+size/2.0f, World.GetChunk(x+size/2).GetGroundY(Chunk.GetLocaleX(x+size/2))+1);
-        Generate(Convertion.World2Location(new Vector2(pos.x + 4, pos.y + 1)));
+        Generate(Convertion.World2Location(new Vector2(Structure.structurePos.x + 4, Structure.structurePos.y + 1)));
     }
 
     public static void Init()

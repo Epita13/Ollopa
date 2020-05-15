@@ -20,7 +20,7 @@ public class MenuPlay : Node2D
 
     public void _on_BtnLoadGame_mouse_entered()
     {
-        labelBtn.Text = "Continue (unavailable)";
+        labelBtn.Text = "Continue";
     }
 
     public void _on_BtnNewGame_mouse_entered()
@@ -35,6 +35,11 @@ public class MenuPlay : Node2D
 
     public void _on_BtnNewGame_mouse_click()
     {
-        GetTree().ChangeScene("res://Assets/Scenes/Jeux/Game.tscn");
+        GetTree().ChangeScene("res://Assets/Scenes/Menus/MenuNewGame.tscn");
+    }
+
+    public void _on_BtnLoadGame_mouse_click()
+    {
+        GetTree().ChangeScene("res://Assets/Scenes/Menus/MenuLoadGame.tscn");
     }
 }

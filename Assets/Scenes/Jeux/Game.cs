@@ -27,9 +27,9 @@ public class Game : Node2D
             Loot.Init(this);
             Tree.Init(this);
             BuildingInterface.Init(GetNode("CanvasLayer"));
-            World.SetSize(50);
             Liquid.Init();
             World.Init(ground, uiground, uiground2, back);
+            Structure.Init();
             SpaceShip.Init();
             PlayerMouvements.initialPosition = World.spawn;
             InitialiseIverntories();

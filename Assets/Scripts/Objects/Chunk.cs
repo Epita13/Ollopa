@@ -93,12 +93,6 @@ public class Chunk
         for (int x = 0; x < size; x++)
         {
             float r = (float)World.random.NextDouble();
-            
-            
-            int yy = GetGroundY(x);
-            
-            Grass.Spawn(x+id*size, yy);
-            
             if (r <= TREE_FREQUENCY)
             {
                 int y = GetGroundY(x);

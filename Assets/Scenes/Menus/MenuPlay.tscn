@@ -159,5 +159,6 @@ script = ExtResource( 2 )
 [connection signal="mouse_click" from="CanvasLayer/BtnNewGame" to="." method="_on_BtnNewGame_mouse_click"]
 [connection signal="mouse_entered" from="CanvasLayer/BtnNewGame" to="." method="_on_BtnNewGame_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BtnNewGame" to="." method="_on_Btn_mouse_exited"]
+[connection signal="mouse_click" from="CanvasLayer/BtnLoadGame" to="." method="_on_BtnLoadGame_mouse_click"]
 [connection signal="mouse_entered" from="CanvasLayer/BtnLoadGame" to="." method="_on_BtnLoadGame_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/BtnLoadGame" to="." method="_on_Btn_mouse_exited"]
