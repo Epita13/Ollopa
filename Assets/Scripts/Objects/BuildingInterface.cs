@@ -25,7 +25,8 @@ public class BuildingInterface : Control
         {Building.Type.Storage, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/StorageInterface.tscn")},
         {Building.Type.Printer3D, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/Printer3DInterface.tscn")},
         {Building.Type.Compactor, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/CompactorInterface.tscn")},
-        {Building.Type.Infirmary, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/InfirmaryInterface.tscn")}
+        {Building.Type.Infirmary, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/InfirmaryInterface.tscn")},
+        {Building.Type.O2Generator, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/O2GeneratorInterface.tscn")},
     };
 
     public static bool interfaceOpen = false;
@@ -94,7 +95,6 @@ public class BuildingInterface : Control
         Refresh();
     }
     
-    
     private void Refresh()
     {
         idLabel.Text = "ID : " + building.id;
@@ -102,8 +102,4 @@ public class BuildingInterface : Control
         EmitSignal("ChangePowerInBar", building.powerIn, 1.5f);
         EmitSignal("ChangePowerOutBar", building.powerOut, 1.5f);
     }
-
-
-
-    
 }

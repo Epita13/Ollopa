@@ -61,6 +61,7 @@ public class Game : Node2D
         Player.inventoryBuildings.Add(Building.Type.Printer3D, 3);
         Player.inventoryBuildings.Add(Building.Type.Compactor, 3);
         Player.inventoryBuildings.Add(Building.Type.Infirmary, 3);
+        Player.inventoryBuildings.Add(Building.Type.O2Generator, 3);
         Player.inventoryItems.Add(Item.Type.Composite, 120);
         
     }
