@@ -83,7 +83,6 @@ public class BuildingInterface : Control
         GetNode<Graph>("back2/Graph3").SetParams(0.8f, Colors.Red, "e/s", "t");
         idLabel = GetNode<Label>("back/id");
         Refresh();
-        SpawnAreaZone();
     }
     public void Close()
     {
@@ -94,16 +93,7 @@ public class BuildingInterface : Control
     {
         Refresh();
     }
-
-    private bool mouseOnWindow = false;
-    public void _on_mouse_entered()
-    {
-        mouseOnWindow = true;
-    }    
-    public void _on_mouse_exited()
-    {
-        mouseOnWindow = false;
-    }
+    
     
     private void Refresh()
     {
@@ -114,27 +104,6 @@ public class BuildingInterface : Control
     }
 
 
-    private void SpawnAreaZone()
-    {
-        Control c = new Control();
-        AddChild(c);
-        c.AnchorBottom = 1;
-        c.AnchorRight = 1;
-        c.SetSize(GetRect().Size);
-        c.SetPosition(new Vector2(0,0));
-        c.Connect("mouse_entered", this, "_on_mouse_entered");
-        c.Connect("mouse_exited", this, "_on_mouse_exited");
-    }
 
-    public override void _Input(InputEvent @event)
-    {
-        if (@event is InputEventMouseButton)
-        {
-            if (@event.IsPressed() && !mouseOnWindow)
-            {
-                CloseInterface();
-            }
-        }
-
-    }
+    
 }

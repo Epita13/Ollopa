@@ -65,7 +65,7 @@
     <Compile Include="Assets\Objects\Buildings\Rafinery\Rafinery.cs" />
     <Compile Include="Assets\Objects\Buildings\Spaceship\SpaceShip.cs" />
     <Compile Include="Assets\Objects\Buildings\Storage\Storage.cs" />
-	    <Compile Include="Assets\Objects\Buildings\Infirmary\Infirmary.cs" />
+    <Compile Include="Assets\Objects\Buildings\Infirmary\Infirmary.cs" />
     <Compile Include="Assets\Objects\Player\PlayerInputs.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
     <Compile Include="Assets\Objects\Player\PlayerZone.cs" />
@@ -75,10 +75,12 @@
     <Compile Include="Assets\Objects\UI\Building\SolarPanelInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\SpaceShipInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\StorageInterface.cs" />
-	    <Compile Include="Assets\Objects\UI\Building\InfirmaryInterface.cs" />
+    <Compile Include="Assets\Objects\UI\Building\InfirmaryInterface.cs" />
     <Compile Include="Assets\Objects\UI\Graphics\Graph.cs" />
     <Compile Include="Assets\Objects\UI\Menus\DeathMenu.cs" />
     <Compile Include="Assets\Objects\UI\Menus\EndMenu.cs" />
+    <Compile Include="Assets\Objects\UI\Menus\other\Animation.cs" />
+    <Compile Include="Assets\Objects\UI\Menus\other\ButtonMenu.cs" />
     <Compile Include="Assets\Objects\UI\Notification\Notifications.cs" />
     <Compile Include="Assets\Objects\UI\other\PlayerVariablesShow.cs" />
     <Compile Include="Assets\Objects\UI\PlayerInventory\UI_PlayerInventory.cs" />
