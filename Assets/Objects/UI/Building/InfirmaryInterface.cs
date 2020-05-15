@@ -5,15 +5,9 @@ using System.Reflection;
 public class InfirmaryInterface : BuildingInterface
 {
     private Infirmary infirmary;
-
     private Item.Type blockSelected;
-
     private ItemList blocksSelector;
 
-    private static float energy2heal = 20f;
-
-    private float togive = 0;
-    
     /*Description*/
     private TextureRect imageDesc;
     private Label titleDesc;
@@ -37,8 +31,6 @@ public class InfirmaryInterface : BuildingInterface
 
         btnHeal = GetNode<Button>("back/BlockDescription/BtnHeal");
         
-        
-        
         InitBlocksSelector();
         _on_BlocksList_item_selected(0);
         RefreshBtnCompact();
@@ -59,24 +51,13 @@ public class InfirmaryInterface : BuildingInterface
     public override void _Process(float delta)
     {
         RefreshBtnCompact();
-        
-        if (togive >= 0.1f)
-        {
-            Player.AddHealth(0.1f);
-            togive -= 0.1f;
-        }
-        else if(togive > 0 && togive < 0.1f)
-        {
-            Player.AddHealth(togive);
-            togive = 0;
-        }
     }
     
     private void SetDescription(Item.Type type)
     {
         imageDesc.Texture = Item.textures[(int)type];
         titleDesc.Text = type.ToString();
-        energyDesc.Text = "-> " + energy2heal + "e";
+        energyDesc.Text = "-> " + infirmary.energy2heal + "e";
         descriptionDesc.Text = "Health : +" + Item.healingPower[type];
         ClearItemsList();
         Control it = (Control) itemBox.Instance();
@@ -107,7 +88,7 @@ public class InfirmaryInterface : BuildingInterface
     
     private void RefreshBtnCompact()
     {
-        if (Player.inventoryItems.GetItemCount(blockSelected) > 0 && infirmary.energy >= energy2heal)
+        if (Player.inventoryItems.GetItemCount(blockSelected) > 0 && infirmary.energy >= infirmary.energy2heal)
         {
             btnHeal.Disabled = false;
         }
@@ -119,11 +100,11 @@ public class InfirmaryInterface : BuildingInterface
 
     public void _on_BtnHeal_button_down()
     {
-        if (Player.inventoryItems.GetItemCount(blockSelected) > 0 && infirmary.energy >= energy2heal)
+        if (Player.inventoryItems.GetItemCount(blockSelected) > 0 && infirmary.energy >= infirmary.energy2heal)
         {
             Player.inventoryItems.Remove(blockSelected, 1);
-            infirmary.RemoveEnergy(energy2heal);
-            togive = Item.healingPower[blockSelected];
+            infirmary.RemoveEnergy(infirmary.energy2heal);
+            infirmary.togive += Item.healingPower[blockSelected];
         }
 
         SetDescription(blockSelected);
