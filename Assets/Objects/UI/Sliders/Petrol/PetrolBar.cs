@@ -23,12 +23,12 @@ public class PetrolBar : Control
     }
     
 
-    public void Change(float oxygene, float oxygeneMax)
+    public void Change(float oil, float oilMax)
     {
-        float y = oxygene * yMax / oxygeneMax;
+        float y = oil * yMax / oilMax;
         bar.RectSize = new Vector2(bar.RectSize.x, y);
-        oxygeneMaxLabel.Text = oxygeneMax + " o2";
-        oxygeneLabel.Text = oxygene.ToString(GetFormat(oxygene)) + " o2";
+        oxygeneMaxLabel.Text = oilMax + " L";
+        oxygeneLabel.Text = oil.ToString(GetFormat(oil)) + " L";
 
     }
 

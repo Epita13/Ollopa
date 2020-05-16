@@ -4,18 +4,18 @@ using System.Reflection;
 
 public class PetrolGeneratorInterface : BuildingInterface
 {
-    private O2Generator o2Generator;
+    private PetrolGenerator petrolGenerator;
 
     /*Description*/
-    private Button btnGiveO2;
+    private Button btnGivePetrol;
     
     [Signal]
-    delegate void ChangeOxygeneBar(float oxygene, float oxygeneMax);
+    delegate void ChangePetrolBar(float oil, float oilMax);
     
     public override void _EnterTree()
     {
-        o2Generator = (O2Generator)building;
-        btnGiveO2 = GetNode<Button>("back/BtnO2");
+        petrolGenerator = (PetrolGenerator)building;
+        btnGivePetrol = GetNode<Button>("back/BtnPetrol");
         
         RefreshBtnCompact();
     }
@@ -29,26 +29,26 @@ public class PetrolGeneratorInterface : BuildingInterface
 
     private void RefreshBtnCompact()
     {
-        if (o2Generator.o2 > 0)
+        if (petrolGenerator.oil > 0)
         {
-            btnGiveO2.Disabled = false;
+            btnGivePetrol.Disabled = false;
         }
         else
         {
-            btnGiveO2.Disabled = true;
+            btnGivePetrol.Disabled = true;
         }
     }
 
     public void _on_BtnO2_button_down()
     {
-        if (o2Generator.o2 > 0)
+        if (petrolGenerator.oil > 0)
         {
-            o2Generator.togive += Math.Min(o2Generator.o2, Player.oxygeneMax - Player.oxygene);
+            petrolGenerator.togive += Math.Min(petrolGenerator.oil, Player.oxygeneMax - Player.oxygene);
         }
     }
 
     public void _on_TimerOxygene_timeout()
     {
-        EmitSignal("ChangeOxygeneBar", o2Generator.o2, o2Generator.o2MAX);
+        EmitSignal("ChangePetrolBar", petrolGenerator.oil, petrolGenerator.oilMAX);
     }
 }

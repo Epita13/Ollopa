@@ -3,11 +3,11 @@ using System;
 
 public class PetrolGenerator : Building
 {
-    public static int nbO2Generator;
+    public static int nbPetrolGenerator;
     private static float power = 1f;
-    private static readonly float O2produc = 1f;
-    public float o2MAX = 500f;
-    public float o2 = 0;
+    private static readonly float oilProduc = 1f;
+    public float oilMAX = 500f;
+    public float oil = 0;
     public float togive = 0;
     private bool on = false;
     private static float power2wake = 2 * power;
@@ -15,32 +15,35 @@ public class PetrolGenerator : Building
 
     public override void _EnterTree()
     {
-        id = nbO2Generator;
-        nbO2Generator++;
+        id = nbPetrolGenerator;
+        nbPetrolGenerator++;
     }
 
     public void _on_Timer_timeout()
     {
         if (togive >= giveSpeed)
         {
-            Player.AddOxygene(giveSpeed);
+            //Player.inventoryLiquids.Add(Liquid.Type.Oil, giveSpeed);
             togive -= giveSpeed;
-            o2 -= giveSpeed;
+            oil -= giveSpeed;
         }
         else if(togive > 0)
         {
-            Player.AddOxygene(togive);
-            o2 -= togive;
+            //Player.inventoryLiquids.Add(Liquid.Type.Oil, togive);
+            oil -= togive;
             togive = 0;
         }
 
         if (on)
         {
             RemoveEnergy(power * timer.WaitTime);
-            o2 += O2produc * timer.WaitTime;   
+            oil += oilProduc * timer.WaitTime;   
         }
 
-        on = energy >= power2wake && !on || energy > 0 && on;
+        if (oil > oilMAX)
+            oil = oilMAX;
+
+        on = (energy >= power2wake && !on || energy > 0 && on) && oil < oilMAX;
     }
 
     public PetrolGenerator() : base(100, 200)

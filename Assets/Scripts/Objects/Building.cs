@@ -14,7 +14,8 @@ public abstract class Building : Node2D
         Printer3D,
         Compactor,
         Infirmary,
-        O2Generator
+        O2Generator,
+        OilPump
     }
     
     // Dictionaire : Stock les scnenes batiment en fonction du type de batiment
@@ -25,7 +26,8 @@ public abstract class Building : Node2D
 		{Type.Printer3D, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Printer3D/Printer3D.tscn")},
 		{Type.Compactor, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Compactor/Compactor.tscn")},
         {Type.Infirmary, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Infirmary/Infirmary.tscn")},
-        {Type.O2Generator, GD.Load<PackedScene>("res://Assets/Objects/Buildings/O2Generator/O2Generator.tscn")}
+        {Type.O2Generator, GD.Load<PackedScene>("res://Assets/Objects/Buildings/O2Generator/O2Generator.tscn")},
+        {Type.OilPump, GD.Load<PackedScene>("res://Assets/Objects/Buildings/PetrolGenerator/PetrolGenerator.tscn")}
     };
     public static Dictionary<Type, Texture> textures = new Dictionary<Type, Texture>
     {
@@ -34,7 +36,8 @@ public abstract class Building : Node2D
         {Type.Printer3D, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Printer3D/Printer3D.png")},
         {Type.Compactor, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Compactor/Compactor.png")},
         {Type.Infirmary, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Infirmary/Infirmary.png")},
-        {Type.O2Generator, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/O2Generator/O2Generator.png")}
+        {Type.O2Generator, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/O2Generator/O2Generator.png")},
+        {Type.OilPump, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Oilwell/PetrolGenerator.png")},
     };
     
     public static Dictionary<Type, string> descriptions = new Dictionary<Type, string>
@@ -44,7 +47,8 @@ public abstract class Building : Node2D
         {Type.Printer3D, "Create buildings"},
         {Type.Compactor, "Create blocks"},
         {Type.Infirmary, "Heal the player"},
-        {Type.O2Generator, "Give oxygene"}
+        {Type.O2Generator, "Give oxygene"},
+        {Type.OilPump, "Give Oil"}
     };
     
     public static Dictionary<Type, float> times2Create = new Dictionary<Type, float>
@@ -54,7 +58,8 @@ public abstract class Building : Node2D
         {Type.Printer3D, 300.0f},
         {Type.Compactor, 150.0f},
         {Type.Infirmary, 30f},
-        {Type.O2Generator, 30f}
+        {Type.O2Generator, 30f},
+        {Type.OilPump, 60f}
     };
     
     public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
@@ -64,10 +69,19 @@ public abstract class Building : Node2D
         {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 60))},
         {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
         {Type.Infirmary, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
-        {Type.O2Generator, new Drop(new Drop.Loot(Item.Type.Composite, 10))}
+        {Type.O2Generator, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
+        {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10))}
     };
     
-    public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>{Type.Storage, Type.Printer3D, Type.Compactor, Type.Infirmary, Type.O2Generator};
+    public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>
+    {
+        Type.Storage, 
+        Type.Printer3D, 
+        Type.Compactor, 
+        Type.Infirmary, 
+        Type.O2Generator,
+        Type.OilPump
+    };
 
     /*
         Object abstract:  Building
