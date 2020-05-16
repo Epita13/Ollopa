@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Objects/UI/Sliders/Energy/EnergyBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Objects/UI/Sliders/Energy/PowerInBar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Objects/UI/Sliders/Energy/PowerOutBar.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/Objects/UI/Sliders/Oxygene/OxygeneBar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Objects/UI/Sliders/Petrol/PetrolBar.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -22,7 +22,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 2 )
 
-[node name="O2GeneratorInterface" type="Control"]
+[node name="PetrolGeneratorInterface" type="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -87,15 +87,15 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="back/VSplit"]
-margin_right = 340.0
+margin_right = 330.0
 margin_bottom = 31.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "OXYGENE GENERATOR"
+text = "PETROL GENERATOR"
 align = 1
 valign = 1
 
-[node name="BtnO2" type="Button" parent="back"]
+[node name="BtnPetrol" type="Button" parent="back"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -350.0
@@ -104,12 +104,12 @@ margin_right = -124.0
 margin_bottom = 450.0
 custom_fonts/font = SubResource( 2 )
 disabled = true
-text = "GIVE OXYGENE"
+text = "GIVE PETROL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OxygeneBar" parent="back" instance=ExtResource( 10 )]
+[node name="PetrolBar" parent="back" instance=ExtResource( 10 )]
 margin_left = 300.0
 margin_top = 115.0
 margin_right = 90.0
@@ -225,10 +225,9 @@ autostart = true
 wait_time = 0.1
 autostart = true
 [connection signal="ChangeEnergyBar" from="." to="back2/EnergyBar" method="Change"]
-[connection signal="ChangeOxygeneBar" from="." to="back/OxygeneBar" method="Change"]
 [connection signal="ChangePowerInBar" from="." to="back2/PowerInBar" method="Change"]
 [connection signal="ChangePowerOutBar" from="." to="back2/PowerOutBar" method="Change"]
-[connection signal="button_down" from="back/BtnO2" to="." method="_on_BtnO2_button_down"]
+[connection signal="button_down" from="back/BtnPetrol" to="." method="_on_BtnO2_button_down"]
 [connection signal="value_changed" from="back2/HSlider" to="back2/Graph" method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="back2/HSlider" to="back2/Graph3" method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="back2/HSlider" to="back2/Graph2" method="_on_HSlider_value_changed"]
