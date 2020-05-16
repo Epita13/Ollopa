@@ -9,6 +9,9 @@ public class MenuPlay : Node2D
     {
         labelBtn = GetNode<Label>("CanvasLayer/labelBtn");
         labelBtn.Text = "";
+
+        GetNode("CanvasLayer/BtnNewGame").Connect("mouse_click", this, "_on_BtnNewGame_mouse_click");
+        GetNode("CanvasLayer/BtnLoadGame").Connect("mouse_click", this, "_on_BtnLoadGame_mouse_click");
     }
     
     
