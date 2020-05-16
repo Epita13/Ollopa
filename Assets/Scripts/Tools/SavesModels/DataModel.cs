@@ -12,18 +12,21 @@ using Newtonsoft.Json;
 public class EnvironementDataModel 
 {
   public float time { get; set; }
+  public float timeOfTheGame { get; set; }
   public List<float> sunPowerhistory { get; set; }
 
   public void GetValues()
   {
       time = Environement.time;
       sunPowerhistory = Environement.sunPowerhistory;
+      timeOfTheGame = Environement.timeOfTheGame;
   }
 
   public void SetValues()
   {
       Environement.time = time;
       Environement.sunPowerhistory = sunPowerhistory;
+      Environement.timeOfTheGame = timeOfTheGame;
   }
 
   public static EnvironementDataModel Deserialize(string json)
