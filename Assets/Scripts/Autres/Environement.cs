@@ -18,7 +18,7 @@ public class Environement : Node2D
     
     private static float length_day = 60*5.0f;  // seconde
     public static float time = length_day/2; // seconde
-    public static float timeOfTheGame = 0;
+    private int nb_day = 0;
 
     private static int hourNight = 21;
     private static int minNight = 0;
@@ -99,8 +99,6 @@ public class Environement : Node2D
     public override void _Process(float delta)
     {
         time += delta;
-        timeOfTheGame += delta;
-        var a = GetTimeGame();
         int hour = GetHour(time);
         int minute = GetMin(time);
         if (hour >= 24)
@@ -120,6 +118,7 @@ public class Environement : Node2D
             if (cycle == TimeState.NIGHT)
             {
                 cycle = TimeState.DAY;
+                nb_day++;
                 // passe au jour
                 Day();
             }
@@ -195,13 +194,5 @@ public class Environement : Node2D
             sunP = Mathf.Sin(w) * MAXPOWERSUN;
         }
         return sunP;
-    }
-
-    public static (int, int, int) GetTimeGame()
-    {
-        int days = Mathf.FloorToInt(timeOfTheGame / length_day);
-        int hours = Mathf.FloorToInt((timeOfTheGame % length_day) / (length_day / 24));
-        int minutes = Mathf.FloorToInt(((timeOfTheGame % length_day) % (length_day / 24)) / (length_day / 24 / 60) );
-        return (days, hours, minutes);
     }
 }
