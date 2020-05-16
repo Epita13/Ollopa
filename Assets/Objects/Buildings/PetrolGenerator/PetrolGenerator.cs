@@ -10,8 +10,9 @@ public class PetrolGenerator : Building
     public float oil = 0;
     public float togive = 0;
     private bool on = false;
-    private static float power2wake = 2 * power;
+    private static float power2wake = 10 * power;
     private static float giveSpeed = 2.5f;
+    private bool toOn = true;
 
     public override void _EnterTree()
     {
@@ -37,7 +38,19 @@ public class PetrolGenerator : Building
         if (on)
         {
             RemoveEnergy(power * timer.WaitTime);
-            oil += oilProduc * timer.WaitTime;   
+            oil += oilProduc * timer.WaitTime;
+            if (toOn)
+            {
+                GetNode<AnimationPlayer>("AnimationPlayer").Play("TOON");
+                toOn = false;
+            }
+            if(!GetNode<AnimationPlayer>("AnimationPlayer").IsPlaying())
+                GetNode<AnimationPlayer>("AnimationPlayer").Play("ON");
+        }
+        else
+        {
+            GetNode<AnimationPlayer>("AnimationPlayer").Play("OFF");
+            toOn = true;
         }
 
         if (oil > oilMAX)

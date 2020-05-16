@@ -10,7 +10,7 @@ public class O2Generator : Building
     public float o2 = 0;
     public float togive = 0;
     private bool on = false;
-    private static float power2wake = 2 * power;
+    private static float power2wake = 10 * power;
     private static float giveSpeed = 2.5f;
 
     public override void _EnterTree()
