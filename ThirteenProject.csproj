@@ -96,6 +96,8 @@
     <Compile Include="Assets\Objects\UI\ToolBar\ItemBox.cs" />
     <Compile Include="Assets\Objects\UI\ToolBar\ToolBar.cs" />
     <Compile Include="Assets\Scenes\Menus\MenuNewGame.cs" />
+	<Compile Include="Assets\Scenes\Menus\MenuLoadGame.cs" />
+	<Compile Include="Assets\Objects\UI\Menus\other\SaveGameBox.cs" />
     <Compile Include="Assets\Scripts\Objects\Cave.cs" />
     <Compile Include="Assets\Objects\World\UI_breakingBlocks.cs" />
     <Compile Include="Assets\Scenes\Jeux\Game.cs" />
