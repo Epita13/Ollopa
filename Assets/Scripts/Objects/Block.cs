@@ -111,6 +111,7 @@ public class Block
         if (health <= 0)
         {
             UI_breakingBlocks.RemoveUI(this);
+            PlayerMouvements.PlaySound(Sounds.Type.BlockBreak);
             SpawnDrop();
             Remove();
         } else if (health < durabilities[type])

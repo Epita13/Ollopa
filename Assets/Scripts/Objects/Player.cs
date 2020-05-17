@@ -6,17 +6,6 @@ public static class Player
 {
     
 
-    /*Player sounds*/
-    public enum Sounds
-    {
-        PlayerDeath,
-    }
-    public static Dictionary<Sounds, AudioStream> sounds = new Dictionary<Sounds, AudioStream>
-    {
-        {Sounds.PlayerDeath, GD.Load<AudioStream>("res://Assets/Ressources/Sounds/Player/player_death.wav")}
-    };
-    
-    
     
     public static float healthMax = 100.0f;
     public static float health = 100.0f;

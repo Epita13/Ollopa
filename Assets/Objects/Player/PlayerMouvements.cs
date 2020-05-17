@@ -189,7 +189,7 @@ public class PlayerMouvements : KinematicBody2D
 		{
 			bond.Play("Death");
 			canMove = false;
-			PlaySound(Player.Sounds.PlayerDeath);
+			PlaySound(Sounds.Type.PlayerDeath);
 			PlayerState.SetState(PlayerState.State.Dead);
 			vel = new Vector2();
 		}
@@ -327,12 +327,22 @@ public class PlayerMouvements : KinematicBody2D
 
 
 
-  private void PlaySound(Player.Sounds sound)
+  public static void PlaySound(Sounds.Type sound)
   {
-	  audioStream.Stream = Player.sounds[sound];
-	  audioStream.Playing = true;
+	  instance.PlayStream(sound);
   }
-  
+
+  public async void PlayStream(Sounds.Type sound)
+  {
+	  AudioStreamPlayer2D Sound = new AudioStreamPlayer2D();
+	  Sound.Stream = Sounds.sounds[sound];
+	  Sound.VolumeDb = Sounds.soundAjust[sound];
+	  AddChild(Sound);
+	  Sound.Play();
+	  await ToSignal(Sound, "finished");
+	  Sound.QueueFree();
+  }
+
   
   
   
