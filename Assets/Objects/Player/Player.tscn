@@ -188,7 +188,6 @@ anims/Turn = SubResource( 9 )
 anims/Turn_Back = SubResource( 10 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0.263519, -1.3176 )
 shape = SubResource( 11 )
 
@@ -202,14 +201,12 @@ energy = 0.0
 shadow_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 12 )
 
 [node name="Raygun" parent="." instance=ExtResource( 6 )]
-visible = false
 position = Vector2( 2.63524, -2.89874 )
 scale = Vector2( 0.580428, 0.516497 )
 
