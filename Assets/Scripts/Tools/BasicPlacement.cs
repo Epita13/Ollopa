@@ -121,7 +121,6 @@ public class BasicPlacement : Node2D
 				mouseC.x += building.size / 2;
 				mouseC.y += building.size / 2;
 				building.Place(mouseC);
-				placedBuilding.Add(building);
 				succeed = true;
 			}
 		}
@@ -132,7 +131,6 @@ public class BasicPlacement : Node2D
 				mouseC.x -= building.size / 2 - 1;
 				mouseC.y += building.size / 2;
 				building.Place(mouseC);
-				placedBuilding.Add(building);
 				succeed = true;
 			}
 		}

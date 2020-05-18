@@ -235,7 +235,6 @@ public class PlayerMouvements : KinematicBody2D
             WorldEndTeleportation();
         }
         Player.RemoveOxygene(Player.oxygeneLoss*delta);
-        Player.RemoveEnergy(Player.energyLoss*delta);
         if (Player.oxygene == 0)
         {
 	        Player.RemoveHealth(Player.oxygeneDamage*delta);

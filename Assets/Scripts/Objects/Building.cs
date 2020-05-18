@@ -83,6 +83,13 @@ public abstract class Building : Node2D
         Type.OilPump
     };
 
+
+    public static float powerEnergy2Player = 5;
+    public static List<Building.Type> buildingGiveEnergy2Player = new List<Type>
+    {
+        Type.Storage,
+    };
+
     /*
         Object abstract:  Building
 
@@ -106,13 +113,11 @@ public abstract class Building : Node2D
             bool isPlaced : true si le batiment est placer dans la scene; false sinon.
             int health, maxGHealth : represente la vie du joueur et son maximum de vie.
     */
-    
-    public static List<Building> placedBuildings = new List<Building>();
 
     public static List<T> GetBuildingTypeList<T> () where T: Building
     {
         List<T> l = new List<T>();
-        foreach (var building in placedBuildings)
+        foreach (var building in World.placedBuildings)
         {
             if (building is T)
                 l.Add((T)building);
@@ -162,6 +167,7 @@ public abstract class Building : Node2D
     
 
     public Vector2 location;
+    public Vector2 locationNow;
     public bool isPlaced = false;
 
     public Building.Type type;
@@ -186,7 +192,7 @@ public abstract class Building : Node2D
     private float sumEnergyOut;
     public List<float> powerOuthistory = new List<float>();
     
-    public const float POWERMAXOUT = 0.8f; // e/s
+    public const float POWERMAXOUT = 1.5f; // e/s
 
     public Timer timer;
     
@@ -217,7 +223,8 @@ public abstract class Building : Node2D
         isPlaced = true;
         Position = Convertion.World2Location(location);
         parent.AddChild(this);
-        placedBuildings.Add(this);
+        World.placedBuildings.Add(this);
+        World.placedBuildingByChunk[World.GetChunk((int)location.x)].Add(this);
     }
 
     /// Enleve le batiment de la map
@@ -229,7 +236,8 @@ public abstract class Building : Node2D
         this.location = new Vector2(-1,-1);
         isPlaced = false;
         parent.RemoveChild(this);
-        placedBuildings.Remove(this);
+        World.placedBuildings.Remove(this);
+        World.placedBuildingByChunk[World.GetChunk((int) location.x)].Remove(this);
     }
 
     // Détruit le batmiment
@@ -359,6 +367,7 @@ public abstract class Building : Node2D
         }
         prev_x_viewport = vecMin.x;
         /*----------------------*/
+        locationNow = Convertion.Location2World(Position);
     }
     
     public float AddEnergy(float amount, bool correction = false)

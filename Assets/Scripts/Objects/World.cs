@@ -63,6 +63,11 @@ public static class World
     public static List<Chunk> chunks;
     public static List<(int,int)> visibleChunks = new List<(int,int)>();
     
+    
+    public static List<Building> placedBuildings = new List<Building>();
+    public static Dictionary<Chunk, List<Building>> placedBuildingByChunk = new Dictionary<Chunk, List<Building>>();
+    
+    
     public static List<Tree> trees = new List<Tree>();
 
     private static bool isInit = false;
@@ -133,6 +138,7 @@ public static class World
         {
             Chunk instance_chunk = new Chunk(x);
             chunks.Add(instance_chunk);
+            placedBuildingByChunk.Add(instance_chunk, new List<Building>());
         }
         SeasGenerate();
         CaveGenerate();

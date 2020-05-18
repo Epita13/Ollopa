@@ -16,8 +16,7 @@ public static class Player
     public static float oxygeneDamage = 10.0f;
 
     public static float energyMax = 100.0f;
-    public static float energy = 100.0f;
-    public static float energyLoss = 0.4f;
+    public static float energy = 50.0f;
     public static float energyDamage = 0.1f;
 
     // Ex : laser, blocks..
