@@ -328,129 +328,81 @@ public class BuildingsDataModel
         foreach (var saveSolarPanel in solarPanels)
         {
             SolarPanel sp = (SolarPanel)Building.prefabs[Building.Type.SolarPanel].Instance();
-            sp.type = saveSolarPanel.buildingSave.type;
             sp.Place(saveSolarPanel.buildingSave.location);
-            sp.id = saveSolarPanel.buildingSave.id;
-            sp.healthMax = saveSolarPanel.buildingSave.healthMax;
-            sp.health = saveSolarPanel.buildingSave.health;
-            sp.energyMax = saveSolarPanel.buildingSave.energyMax;
-            sp.energy = saveSolarPanel.buildingSave.energy;
-            sp.isLinked = saveSolarPanel.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(saveSolarPanel.buildingSave);
         }
         
         Storage.nbStorage = nbStorages;
         foreach (var saveStorage in storages)
         {
             Storage sp = (Storage)Building.prefabs[Building.Type.Storage].Instance();
-            sp.type = saveStorage.buildingSave.type;
             sp.Place(saveStorage.buildingSave.location);
-            sp.id = saveStorage.buildingSave.id;
-            sp.healthMax = saveStorage.buildingSave.healthMax;
-            sp.health = saveStorage.buildingSave.health;
-            sp.energyMax = saveStorage.buildingSave.energyMax;
-            sp.energy = saveStorage.buildingSave.energy;
-            sp.isLinked = saveStorage.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(saveStorage.buildingSave);
         }
         
         Printer3D.nbPrinter3D = nbPrinter3d;
         foreach (var savePrinter in printers3d)
         {
             Printer3D sp = (Printer3D)Building.prefabs[Building.Type.Printer3D].Instance();
-            sp.type = savePrinter.buildingSave.type;
             sp.isPrinting = savePrinter.isPrinting;
             sp.isInPause = savePrinter.isInPause;
             sp.isFinish = savePrinter.isFinish;
             sp.printingLevel = savePrinter.printingLevel;
             sp.printingType = savePrinter.printingType;
             sp.Place(savePrinter.buildingSave.location);
-            sp.id = savePrinter.buildingSave.id;
-            sp.healthMax = savePrinter.buildingSave.healthMax;
-            sp.health = savePrinter.buildingSave.health;
-            sp.energyMax = savePrinter.buildingSave.energyMax;
-            sp.energy = savePrinter.buildingSave.energy;
-            sp.isLinked = savePrinter.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(savePrinter.buildingSave);
         }
         
         Compactor.nbCompactor = nbCompactors;
         foreach (var saveCompactor in compactors)
         {
             Compactor sp = (Compactor)Building.prefabs[Building.Type.Compactor].Instance();
-            sp.type = saveCompactor.buildingSave.type;
             sp.Place(saveCompactor.buildingSave.location);
-            sp.id = saveCompactor.buildingSave.id;
-            sp.healthMax = saveCompactor.buildingSave.healthMax;
-            sp.health = saveCompactor.buildingSave.health;
-            sp.energyMax = saveCompactor.buildingSave.energyMax;
-            sp.energy = saveCompactor.buildingSave.energy;
-            sp.isLinked = saveCompactor.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(saveCompactor.buildingSave);
         }
         
         Infirmary.nbInfirmary = nbInfirmary;
         foreach (var saveInfirmary in infirmaries)
         {
             Infirmary sp = (Infirmary)Building.prefabs[Building.Type.Infirmary].Instance();
-            sp.type = saveInfirmary.buildingSave.type;
             sp.togive = saveInfirmary.togive;
             sp.Place(saveInfirmary.buildingSave.location);
-            sp.id = saveInfirmary.buildingSave.id;
-            sp.healthMax = saveInfirmary.buildingSave.healthMax;
-            sp.health = saveInfirmary.buildingSave.health;
-            sp.energyMax = saveInfirmary.buildingSave.energyMax;
-            sp.energy = saveInfirmary.buildingSave.energy;
-            sp.isLinked = saveInfirmary.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(saveInfirmary.buildingSave);
         }
         
         O2Generator.nbO2Generator = nbO2Generator;
         foreach (var saveO2generator in O2Generators)
         {
             O2Generator sp = (O2Generator)Building.prefabs[Building.Type.O2Generator].Instance();
-            sp.type = saveO2generator.buildingSave.type;
             sp.togive = saveO2generator.togive;
             sp.o2 = saveO2generator.o2;
             sp.on = saveO2generator.@on;
             sp.Place(saveO2generator.buildingSave.location);
-            sp.id = saveO2generator.buildingSave.id;
-            sp.healthMax = saveO2generator.buildingSave.healthMax;
-            sp.health = saveO2generator.buildingSave.health;
-            sp.energyMax = saveO2generator.buildingSave.energyMax;
-            sp.energy = saveO2generator.buildingSave.energy;
-            sp.isLinked = saveO2generator.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(saveO2generator.buildingSave);
         }
         
         PetrolGenerator.nbPetrolGenerator = nbPetrolGenerator;
         foreach (var savePetrolGenerator in petrolGenerators)
         {
             PetrolGenerator sp = (PetrolGenerator)Building.prefabs[Building.Type.OilPump].Instance();
-            sp.type = savePetrolGenerator.buildingSave.type;
             sp.togive = savePetrolGenerator.togive;
             sp.oil = savePetrolGenerator.oil;
             sp.on = savePetrolGenerator.@on;
             sp.Place(savePetrolGenerator.buildingSave.location);
-            sp.id = savePetrolGenerator.buildingSave.id;
-            sp.healthMax = savePetrolGenerator.buildingSave.healthMax;
-            sp.health = savePetrolGenerator.buildingSave.health;
-            sp.energyMax = savePetrolGenerator.buildingSave.energyMax;
-            sp.energy = savePetrolGenerator.buildingSave.energy;
-            sp.isLinked = savePetrolGenerator.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(savePetrolGenerator.buildingSave);
         }
 
         Refinery.nbRefinery = nbRefinery;
         foreach (var saveRefinery in refineries)
         {
             Refinery sp = (Refinery)Building.prefabs[Building.Type.Refinery].Instance();
-            sp.type = saveRefinery.buildingSave.type;
             sp.togive = saveRefinery.togive;
             sp.toadd = saveRefinery.toadd;
             sp.oil = saveRefinery.oil;
             sp.fuel = saveRefinery.fuel;
             sp.on = saveRefinery.@on;
             sp.Place(saveRefinery.buildingSave.location);
-            sp.id = saveRefinery.buildingSave.id;
-            sp.healthMax = saveRefinery.buildingSave.healthMax;
-            sp.health = saveRefinery.buildingSave.health;
-            sp.energyMax = saveRefinery.buildingSave.energyMax;
-            sp.energy = saveRefinery.buildingSave.energy;
-            sp.isLinked = saveRefinery.buildingSave.isLinked;
+            sp.SetBuildingSaveStruct(saveRefinery.buildingSave);
         }
 
         foreach (var type in buildingsLinks)

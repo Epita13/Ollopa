@@ -70,14 +70,14 @@ public abstract class Building : Node2D
     
     public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
     {
-        {Type.SolarPanel, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone, 10))},
-        {Type.Storage, new Drop(new Drop.Loot(Item.Type.Composite, 45), new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Wood, 5))},
-        {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 60))},
-        {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
-        {Type.Infirmary, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
-        {Type.O2Generator, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
-        {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
-        {Type.Refinery, new Drop(new Drop.Loot(Item.Type.Composite, 10))}
+        {Type.SolarPanel, new Drop(new Drop.Loot(Item.Type.Sonar, 15), new Drop.Loot(Item.Type.Stone, 10), new Drop.Loot(Item.Type.Wood, 4))},
+        {Type.Storage, new Drop(new Drop.Loot(Item.Type.Stone, 30), new Drop.Loot(Item.Type.Wood, 5))},
+        {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 40), new Drop.Loot(Item.Type.Ospirit,1))},
+        {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Sonar,5), new Drop.Loot(Item.Type.Stone, 15))},
+        {Type.Infirmary, new Drop(new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Ospirit, 2), new Drop.Loot(Item.Type.Sonar,7), new Drop.Loot(Item.Type.Composite,10))},
+        {Type.O2Generator, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Wood,30))},
+        {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Stone, 35), new Drop.Loot(Item.Type.Ospirit,2))},
+        {Type.Refinery, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone,40), new Drop.Loot(Item.Type.Ospirit,4))}
     };
     
     public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>
@@ -241,6 +241,9 @@ public abstract class Building : Node2D
         public float energy;
         public Vector2 location;
         public bool isLinked;
+        public List<float> energyhistory;
+        public List<float> powerInhistory;
+        public List<float> powerOuthistory;
     }
 
     public SaveStruct GetBuildingSaveStruct()
@@ -254,7 +257,23 @@ public abstract class Building : Node2D
         s.energyMax = energyMax;
         s.location = location;
         s.isLinked = isLinked;
+        s.energyhistory = energyhistory;
+        s.powerInhistory = powerInhistory;
+        s.powerOuthistory = powerOuthistory;
         return s;
+    }
+    public void SetBuildingSaveStruct(SaveStruct st)
+    {
+        type = st.type;
+        healthMax = st.healthMax;
+        health = st.health;
+        id = st.id;
+        energy = st.energy;
+        energyMax = st.energyMax;
+        isLinked = st.isLinked;
+        energyhistory = st.energyhistory;
+        powerInhistory = st.powerInhistory;
+        powerOuthistory = st.powerOuthistory;
     }
     /*************************/
     

@@ -11,7 +11,7 @@ public static class Player
     public static float health = 100.0f;
 
     public static float oxygeneMax = 100.0f;
-    public static float oxygene = 3.0f;
+    public static float oxygene = 100f;
     public static float oxygeneLoss = 0.4f;
     public static float oxygeneDamage = 3.0f;
 
