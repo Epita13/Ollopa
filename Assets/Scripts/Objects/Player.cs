@@ -26,7 +26,7 @@ public static class Player
     private static int inventoryItemsSize = 20000;
     public static StorageItems inventoryItems = new StorageItems(inventoryItemsSize);
     // Ex : eau, petrole (Liquide)
-    private static float inventoryLiquidsSize = 30.0f;
+    private static float inventoryLiquidsSize = 30000.0f;
     public static StorageLiquids inventoryLiquids = new StorageLiquids(inventoryLiquidsSize);
     private static int inventoryBuildingsSize = 10;
     public static StorageBuildings inventoryBuildings = new StorageBuildings(inventoryBuildingsSize);
