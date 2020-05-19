@@ -12,8 +12,6 @@ public class BasicPlacement : Node2D
 	{
 
 	}
-	//liste des batiments poses
-	private static List<Building> placedBuilding = new List<Building>();
 
 	/// Verifie si le block en x y est de l'air
 	private static bool IsAir(int x, int y)
@@ -40,16 +38,16 @@ public class BasicPlacement : Node2D
 	{
 		bool res = true;
 		int i = 0;
-		int l = placedBuilding.Count;
+		int l = World.placedBuildings.Count;
 		while (res && i < l)
 		{
-			if ((int) placedBuilding[i].corners[0].x == x && (int) placedBuilding[i].corners[0].y == y)
+			if ((int) World.placedBuildings[i].corners[0].x == x && (int) World.placedBuildings[i].corners[0].y == y)
 				res = false;
-			if ((int) placedBuilding[i].corners[1].x == x && (int) placedBuilding[i].corners[1].y == y + 1)
+			if ((int) World.placedBuildings[i].corners[1].x == x && (int) World.placedBuildings[i].corners[1].y == y + 1)
 				res = false;
-			if ((int) placedBuilding[i].corners[2].x == x + 1 && (int) placedBuilding[i].corners[2].y == y + 1)
+			if ((int) World.placedBuildings[i].corners[2].x == x + 1 && (int) World.placedBuildings[i].corners[2].y == y + 1)
 				res = false;
-			if ((int) placedBuilding[i].corners[3].x == x + 1 && (int) placedBuilding[i].corners[3].y == y)
+			if ((int) World.placedBuildings[i].corners[3].x == x + 1 && (int) World.placedBuildings[i].corners[3].y == y)
 				res = false;
 			i++;
 		}

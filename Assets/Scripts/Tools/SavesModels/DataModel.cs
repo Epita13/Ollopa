@@ -231,7 +231,8 @@ public class BuildingsDataModel
     public int nbPetrolGenerator;
     public List<PetrolGenerator.SaveStruct> petrolGenerators;
 
-
+    public int nbRefinery;
+    public List<Refinery.SaveStruct> refineries;
 
     //public Dictionary<(Building.Type, int), List<(Building.Type, int)>> buildingsLinks;
     public Dictionary<Building.Type, Dictionary<int, List<(Building.Type, int)>>> buildingsLinks;
@@ -286,6 +287,13 @@ public class BuildingsDataModel
         foreach (var petrolgenerator in Building.GetBuildingTypeList<PetrolGenerator>())
         {
             petrolGenerators.Add(petrolgenerator.GetSaveStruct());
+        }
+        
+        refineries = new List<Refinery.SaveStruct>();
+        nbRefinery = Refinery.nbRefinery;
+        foreach (var refinery in Building.GetBuildingTypeList<Refinery>())
+        {
+            refineries.Add(refinery.GetSaveStruct());
         }
         
         
@@ -422,7 +430,24 @@ public class BuildingsDataModel
             sp.isLinked = savePetrolGenerator.buildingSave.isLinked;
         }
 
-
+        Refinery.nbRefinery = nbRefinery;
+        foreach (var saveRefinery in refineries)
+        {
+            Refinery sp = (Refinery)Building.prefabs[Building.Type.Refinery].Instance();
+            sp.type = saveRefinery.buildingSave.type;
+            sp.togive = saveRefinery.togive;
+            sp.toadd = saveRefinery.toadd;
+            sp.oil = saveRefinery.oil;
+            sp.fuel = saveRefinery.fuel;
+            sp.on = saveRefinery.@on;
+            sp.Place(saveRefinery.buildingSave.location);
+            sp.id = saveRefinery.buildingSave.id;
+            sp.healthMax = saveRefinery.buildingSave.healthMax;
+            sp.health = saveRefinery.buildingSave.health;
+            sp.energyMax = saveRefinery.buildingSave.energyMax;
+            sp.energy = saveRefinery.buildingSave.energy;
+            sp.isLinked = saveRefinery.buildingSave.isLinked;
+        }
 
         foreach (var type in buildingsLinks)
         {
