@@ -14,16 +14,20 @@ public class EnvironementDataModel
   public float time { get; set; }
   public List<float> sunPowerhistory { get; set; }
 
+  public float timePlayed;
+
   public void GetValues()
   {
       time = Environement.time;
       sunPowerhistory = Environement.sunPowerhistory;
+      timePlayed = Game.timePlayed;
   }
 
   public void SetValues()
   {
       Environement.time = time;
       Environement.sunPowerhistory = sunPowerhistory;
+      Game.timePlayed = timePlayed;
   }
 
   public static EnvironementDataModel Deserialize(string json)

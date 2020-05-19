@@ -9,6 +9,16 @@ public class Game : Node2D
 
     public static Node2D root;
     public static float WorldScreenSizeX;
+
+    public static float timePlayed = 0;
+
+    public static string GetTimePlayedString()
+    {
+        int hours = Mathf.FloorToInt(timePlayed/3600);
+        int minutes = Mathf.FloorToInt((timePlayed%3600)/60);
+        int seconds = Mathf.FloorToInt(timePlayed % 60);
+        return hours + "hour " + minutes + "min " + seconds + "sec";
+    }
     
 
     public override void _EnterTree()
@@ -72,6 +82,7 @@ public class Game : Node2D
     public override void _Process(float delta)
     {
         WorldScreenSizeX = GetViewport().Size.x * CurrentCamera.GetXZoom();
+        timePlayed += delta;
     }
 
     public static float GetScreenMinX() => PlayerMouvements.GetX() - (Convertion.Location2World(new Vector2(Game.WorldScreenSizeX/2, 0))).x;
