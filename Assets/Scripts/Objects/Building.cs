@@ -6,7 +6,7 @@ public abstract class Building : Node2D
 {
     
     // Enumeration : Type de batiment disponible
-    public static int nbBuildings = 3;
+    public static int nbBuildings = 7;
     public enum Type
     {
         SolarPanel,
@@ -124,6 +124,16 @@ public abstract class Building : Node2D
         }
         return l;
     }
+    public static List<Building> GetBuildingTypeList (Type type)
+    {
+        List<Building> l = new List<Building>();
+        foreach (var building in World.placedBuildings)
+        {
+            if (building.type == type)
+                l.Add(building);
+        }
+        return l;
+    }
     public static T GetBuildingById<T>(int id) where T: Building
     {
         List<T> l = Building.GetBuildingTypeList<T>();
@@ -137,6 +147,17 @@ public abstract class Building : Node2D
             }
         }
         return s;
+    }
+    public static Building GetBuildingById(Type type, int id)
+    {
+        foreach (var b in World.placedBuildings)
+        {
+            if (b.type == type && b.id == id)
+            {
+                return b;
+            }
+        }
+        return null;
     }
     
     public static Node parent;
@@ -200,6 +221,36 @@ public abstract class Building : Node2D
     public bool isLinked = false;
     public List<Building> linkedBuildings = new List<Building>();
 
+    
+    /*Structure de sauvegarde*/
+    public struct SaveStruct
+    {
+        public Type type;
+        public int healthMax;
+        public int health;
+        public int id;
+        public float energyMax;
+        public float energy;
+        public Vector2 location;
+        public bool isLinked;
+    }
+
+    public SaveStruct GetBuildingSaveStruct()
+    {
+        SaveStruct s = new SaveStruct();
+        s.type = type;
+        s.healthMax = healthMax;
+        s.health = health;
+        s.id = id;
+        s.energy = energy;
+        s.energyMax = energyMax;
+        s.location = location;
+        s.isLinked = isLinked;
+        return s;
+    }
+    /*************************/
+    
+    
     public Building(int healthMax, float energyMax)
     {
         this.health = healthMax;

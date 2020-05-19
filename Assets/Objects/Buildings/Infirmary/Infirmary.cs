@@ -8,6 +8,23 @@ public class Infirmary : Building
 
     public float togive = 0;
 
+    
+    /*Structure de sauvegarde*/
+    public struct SaveStruct
+    {
+        public Building.SaveStruct buildingSave;
+        public float togive;
+    }
+
+    public SaveStruct GetSaveStruct()
+    {
+        SaveStruct s = new SaveStruct();
+        s.buildingSave = GetBuildingSaveStruct();
+        s.togive = togive;
+        return s;
+    }
+    /*************************/
+    
     public override void _EnterTree()
     {
         id = nbInfirmary;

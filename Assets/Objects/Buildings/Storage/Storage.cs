@@ -22,7 +22,21 @@ public class Storage : Building
 	//ID de chaque batiment
 	public static int nbStorage = 0;
 
+	
+	/*Structure de sauvegarde*/
+	public struct SaveStruct
+	{
+		public Building.SaveStruct buildingSave;
+	}
 
+	public SaveStruct GetSaveStruct()
+	{
+		SaveStruct s = new SaveStruct();
+		s.buildingSave = GetBuildingSaveStruct();
+		return s;
+	}
+	/*************************/
+	
 
 	//Initialisation
     public Storage() : base (150, 750.0f)

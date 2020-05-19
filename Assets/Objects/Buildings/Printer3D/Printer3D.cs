@@ -22,6 +22,31 @@ public class Printer3D : Building
     public Type printingType;
     
     
+    /*Structure de sauvegarde*/
+    public struct SaveStruct
+    {
+        public Building.SaveStruct buildingSave;
+        public bool isPrinting;
+        public bool isInPause;
+        public bool isFinish;
+        public float printingLevel;
+        public Type printingType;
+    }
+
+    public SaveStruct GetSaveStruct()
+    {
+        SaveStruct s = new SaveStruct();
+        s.buildingSave = GetBuildingSaveStruct();
+        s.isPrinting = isPrinting;
+        s.isInPause = isInPause;
+        s.isFinish = isFinish;
+        s.printingLevel = printingLevel;
+        s.printingType = printingType;
+        return s;
+    }
+    /*************************/
+    
+    
     public Printer3D() : base (150, 100.0f)
     {
     }
@@ -39,6 +64,11 @@ public class Printer3D : Building
         
         SetBar(0.0f);
         SetPrintImage(0);
+        if (isPrinting)
+        {
+            printImage.Texture = Building.textures[type];
+            barAnimationP.CurrentAnimation = "PRINT";
+        }
     }
     
     public void _on_Timer_timeout()

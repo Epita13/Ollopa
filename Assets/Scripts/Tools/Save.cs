@@ -45,6 +45,7 @@ public static class Save
         saveWorldData(savePath);
         savePlayerData(savePath);
         saveSpaceShipData(savePath);
+        saveBuildingsData(savePath);
     }
     public static void _Load(string saveName)
     {
@@ -58,6 +59,7 @@ public static class Save
         LoadWorldData(Path.Combine(savesPath, saveName));
         LoadPlayerData(Path.Combine(savesPath, saveName));
         LoadSpaceShipData(Path.Combine(savesPath, saveName));
+        LoadBuildingsData(Path.Combine(savesPath, saveName));
     }
     
     
@@ -209,6 +211,38 @@ public static class Save
         try
         {
             data = SpaceshipDataModel.Deserialize(jsonString);
+        }
+        catch
+        {
+            throw new Exception("LoadSpaceShipData: invalid syntaxe json");
+        }
+        data.SetValues();
+    }
+    
+    
+    private static void saveBuildingsData(string path)
+    {
+        string fileName = Path.Combine(path, "Buildings.data");
+        if (File.Exists(fileName))
+        {    
+            File.Delete(fileName);    
+        }
+        BuildingsDataModel data = new BuildingsDataModel();
+        data.GetValues();
+        string json = JsonConvert.SerializeObject(data);
+        using (StreamWriter sw = File.CreateText(fileName))
+        {
+            sw.Write(json);
+        }
+    }
+    private static void LoadBuildingsData(string path)
+    {
+        string filePath = Path.Combine(path, "Buildings.data");
+        string jsonString = File.ReadAllText(filePath);
+        BuildingsDataModel data = null;
+        try
+        {
+            data = BuildingsDataModel.Deserialize(jsonString);
         }
         catch
         {
