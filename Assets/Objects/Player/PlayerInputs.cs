@@ -218,7 +218,7 @@ public class PlayerInputs : Node2D
 	{
 		Vector2 playerPos = Convertion.Location2World(PlayerMouvements.instance.Position);
 		bool right = playerPos.x-1 < mousePos.x;
-		if (MouseInRange(10,true))
+		if (MouseInRange(9,true))
 		{
 			Building.Type type = Player.BuildingSelected;
 			if (Player.inventoryBuildings.GetItemCount(type) >= 1)

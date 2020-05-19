@@ -59,7 +59,7 @@ public class DeathMenu : Control
 
     public void _on_BtnQuit_button_down()
     {
-        Save._Save(World.saveName);
+        Save._Save(Game.saveName);
         GetTree().Quit();
     }
 }

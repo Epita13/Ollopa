@@ -88,4 +88,10 @@ public class Game : Node2D
     public static float GetScreenMinX() => PlayerMouvements.GetX() - (Convertion.Location2World(new Vector2(Game.WorldScreenSizeX/2, 0))).x;
     public static float GetScreenMaxX() => PlayerMouvements.GetX() + (Convertion.Location2World(new Vector2(Game.WorldScreenSizeX/2, 0))).x;
 
+
+    public void _on_BTNSAVE_button_down()
+    {
+        GD.Print(saveName + " de");
+        Save._Save(saveName);
+    }
 }

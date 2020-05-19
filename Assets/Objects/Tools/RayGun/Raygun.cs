@@ -11,6 +11,7 @@ public class Raygun : Node2D
 	public const float POWERENERGY = 1.0f;
 
 	public const bool can_shoot = true;
+	private bool isalreadyshooting = false;
 	
 	[Signal]
 	public delegate void hit(Vector2 xy,Vector2 az);
@@ -148,6 +149,11 @@ public class Raygun : Node2D
 				shoot();
 				particule.Emitting = true;
 				Player.RemoveEnergy(POWERENERGY*delta);
+				if (!isalreadyshooting)
+				{
+				PlayerMouvements.PlaySound(Sounds.Type.PlayerLaser);
+				isalreadyshooting = true;
+				}
 			}
 			else
 			{
@@ -155,12 +161,15 @@ public class Raygun : Node2D
 				beam.Visible = false;
 				particule.Emitting = false;
 			}
+
+			shoot();
 		}
 		if (Input.IsActionJustReleased("mouse1"))
 		{
 			begin.Visible = false;
 			beam.Visible = false;
 			particule.Emitting = false;
+			isalreadyshooting = false;
 		}
 	}
 }

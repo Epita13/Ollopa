@@ -11,9 +11,9 @@ public static class Player
     public static float health = 100.0f;
 
     public static float oxygeneMax = 100.0f;
-    public static float oxygene = 100.0f;
+    public static float oxygene = 3.0f;
     public static float oxygeneLoss = 0.4f;
-    public static float oxygeneDamage = 10.0f;
+    public static float oxygeneDamage = 3.0f;
 
     public static float energyMax = 100.0f;
     public static float energy = 50.0f;
@@ -45,6 +45,7 @@ public static class Player
     /// Enleve de la vie au joueur.
     public static void RemoveHealth(float amount)
     {
+        PlayerMouvements.PlaySound(Sounds.Type.PlayerHurt);
         health -= amount;
         if (health<0)
             health = 0;

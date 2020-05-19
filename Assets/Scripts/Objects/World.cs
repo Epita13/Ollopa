@@ -49,8 +49,6 @@ public static class World
 
     public static Random random;
 
-    public static string saveName = "default";
-
     // SimplexNoise
     public static OpenSimplexNoise noise = new OpenSimplexNoise();
     private static int seed=-1;
@@ -86,10 +84,6 @@ public static class World
     public static void SetSeed(int seed)
     {
         World.seed = seed;
-    }
-    public static void SetSaveName(string name)
-    {
-        World.saveName = name;
     }
     /// Initialise le monde et le calcule.
     public static void Init(TileMap BlockTilemap, TileMap UIBlockTilemap, TileMap UI2BlockTilemap, TileMap BackBlockTilemap, bool generate = true)

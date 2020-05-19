@@ -9,10 +9,13 @@ public class SpaceShip : Node2D
 
     private static PackedScene spaceShip = GD.Load<PackedScene>("res://Assets/Objects/Buildings/Spaceship/SpaceShip.tscn");
     
-    
+    /*
     public const float ENERGYWIN = 1500.0f; 
     public const float FUELWIN = 400.0f;
-    public const int COMPOSITEWIN = 3000;
+    public const int COMPOSITEWIN = 3000;*/
+    public const float ENERGYWIN = 0.0f; 
+    public const float FUELWIN = 0.0f;
+    public const int COMPOSITEWIN = 0;
     
     
     public static SpaceShip instance;
