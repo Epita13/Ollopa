@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public class PetrolBar : Control
+public class FuelBar : Control
 {
 
     private Control bar;
 
-    private Label petrolMaxLabel;
-    private Label petrolLabel;
+    private Label fuelMaxLabel;
+    private Label fuelLabel;
     
     private float yMax;
     
@@ -15,20 +15,21 @@ public class PetrolBar : Control
     {
         bar = GetNode<Control>("slide");
 
-        petrolLabel = GetNode<Label>("labelCUR");
-        petrolMaxLabel = GetNode<Label>("labelMAX");
+        fuelLabel = GetNode<Label>("labelCUR");
+        fuelMaxLabel = GetNode<Label>("labelMAX");
         
         yMax = bar.RectSize.y;
         bar.RectSize = new Vector2(bar.RectSize.x, 0);
     }
     
 
-    public void Change(float oil, float oilMax)
+    public void Change(float fuel, float fuelMax)
     {
-        float y = oil * yMax / oilMax;
+        float y = fuel * yMax / fuelMax;
         bar.RectSize = new Vector2(bar.RectSize.x, y);
-        petrolMaxLabel.Text = oilMax + " oil";
-        petrolLabel.Text = oil.ToString(GetFormat(oil)) + " oil";
+        fuelMaxLabel.Text = fuelMax + " fuel";
+        fuelLabel.Text = fuel.ToString(GetFormat(fuel)) + " fuel";
+
     }
 
     private string GetFormat(float energy)
