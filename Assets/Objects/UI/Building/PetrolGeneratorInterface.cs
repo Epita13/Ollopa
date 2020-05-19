@@ -43,7 +43,7 @@ public class PetrolGeneratorInterface : BuildingInterface
     {
         if (petrolGenerator.oil > 0)
         {
-            petrolGenerator.togive += Math.Min(petrolGenerator.oil, Player.oxygeneMax - Player.oxygene);
+            petrolGenerator.togive += petrolGenerator.oil;
         }
     }
 

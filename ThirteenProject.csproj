@@ -60,6 +60,7 @@
     <Compile Include="Assets\Objects\Autres\Tree\Tree.cs" />
     <Compile Include="Assets\Objects\Buildings\Barrel\Barrel.cs" />
     <Compile Include="Assets\Objects\Buildings\Compactor\Compactor.cs" />
+	<Compile Include="Assets\Objects\Buildings\Drill\Drill.cs" />
     <Compile Include="Assets\Objects\Buildings\Infirmary\Infirmary.cs" />
     <Compile Include="Assets\Objects\Buildings\O2Generator\O2Generator.cs" />
     <Compile Include="Assets\Objects\Buildings\Refinery\Refinery.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Objects\Player\PlayerZone.cs" />
     <Compile Include="Assets\Objects\Tools\Raygun\Raygun.cs" />
     <Compile Include="Assets\Objects\UI\Building\CompactorInterface.cs" />
+	<Compile Include="Assets\Objects\UI\Building\DrillInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\InfirmaryInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\O2GeneratorInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\Printer3DInterface.cs" />
