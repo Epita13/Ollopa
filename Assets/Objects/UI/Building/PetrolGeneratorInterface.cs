@@ -47,7 +47,7 @@ public class PetrolGeneratorInterface : BuildingInterface
         }
     }
 
-    public void _on_TimerOxygene_timeout()
+    public void _on_Timer_timeout()
     {
         EmitSignal("ChangePetrolBar", petrolGenerator.oil, petrolGenerator.oilMAX);
     }
