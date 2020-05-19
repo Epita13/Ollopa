@@ -127,9 +127,14 @@ public class Raygun : Node2D
 	public override void _Process(float delta)
 	{
 		if (PlayerState.GetState() != PlayerState.State.Normal || Player.UsableSelected != Usable.Type.Laser)
+		{
+			Visible = false;
 			return;
-		
-		LookAt(GetGlobalMousePosition());
+		}
+
+		Visible = true;
+
+			LookAt(GetGlobalMousePosition());
 		if (GlobalRotation < -Mathf.Pi / 2 || GlobalRotation > Mathf.Pi / 2)
 		{
 			anSprite.FlipV = true;
