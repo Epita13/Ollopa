@@ -56,11 +56,14 @@ public class Printer3D : Building
     {
         this.id = nbPrinter3D;
         nbPrinter3D += 1;
-
+        
+        
         bar = GetNode<Sprite>("Image/bar");
         printImage = GetNode<Sprite>("Image/printImage");
         barAnimationP = GetNode<AnimationPlayer>("Image/bar/AnimationPlayer");
         barAnimationP.CurrentAnimation = "ENDPRINT";
+
+        printImage.Material = (Material)printImage.Material.Duplicate();
         
         SetBar(0.0f);
         SetPrintImage(0);
