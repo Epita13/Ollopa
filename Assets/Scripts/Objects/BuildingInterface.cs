@@ -30,6 +30,7 @@ public class BuildingInterface : Control
         {Building.Type.OilPump, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/PetrolGeneratorInterface.tscn")},
         {Building.Type.Refinery, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/RefineryInterface.tscn")},
         {Building.Type.Drill, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/DrillInterface.tscn")},
+        {Building.Type.Grinder, GD.Load<PackedScene>("res://Assets/Objects/UI/Building/GrinderInterface.tscn")},
     };
 
     public static bool interfaceOpen = false;

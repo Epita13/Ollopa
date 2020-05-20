@@ -46,4 +46,22 @@ public class Item
         Type.Dirt,
         Type.Ospirit
     };
+    
+    public static List<Type> grindable = new List<Type>
+    {
+        Type.Wood,
+        Type.Stone,
+        Type.Dirt,
+        Type.Sonar,
+        Type.Ospirit,
+    };
+    
+    public static Dictionary<Type, int> ToComposite = new Dictionary<Type, int>
+    {
+        {Type.Wood, 3},
+        {Type.Stone, 5},
+        {Type.Dirt, 7},
+        {Type.Sonar, 3},
+        {Type.Ospirit, 1},
+    };
 }
