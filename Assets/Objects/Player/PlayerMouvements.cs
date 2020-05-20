@@ -21,7 +21,7 @@ public class PlayerMouvements : KinematicBody2D
     public static float JUMP_POWER = -16000;
     public static bool canMove = true;
 
-    public static float FALLSPEEDDAMAGE1 = 400.0f; 
+    public static float FALLSPEEDDAMAGE1 = 500.0f; 
     public static float FALLSPEEDDAMAGE2 = 675.0f; 
     
     public static float LiquidCoefMove = 1.0f; 

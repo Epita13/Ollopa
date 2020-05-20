@@ -120,7 +120,7 @@ public class Tree : StaticBody2D
         GetNode<Sprite>("top").Texture = trees_textures[treeNumber].Item2;
 
         Scale = new Vector2(treeSize, treeSize);
-        health = treeSize * 750 / 0.3f;
+        health = treeSize * 750 / 0.9f;
         drop = new Drop(new Drop.Loot(Item.Type.Wood, Mathf.CeilToInt(treeSize*4/0.3f)));
     }
 

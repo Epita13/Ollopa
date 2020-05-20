@@ -11,15 +11,15 @@ public abstract class Building : Node2D
     public enum Type
     {
         SolarPanel,
+        O2Generator,
 		Storage,
+        Grinder,
         Printer3D,
         Compactor,
         Infirmary,
-        O2Generator,
         OilPump,
         Refinery,
-        Drill,
-        Grinder
+        Drill
     }
     
     // Dictionaire : Stock les scnenes batiment en fonction du type de batiment
@@ -66,16 +66,16 @@ public abstract class Building : Node2D
     
     public static Dictionary<Type, float> times2Create = new Dictionary<Type, float>
     {
-        {Type.SolarPanel, 20.0f},
+        {Type.SolarPanel, 60.0f},
         {Type.Storage, 120.0f},
         {Type.Printer3D, 300.0f},
         {Type.Compactor, 150.0f},
-        {Type.Infirmary, 30f},
-        {Type.O2Generator, 30f},
+        {Type.Infirmary, 200f},
+        {Type.O2Generator, 45f},
         {Type.OilPump, 60f},
         {Type.Refinery, 60f},
-        {Type.Drill, 40f},
-        {Type.Grinder, 300f}
+        {Type.Drill, 45f},
+        {Type.Grinder, 150f}
     };
     
     public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
@@ -85,11 +85,11 @@ public abstract class Building : Node2D
         {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 40), new Drop.Loot(Item.Type.Ospirit,1))},
         {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Sonar,5), new Drop.Loot(Item.Type.Stone, 15))},
         {Type.Infirmary, new Drop(new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Ospirit, 2), new Drop.Loot(Item.Type.Sonar,7), new Drop.Loot(Item.Type.Composite,10))},
-        {Type.O2Generator, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Wood,30))},
+        {Type.O2Generator, new Drop( new Drop.Loot(Item.Type.Wood,5),new Drop.Loot(Item.Type.Stone,15))},
         {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Stone, 35), new Drop.Loot(Item.Type.Ospirit,2))},
         {Type.Refinery, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone,40), new Drop.Loot(Item.Type.Ospirit,4))},
         {Type.Drill, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
-        {Type.Grinder, new Drop(new Drop.Loot(Item.Type.Composite, 10))}
+        {Type.Grinder, new Drop(new Drop.Loot(Item.Type.Sonar, 1),new Drop.Loot(Item.Type.Dirt, 30),new Drop.Loot(Item.Type.Stone, 15))}
     };
     
     public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>

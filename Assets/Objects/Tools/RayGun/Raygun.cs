@@ -6,9 +6,9 @@ public class Raygun : Node2D
 {
 
 
-	public const float POWER = 0.3f;
+	public const float POWER = 0.6f;
 	public const float RADIUS = 350f;
-	public const float POWERENERGY = 1.0f;
+	public const float POWERENERGY = 0.4f;
 
 	public const bool can_shoot = true;
 	private bool isalreadyshooting = false;
@@ -151,7 +151,6 @@ public class Raygun : Node2D
 		{
 			if (Player.energy > 0)
 			{
-				GD.Print(Player.energy);
 				shoot();
 				particule.Emitting = true;
 				Player.RemoveEnergy(POWERENERGY*delta);
@@ -167,8 +166,6 @@ public class Raygun : Node2D
 				beam.Visible = false;
 				particule.Emitting = false;
 			}
-
-			shoot();
 		}
 		if (Input.IsActionJustReleased("mouse1"))
 		{

@@ -70,10 +70,10 @@ public class ToolBar : Control
             InputEventMouseButton emb = (InputEventMouseButton)@event;
             if (emb.IsPressed()){
                 if (emb.ButtonIndex == (int)ButtonList.WheelUp){
-                    Player.UsableSelected = (Usable.Type) Modulo((int)Player.UsableSelected + 1, Usable.nbUsables);
+                    Player.UsableSelected = (Usable.Type) Modulo((int)Player.UsableSelected - 1, Usable.nbUsables);
                 }
                 if (emb.ButtonIndex == (int)ButtonList.WheelDown){
-                    Player.UsableSelected = (Usable.Type) Modulo((int)Player.UsableSelected - 1, Usable.nbUsables);
+                    Player.UsableSelected = (Usable.Type) Modulo((int)Player.UsableSelected + 1, Usable.nbUsables);
                 }
             }
         }

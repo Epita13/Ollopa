@@ -58,7 +58,7 @@ script = ExtResource( 4 )
 speed = 0.3
 texture = ExtResource( 9 )
 zIndex = -99
-y = 1344.0
+y = 1150.0
 
 [node name="Environement" parent="." instance=ExtResource( 10 )]
 

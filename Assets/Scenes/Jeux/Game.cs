@@ -63,7 +63,10 @@ public class Game : Node2D
 
     private void InitialiseIverntories()
     {
-        
+        Player.inventoryBuildings.Add(Building.Type.Printer3D, 1);
+        Player.inventoryBuildings.Add(Building.Type.SolarPanel, 1);
+        Player.inventoryUsables.Add(Usable.Type.IronBlock, 20);
+
     }
 
 
