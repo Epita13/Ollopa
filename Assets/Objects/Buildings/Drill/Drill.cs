@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class Drill : Building
 {
     public static int nbDrill;
-    private static float power = 1f;
-    private static readonly float Drillproduc = 1f;
+    private static float power = 3f;
+    private static readonly float Drillproduc = 2f;
     public int stockMAX = 500;
     public  List<Item.Type> togive = new List<Item.Type>();
     public Dictionary<Item.Type, int> stock = new Dictionary<Item.Type, int>();
@@ -40,11 +40,11 @@ public class Drill : Building
         {
             proba[i] = Item.Type.Dirt;
         }
-        for (i = i; i < 60; i++)
+        for (i = i; i < 80; i++)
         {
             proba[i] = Item.Type.Stone;
         }
-        for (i = i; i < 80; i++)
+        for (i = i; i < 95; i++)
         {
             proba[i] = Item.Type.Sonar;
         }
