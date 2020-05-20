@@ -10,6 +10,7 @@ public class StorageLiquids
 
     public StorageLiquids(float max)
     {
+        Init();
         this.max = max;
     }
 
