@@ -6,7 +6,7 @@ public abstract class Building : Node2D
 {
     
     // Enumeration : Type de batiment disponible
-    public static int nbBuildings = 8;
+    public static int nbBuildings = 9;
 
     public enum Type
     {
@@ -17,7 +17,8 @@ public abstract class Building : Node2D
         Infirmary,
         O2Generator,
         OilPump,
-        Refinery
+        Refinery,
+        Drill
     }
     
     // Dictionaire : Stock les scnenes batiment en fonction du type de batiment
@@ -30,7 +31,8 @@ public abstract class Building : Node2D
         {Type.Infirmary, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Infirmary/Infirmary.tscn")},
         {Type.O2Generator, GD.Load<PackedScene>("res://Assets/Objects/Buildings/O2Generator/O2Generator.tscn")},
         {Type.OilPump, GD.Load<PackedScene>("res://Assets/Objects/Buildings/PetrolGenerator/PetrolGenerator.tscn")},
-        {Type.Refinery, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Refinery/Refinery.tscn")}
+        {Type.Refinery, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Refinery/Refinery.tscn")},
+        {Type.Drill, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Drill/Drill.tscn")}
     };
     public static Dictionary<Type, Texture> textures = new Dictionary<Type, Texture>
     {
@@ -42,6 +44,7 @@ public abstract class Building : Node2D
         {Type.O2Generator, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/O2Generator/O2Generator.png")},
         {Type.OilPump, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Oilwell/PetrolGenerator.png")},
         {Type.Refinery, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Refinery/Refinery.png")},
+        {Type.Drill, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Drill/forreuse.png")}
     };
     
     public static Dictionary<Type, string> descriptions = new Dictionary<Type, string>
@@ -53,7 +56,8 @@ public abstract class Building : Node2D
         {Type.Infirmary, "Heal the player"},
         {Type.O2Generator, "Give oxygene"},
         {Type.OilPump, "Give Oil"},
-        {Type.Refinery, "Transform oil in fuel"}
+        {Type.Refinery, "Transform oil in fuel"},
+        {Type.Drill, "Extract item from the ground"}
     };
     
     public static Dictionary<Type, float> times2Create = new Dictionary<Type, float>
@@ -65,7 +69,8 @@ public abstract class Building : Node2D
         {Type.Infirmary, 30f},
         {Type.O2Generator, 30f},
         {Type.OilPump, 60f},
-        {Type.Refinery, 60f}
+        {Type.Refinery, 60f},
+        {Type.Drill, 40f}
     };
     
     public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
@@ -77,7 +82,8 @@ public abstract class Building : Node2D
         {Type.Infirmary, new Drop(new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Ospirit, 2), new Drop.Loot(Item.Type.Sonar,7), new Drop.Loot(Item.Type.Composite,10))},
         {Type.O2Generator, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Wood,30))},
         {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Stone, 35), new Drop.Loot(Item.Type.Ospirit,2))},
-        {Type.Refinery, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone,40), new Drop.Loot(Item.Type.Ospirit,4))}
+        {Type.Refinery, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone,40), new Drop.Loot(Item.Type.Ospirit,4))},
+        {Type.Drill, new Drop(new Drop.Loot(Item.Type.Composite, 10))}
     };
     
     public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>
@@ -88,7 +94,8 @@ public abstract class Building : Node2D
         Type.Infirmary, 
         Type.O2Generator,
         Type.OilPump,
-        Type.Refinery
+        Type.Refinery,
+        Type.Drill
     };
 
 

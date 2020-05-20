@@ -38,4 +38,12 @@ public class Item
         {Type.Wood, 25f},
         {Type.Ospirit, 60f},
     };
+    
+    public static List<Type> drillable = new List<Type>
+    {
+        Type.Stone,
+        Type.Sonar,
+        Type.Dirt,
+        Type.Ospirit
+    };
 }
