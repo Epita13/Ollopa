@@ -73,7 +73,7 @@
     <Compile Include="Assets\Objects\Player\PlayerInputs.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
     <Compile Include="Assets\Objects\Player\PlayerZone.cs" />
-    <Compile Include="Assets\Objects\Tools\Raygun\Raygun.cs" />
+    <Compile Include="Assets\Objects\Tools\RayGun\Raygun.cs" />
     <Compile Include="Assets\Objects\UI\Building\CompactorInterface.cs" />
 	<Compile Include="Assets\Objects\UI\Building\DrillInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\InfirmaryInterface.cs" />
