@@ -8,8 +8,6 @@
 [ext_resource path="res://Assets/Objects/UI/Sliders/Petrol/FuelBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Objects/UI/Sliders/Energy/EnergyBar.tscn" type="PackedScene" id=7]
 
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 4 )

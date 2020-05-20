@@ -442,6 +442,6 @@ autostart = true
 [connection signal="button_down" from="back/VBox/HBox/BtnCancel" to="." method="_on_BtnCancel_button_down"]
 [connection signal="button_down" from="back/VBox/HBox/BtnClaim" to="." method="_on_BtnClaim_button_down"]
 [connection signal="value_changed" from="back2/HSlider" to="back2/Graph" method="_on_HSlider_value_changed"]
-[connection signal="value_changed" from="back2/HSlider" to="back2/Graph2" method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="back2/HSlider" to="back2/Graph3" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="back2/HSlider" to="back2/Graph2" method="_on_HSlider_value_changed"]
 [connection signal="timeout" from="TimerEnergy" to="." method="_on_TimerEnergy_timeout"]

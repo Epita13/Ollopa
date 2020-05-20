@@ -55,26 +55,26 @@ public class Refinery : Building
 	{
 		if (togive >= giveSpeed)
 		{
-			//Player.inventoryLiquids.Add(Liquid.Type.Fuel, giveSpeed);
+			Player.inventoryLiquids.Add(Liquid.Type.Fuel, giveSpeed);
 			togive -= giveSpeed;
 			fuel -= giveSpeed;
 		}
 		else if(togive > 0)
 		{
-			//Player.inventoryLiquids.Add(Liquid.Type.Fuel, togive);
+			Player.inventoryLiquids.Add(Liquid.Type.Fuel, togive);
 			fuel -= togive;
 			togive = 0;
 		}
 		
 		if (toadd >= giveSpeed)
 		{
-			//Player.inventoryLiquids.Remove(Liquid.Type.Oil, giveSpeed);
+			Player.inventoryLiquids.Remove(Liquid.Type.Oil, giveSpeed);
 			toadd -= giveSpeed;
 			oil += giveSpeed;
 		}
 		else if(toadd > 0)
 		{
-			//Player.inventoryLiquids.Remove(Liquid.Type.Oil, toadd);
+			Player.inventoryLiquids.Remove(Liquid.Type.Oil, toadd);
 			oil += toadd;
 			toadd = 0;
 		}

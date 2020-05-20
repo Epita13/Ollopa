@@ -52,16 +52,16 @@ public abstract class Building : Node2D
     
     public static Dictionary<Type, string> descriptions = new Dictionary<Type, string>
     {
-        {Type.SolarPanel, "Generate energy from the sun's energy"},
+        {Type.SolarPanel, "Generates energy from the sun's energy"},
         {Type.Storage, "Stores energy and oxygen"},
-        {Type.Printer3D, "Create buildings"},
-        {Type.Compactor, "Create blocks"},
-        {Type.Infirmary, "Heal the player"},
-        {Type.O2Generator, "Give oxygene"},
-        {Type.OilPump, "Give Oil"},
-        {Type.Refinery, "Transform oil in fuel"},
-        {Type.Drill, "Extract item from the ground"},
-        {Type.Grinder, "Grind every item into composite"}
+        {Type.Printer3D, "Creates buildings"},
+        {Type.Compactor, "Creates blocks"},
+        {Type.Infirmary, "Heals the player"},
+        {Type.O2Generator, "Gives oxygene"},
+        {Type.OilPump, "Gives Oil"},
+        {Type.Refinery, "Transforms oil in fuel"},
+        {Type.Drill, "Extracts item from the ground"},
+        {Type.Grinder, "Grinds every item into composite"}
     };
     
     public static Dictionary<Type, float> times2Create = new Dictionary<Type, float>

@@ -26,8 +26,8 @@ public class HealthBar : Node
     {
         float y = health * yMax / healthMax;
         bar.RectSize = new Vector2(bar.RectSize.x, y);
-        healthMaxLabel.Text = healthMax + " pv";
-        healthLabel.Text = health.ToString(GetFormat(health)) + " pv";
+        healthMaxLabel.Text = healthMax + " life";
+        healthLabel.Text = health.ToString(GetFormat(health)) + " life";
 
     }
 

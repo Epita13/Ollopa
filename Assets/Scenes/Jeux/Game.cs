@@ -77,7 +77,8 @@ public class Game : Node2D
 		Player.inventoryBuildings.Add(Building.Type.Drill, 3);
 		Player.inventoryBuildings.Add(Building.Type.Grinder, 3);
         Player.inventoryItems.Add(Item.Type.Composite, 120);
-        
+        Player.inventoryLiquids.Add(Liquid.Type.Oil, 100);
+
     }
 
 

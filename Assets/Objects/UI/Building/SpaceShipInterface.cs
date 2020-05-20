@@ -110,6 +110,8 @@ public class SpaceShipInterface : Control
                 BtnEnerT.Text = "OFF";
             }
         }
+        
+        RefreshLaunchBTN();
     }
 
     public void _on_TimerComposite_timeout()

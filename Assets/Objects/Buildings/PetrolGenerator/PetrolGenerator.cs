@@ -46,13 +46,13 @@ public class PetrolGenerator : Building
     {
         if (togive >= giveSpeed)
         {
-            //Player.inventoryLiquids.Add(Liquid.Type.Oil, giveSpeed);
+            Player.inventoryLiquids.Add(Liquid.Type.Oil, giveSpeed);
             togive -= giveSpeed;
             oil -= giveSpeed;
         }
         else if(togive > 0)
         {
-            //Player.inventoryLiquids.Add(Liquid.Type.Oil, togive);
+            Player.inventoryLiquids.Add(Liquid.Type.Oil, togive);
             oil -= togive;
             togive = 0;
         }

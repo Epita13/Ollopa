@@ -48,7 +48,7 @@ public class RefineryInterface : BuildingInterface
     {
         float transfer = 0;
         float.TryParse(entry.Text, out transfer);
-        if(true || Math.Min(transfer, refinery.oilMAX - refinery.oil) <= Player.inventoryLiquids.GetItemCount(Liquid.Type.Fuel))
+        if(Math.Min(transfer, refinery.oilMAX - refinery.oil) <= Player.inventoryLiquids.GetItemCount(Liquid.Type.Oil))
             refinery.toadd += Math.Min(transfer, refinery.oilMAX - refinery.oil);
     }
     

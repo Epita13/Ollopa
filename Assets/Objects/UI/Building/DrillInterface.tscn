@@ -16,11 +16,11 @@
 size = 32
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=2]
 size = 14
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 2 )
 
 [node name="Drill" type="Control"]
@@ -117,7 +117,7 @@ margin_left = -1.71475
 margin_top = 1.67014
 margin_right = 178.285
 margin_bottom = 46.6701
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 2 )
 text = "GIVESELECTED"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -131,8 +131,8 @@ anchor_bottom = 0.8
 margin_left = -1.71475
 margin_right = 178.285
 margin_bottom = 45.0
-custom_fonts/font = SubResource( 7 )
-text = "GIVEALL"
+custom_fonts/font = SubResource( 2 )
+text = "GIVE ALL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,7 +145,7 @@ margin_top = 10.0
 margin_right = -10.0
 margin_bottom = 26.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "ID : 0"
 align = 2
 valign = 1
@@ -250,7 +250,7 @@ autostart = true
 [connection signal="button_down" from="back/GiveSelected" to="." method="_on_GiveSelected_button_down"]
 [connection signal="button_down" from="back/GiveAll" to="." method="_on_GiveAll_button_down"]
 [connection signal="value_changed" from="back2/HSlider" to="back2/Graph" method="_on_HSlider_value_changed"]
-[connection signal="value_changed" from="back2/HSlider" to="back2/Graph2" method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="back2/HSlider" to="back2/Graph3" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="back2/HSlider" to="back2/Graph2" method="_on_HSlider_value_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="TimerEnergy" to="." method="_on_TimerEnergy_timeout"]

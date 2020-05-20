@@ -63,7 +63,7 @@ margin_top = -179.5
 margin_right = 195.0
 margin_bottom = -136.5
 custom_fonts/font = SubResource( 1 )
-text = "200 pv"
+text = "200 life"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -79,7 +79,7 @@ margin_top = 152.5
 margin_right = 195.0
 margin_bottom = 212.5
 custom_fonts/font = SubResource( 2 )
-text = "50 pv"
+text = "50 life"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
