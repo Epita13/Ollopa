@@ -56,8 +56,6 @@ public class Drill : Building
     
     public void _on_Timer_timeout()
     {
-        on = (energy >= power2wake && !on || energy > 0 && on) &&  Count() < stockMAX;
-        
         if (togive.Count > 0)
         {
             foreach (Item.Type item in togive)
@@ -91,6 +89,9 @@ public class Drill : Building
             GetNode<AnimationPlayer>("AnimationPlayer").PlayBackwards("TOON");
             deploy = false;
         }
+        
+        
+        on = (energy >= power2wake && !on || energy > 0 && on) &&  Count() < stockMAX;
     }
 
     private void DrillItem()
