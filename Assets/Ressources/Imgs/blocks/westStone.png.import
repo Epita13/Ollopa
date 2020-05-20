@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/westStone.png-cd501d00c955a8d8583305824f69fde9.stex"
+path="res://.import/westStone.png-927c27b6fed7f14b2662cd632adc18fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/blocks/westStone.png"
-dest_files=[ "res://.import/westStone.png-cd501d00c955a8d8583305824f69fde9.stex" ]
+source_file="res://Assets/Ressources/Imgs/Blocks/westStone.png"
+dest_files=[ "res://.import/westStone.png-927c27b6fed7f14b2662cd632adc18fa.stex" ]
 
 [params]
 

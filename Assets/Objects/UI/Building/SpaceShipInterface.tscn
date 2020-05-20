@@ -1,12 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Ressources/Imgs/UI/Inventory/inventoryPanel.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Ressources/Imgs/Buildings/SpaceShip/SpaceShip.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Ressources/Imgs/Buildings/Spaceship/SpaceShip.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Objects/UI/Building/SpaceShipInterface.cs" type="Script" id=3]
 [ext_resource path="res://Assets/Ressources/Fonts/F25_Bank_Printer.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Objects/UI/Building/Other/ItemBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Objects/UI/Sliders/Petrol/FuelBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Objects/UI/Sliders/Energy/EnergyBar.tscn" type="PackedScene" id=7]
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

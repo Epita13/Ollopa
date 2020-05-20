@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sonarOre.png-8827ded744f454ba7858e643fef11eab.stex"
+path="res://.import/sonarOre.png-6cc3fb7954d0477be9e9ec6ff418371e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/blocks/sonarOre.png"
-dest_files=[ "res://.import/sonarOre.png-8827ded744f454ba7858e643fef11eab.stex" ]
+source_file="res://Assets/Ressources/Imgs/Blocks/sonarOre.png"
+dest_files=[ "res://.import/sonarOre.png-6cc3fb7954d0477be9e9ec6ff418371e.stex" ]
 
 [params]
 

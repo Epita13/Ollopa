@@ -66,14 +66,14 @@
     <Compile Include="Assets\Objects\Buildings\Refinery\Refinery.cs" />
     <Compile Include="Assets\Objects\Buildings\Printer3D\Printer3D.cs" />
     <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
-    <Compile Include="Assets\Objects\Buildings\Spaceship\Spaceship.cs" />
+    <Compile Include="Assets\Objects\Buildings\Spaceship\SpaceShip.cs" />
     <Compile Include="Assets\Objects\Buildings\Storage\Storage.cs" />
     <Compile Include="Assets\Objects\Buildings\PetrolGenerator\PetrolGenerator.cs" />
     <Compile Include="Assets\Objects\Player\PlayerBuildingActions.cs" />
     <Compile Include="Assets\Objects\Player\PlayerInputs.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
     <Compile Include="Assets\Objects\Player\PlayerZone.cs" />
-    <Compile Include="Assets\Objects\Tools\RayGun\Raygun.cs" />
+    <Compile Include="Assets\Objects\Tools\Raygun\Raygun.cs" />
     <Compile Include="Assets\Objects\UI\Building\CompactorInterface.cs" />
 	<Compile Include="Assets\Objects\UI\Building\DrillInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\InfirmaryInterface.cs" />

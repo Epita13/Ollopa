@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ui_break.png-c8bc4cb73528ac12368763a6026a9438.stex"
+path="res://.import/ui_break.png-d9befa9115ba7d317db5bede5e51aba2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/blocks/UI/ui_break.png"
-dest_files=[ "res://.import/ui_break.png-c8bc4cb73528ac12368763a6026a9438.stex" ]
+source_file="res://Assets/Ressources/Imgs/Blocks/UI/ui_break.png"
+dest_files=[ "res://.import/ui_break.png-d9befa9115ba7d317db5bede5e51aba2.stex" ]
 
 [params]
 

@@ -5,8 +5,10 @@
 [ext_resource path="res://Assets/Objects/Player/PlayerInputs.cs" type="Script" id=3]
 [ext_resource path="res://Assets/Ressources/Imgs/Joueur/PointLigth.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Objects/Player/PlayerZone.cs" type="Script" id=5]
-[ext_resource path="res://Assets/Objects/Tools/RayGun/Raygun.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Objects/Tools/Raygun/Raygun.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Objects/Player/PlayerBuildingActions.cs" type="Script" id=7]
+
+
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1

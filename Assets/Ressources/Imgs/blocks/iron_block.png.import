@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/iron_block.png-9c9a32df1fc54ea3d6a9059b4b79d5f5.stex"
+path="res://.import/iron_block.png-3cdeb20aeac73ba047a3f3a228ca4b31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/blocks/iron_block.png"
-dest_files=[ "res://.import/iron_block.png-9c9a32df1fc54ea3d6a9059b4b79d5f5.stex" ]
+source_file="res://Assets/Ressources/Imgs/Blocks/iron_block.png"
+dest_files=[ "res://.import/iron_block.png-3cdeb20aeac73ba047a3f3a228ca4b31.stex" ]
 
 [params]
 
