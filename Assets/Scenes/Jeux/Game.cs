@@ -63,22 +63,7 @@ public class Game : Node2D
 
     private void InitialiseIverntories()
     {
-        Player.inventoryUsables.Add(Usable.Type.Dirt, 30);
-        Player.inventoryUsables.Add(Usable.Type.Grass, 30);
-        Player.inventoryUsables.Add(Usable.Type.Stone, 300);
-        Player.inventoryBuildings.Add(Building.Type.SolarPanel, 2);
-        Player.inventoryBuildings.Add(Building.Type.Storage, 3);
-        Player.inventoryBuildings.Add(Building.Type.Printer3D, 3);
-        Player.inventoryBuildings.Add(Building.Type.Compactor, 3);
-        Player.inventoryBuildings.Add(Building.Type.Infirmary, 3);
-        Player.inventoryBuildings.Add(Building.Type.O2Generator, 3);
-        Player.inventoryBuildings.Add(Building.Type.OilPump, 3);
-        Player.inventoryBuildings.Add(Building.Type.Refinery, 3);
-		Player.inventoryBuildings.Add(Building.Type.Drill, 3);
-		Player.inventoryBuildings.Add(Building.Type.Grinder, 3);
-        Player.inventoryItems.Add(Item.Type.Composite, 120);
-        Player.inventoryLiquids.Add(Liquid.Type.Oil, 100);
-
+        
     }
 
 

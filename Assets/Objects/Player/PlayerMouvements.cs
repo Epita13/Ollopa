@@ -263,11 +263,6 @@ public class PlayerMouvements : KinematicBody2D
 				timer = 0;
 			}
 		}
-		if (Player.energy == 0)
-		{
-			Player.RemoveHealth(Player.energyDamage*delta);
-		}
-
   }
 
 

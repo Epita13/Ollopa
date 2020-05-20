@@ -38,7 +38,7 @@ public class Block
     public static Dictionary<Type, float> durabilities = new Dictionary<Type, float>
     {
         {Type.Air, -1.0f},
-        {Type.Stone, 100.0f},
+        {Type.Stone, 80.0f},
         {Type.Grass, 40.0f},
         {Type.Dirt, 30.0f},
         {Type.WestStone, -1.0f},
