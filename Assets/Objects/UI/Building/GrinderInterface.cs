@@ -60,7 +60,7 @@ public class GrinderInterface : BuildingInterface
         imageDesc.Texture = Item.textures[(int)type];
         titleDesc.Text = type.ToString();
         energyDesc.Text = "-> " + Grinder.power + "e";
-        descriptionDesc.Text = "To make 1 Composite, you need " + Item.ToComposite[blockSelected] + " " + blockSelected;
+        descriptionDesc.Text = "With 1 of " + blockSelected + ", you make " + Item.ToComposite[blockSelected] + " Composite";
     }
 
     private void InitBlocksSelector()
