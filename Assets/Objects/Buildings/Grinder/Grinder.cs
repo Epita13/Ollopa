@@ -34,8 +34,8 @@ public class Grinder : Building
 
     public void Grind(Item.Type type)
     {
-        Player.inventoryItems.Remove(type, 1);
-        Player.inventoryItems.Add(Item.Type.Composite, Item.ToComposite[type]);
+        Player.inventoryItems.Remove(type, Item.ToComposite[type]);
+        Player.inventoryItems.Add(Item.Type.Composite, 1);
     }
     
     
