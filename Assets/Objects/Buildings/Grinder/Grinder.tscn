@@ -2,8 +2,9 @@
 
 [ext_resource path="res://Assets/Ressources/Imgs/Buildings/Broyeur/mask.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Objects/Buildings/Grinder/Grinder.cs" type="Script" id=2]
-[ext_resource path="res://Assets/Ressources/Imgs/Buildings/Broyeur/broyeur.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Ressources/Imgs/Buildings/Broyeur/Broyeur.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Ressources/Shaders/outline.shader" type="Shader" id=5]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.65, 32.0258 )
