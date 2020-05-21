@@ -4,7 +4,7 @@ using System;
 public class Grinder : Building
 {
     public static int nbGrinder;
-    public static float power = 1f;
+    public static float power = 2.5f;
     private static float giveSpeed = 2f;
 
     /*Structure de sauvegarde*/
