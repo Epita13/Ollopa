@@ -5,10 +5,21 @@ public class Grinder : Building
 {
     public static int nbGrinder;
     public static float power = 1f;
-    public float o2MAX = 500f;
-    public float o2 = 0;
-    public float togive = 0;
     private static float giveSpeed = 2f;
+
+    /*Structure de sauvegarde*/
+    public struct SaveStruct
+    {
+        public Building.SaveStruct buildingSave;
+    }
+
+    public SaveStruct GetSaveStruct()
+    {
+        SaveStruct s = new SaveStruct();
+        s.buildingSave = GetBuildingSaveStruct();
+        return s;
+    }
+    /*************************/
     
     
     public Grinder() : base (200, 100.0f)

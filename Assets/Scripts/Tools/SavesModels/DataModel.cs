@@ -237,6 +237,13 @@ public class BuildingsDataModel
 
     public int nbRefinery;
     public List<Refinery.SaveStruct> refineries;
+    
+    public int nbDrills;
+    public List<Drill.SaveStruct> drills;
+    
+    public int nbGrinder;
+    public List<Grinder.SaveStruct> grinders;
+    
 
     //public Dictionary<(Building.Type, int), List<(Building.Type, int)>> buildingsLinks;
     public Dictionary<Building.Type, Dictionary<int, List<(Building.Type, int)>>> buildingsLinks;
@@ -298,6 +305,20 @@ public class BuildingsDataModel
         foreach (var refinery in Building.GetBuildingTypeList<Refinery>())
         {
             refineries.Add(refinery.GetSaveStruct());
+        }
+        
+        drills = new List<Drill.SaveStruct>();
+        nbDrills = Drill.nbDrill;
+        foreach (var drill in Building.GetBuildingTypeList<Drill>())
+        {
+            drills.Add(drill.GetSaveStruct());
+        }
+        
+        grinders = new List<Grinder.SaveStruct>();
+        nbGrinder = Grinder.nbGrinder;
+        foreach (var grinder in Building.GetBuildingTypeList<Grinder>())
+        {
+            grinders.Add(grinder.GetSaveStruct());
         }
         
         
@@ -404,6 +425,27 @@ public class BuildingsDataModel
             sp.Place(saveRefinery.buildingSave.location);
             sp.SetBuildingSaveStruct(saveRefinery.buildingSave);
         }
+        
+        Drill.nbDrill = nbDrills;
+        foreach (var saveDrill in drills)
+        {
+            Drill sp = (Drill)Building.prefabs[Building.Type.Drill].Instance();
+            sp.togive = saveDrill.togive;
+            sp.stock = saveDrill.stock;
+            sp.on = saveDrill.@on;
+            sp.deploy = saveDrill.deploy;
+            sp.Place(saveDrill.buildingSave.location);
+            sp.SetBuildingSaveStruct(saveDrill.buildingSave);
+        }
+        
+        Grinder.nbGrinder = nbGrinder;
+        foreach (var saveGrinder in grinders)
+        {
+            Grinder sp = (Grinder)Building.prefabs[Building.Type.Grinder].Instance();
+            sp.Place(saveGrinder.buildingSave.location);
+            sp.SetBuildingSaveStruct(saveGrinder.buildingSave);
+        }
+        
 
         foreach (var type in buildingsLinks)
         {

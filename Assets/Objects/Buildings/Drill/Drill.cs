@@ -10,13 +10,36 @@ public class Drill : Building
     public int stockMAX = 500;
     public  List<Item.Type> togive = new List<Item.Type>();
     public Dictionary<Item.Type, int> stock = new Dictionary<Item.Type, int>();
-    private bool on = false;
+    public bool on = false;
     private static float power2wake = 2 * power;
     private static float giveSpeed = 2.5f;
     private float timeBetweenProduct = 0;
     private Item.Type[] proba = new Item.Type[100];
-    private bool deploy = false;
+    public bool deploy = false;
 
+    
+    
+    /*Structure de sauvegarde*/
+    public struct SaveStruct
+    {
+        public Building.SaveStruct buildingSave;
+        public List<Item.Type> togive;
+        public Dictionary<Item.Type, int> stock;
+        public bool on;
+        public bool deploy;
+    }
+
+    public SaveStruct GetSaveStruct()
+    {
+        SaveStruct s = new SaveStruct();
+        s.buildingSave = GetBuildingSaveStruct();
+        s.togive = togive;
+        s.stock = stock;
+        s.@on = @on;
+        s.deploy = deploy;
+        return s;
+    }
+    /*************************/
 
     public Drill() : base (150, 100.0f)
     {
