@@ -34,9 +34,9 @@ public class Item
 
     public static Dictionary<Type, float> healingPower = new Dictionary<Type, float>
     {
-        {Type.Sonar, 80f},
-        {Type.Wood, 25f},
-        {Type.Ospirit, 60f},
+        {Type.Sonar, 40f},
+        {Type.Wood, 20f},
+        {Type.Ospirit, 50f},
     };
     
     public static List<Type> drillable = new List<Type>
@@ -59,9 +59,9 @@ public class Item
     public static Dictionary<Type, int> ToComposite = new Dictionary<Type, int>
     {
         {Type.Wood, 2},
-        {Type.Stone, 2},
-        {Type.Dirt, 1},
-        {Type.Sonar, 5},
-        {Type.Ospirit, 10},
+        {Type.Stone, 3},
+        {Type.Dirt, 5},
+        {Type.Sonar, 1},
+        {Type.Ospirit, 1},
     };
 }

@@ -6,7 +6,7 @@ public class Raygun : Node2D
 {
 	public const float POWER = 0.8f;
 	public const float RADIUS = 350f;
-	public const float POWERENERGY = 0.4f;
+	public const float POWERENERGY = 0.55f;
 
 	public const bool can_shoot = true;
 	private bool isalreadyshooting = false;

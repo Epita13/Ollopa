@@ -53,7 +53,7 @@ public abstract class Building : Node2D
     public static Dictionary<Type, string> descriptions = new Dictionary<Type, string>
     {
         {Type.SolarPanel, "Generates energy from the sun's energy"},
-        {Type.Storage, "Stores energy and oxygen"},
+        {Type.Storage, "Stores energy and charges the player's energy"},
         {Type.Printer3D, "Creates buildings"},
         {Type.Compactor, "Creates blocks"},
         {Type.Infirmary, "Heals the player"},
@@ -83,7 +83,7 @@ public abstract class Building : Node2D
         {Type.SolarPanel, new Drop(new Drop.Loot(Item.Type.Sonar, 12), new Drop.Loot(Item.Type.Stone, 10), new Drop.Loot(Item.Type.Wood, 4))},
         {Type.Storage, new Drop(new Drop.Loot(Item.Type.Stone, 30), new Drop.Loot(Item.Type.Wood, 5))},
         {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 40), new Drop.Loot(Item.Type.Ospirit,1))},
-        {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Sonar,5), new Drop.Loot(Item.Type.Stone, 15))},
+        {Type.Compactor, new Drop( new Drop.Loot(Item.Type.Sonar,5), new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Ospirit, 3))},
         {Type.Infirmary, new Drop(new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Ospirit, 2), new Drop.Loot(Item.Type.Sonar,7), new Drop.Loot(Item.Type.Composite,10))},
         {Type.O2Generator, new Drop( new Drop.Loot(Item.Type.Wood,5),new Drop.Loot(Item.Type.Stone,15))},
         {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Stone, 35), new Drop.Loot(Item.Type.Ospirit,2))},

@@ -4,7 +4,7 @@ using System;
 public class Grinder : Building
 {
     public static int nbGrinder;
-    public static float power = 1f;
+    public static float power = 2.5f;
     private static float giveSpeed = 2f;
 
     /*Structure de sauvegarde*/
@@ -34,8 +34,8 @@ public class Grinder : Building
 
     public void Grind(Item.Type type)
     {
-        Player.inventoryItems.Remove(type, 1);
-        Player.inventoryItems.Add(Item.Type.Composite, Item.ToComposite[type]);
+        Player.inventoryItems.Remove(type, Item.ToComposite[type]);
+        Player.inventoryItems.Add(Item.Type.Composite, 1);
     }
     
     

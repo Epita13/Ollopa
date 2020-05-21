@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class MenuNewGame : Node2D
 {
 
-    public static int defaultWorldSize = 25;
+    public static int defaultWorldSize = 35;
     
     
     private LineEdit name;
