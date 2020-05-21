@@ -39,7 +39,7 @@ public class Storage : Building
 	
 
 	//Initialisation
-    public Storage() : base (150, 750.0f)
+    public Storage() : base (150, 350.0f)
     {
     }
 	

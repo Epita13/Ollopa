@@ -45,7 +45,7 @@ public class Infirmary : Building
         }
     }
 
-    public Infirmary() : base(100, 200)
+    public Infirmary() : base(100, 100)
     {
         
     }
