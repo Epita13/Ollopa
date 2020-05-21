@@ -23,7 +23,6 @@ public class Enemies : Node2D
         spawn_time = GetNode<Timer>("SpawnTime");
         spawn_time.Start();
         instance = this;
-        Spawn_Enemy(PlayerMouvements.GetX()+10, PlayerMouvements.GetY()+50);
     }
 
     void TimerTimeout()

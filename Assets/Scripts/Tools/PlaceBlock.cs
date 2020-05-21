@@ -51,7 +51,6 @@ public static class PlaceBlock
                     World.UI2BlockTilemap.SetCell(x, -y+Chunk.height, tile);
                 }
             );
-            GD.Print(World.UI2BlockTilemap == null);
         }
         return res;
     }

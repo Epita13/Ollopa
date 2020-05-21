@@ -35,7 +35,6 @@ public class DrillInterface : BuildingInterface
 
     public void _on_GiveSelected_button_down()
     {
-        GD.Print(stock.Items.Count);
         for (int i = 1; i < stock.Items.Count; i++)
         {
             if (stock.IsSelected(i))

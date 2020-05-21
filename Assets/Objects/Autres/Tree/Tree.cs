@@ -157,7 +157,6 @@ public class Tree : StaticBody2D
             {
                 Vector2 npos = new Vector2(pos.x + ((float) World.random.NextDouble() * 0.8f - 0.4f),
                     pos.y + ((float) World.random.NextDouble() * 0.8f - 0.4f));
-                GD.Print(npos);
                 Loot.SpawnLoot(npos, l.type, l.amount);
             }
         }

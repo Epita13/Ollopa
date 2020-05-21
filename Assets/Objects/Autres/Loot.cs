@@ -149,7 +149,6 @@ public class Loot : Node2D
                 int i = (int) Mathf.Abs(vecMin.x / Chunk.size) + 1;
                 if (Convertion.Location2World(Position).x >= (World.size - i) * Chunk.size)
                 {
-                    GD.Print("--");
                     Position = Position - new Vector2(World.size * Chunk.size * World.BlockTilemap.CellSize.x, 0);
                     mirrored = true;
                 }
