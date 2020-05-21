@@ -58,6 +58,8 @@
     <Compile Include="Assets\Objects\Autres\Grass\Grass.cs" />
     <Compile Include="Assets\Objects\Autres\Loot.cs" />
     <Compile Include="Assets\Objects\Autres\Tree\Tree.cs" />
+    <Compile Include="Assets\Objects\Enemy\Enemies.cs" />
+    <Compile Include="Assets\Objects\Enemy\Ennemy_Fly.cs" />
     <Compile Include="Assets\Objects\Buildings\Barrel\Barrel.cs" />
     <Compile Include="Assets\Objects\Buildings\Compactor\Compactor.cs" />
 	<Compile Include="Assets\Objects\Buildings\Drill\Drill.cs" />

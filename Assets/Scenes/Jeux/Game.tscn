@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Scenes/Jeux/Game.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Assets/Scenes/Liquid/Liquid.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Ressources/Fonts/F25_Bank_Printer.otf" type="DynamicFontData" id=14]
 [ext_resource path="res://Assets/Objects/UI/other/PlayerVariables.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Objects/Enemy/Enemies.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 8 )
@@ -103,4 +104,6 @@ __meta__ = {
 
 [node name="Liquid" parent="." instance=ExtResource( 13 )]
 position = Vector2( 0, 0 )
+
+[node name="Enemies" parent="." instance=ExtResource( 16 )]
 [connection signal="button_down" from="CanvasLayer/BTNSAVE" to="." method="_on_BTNSAVE_button_down"]

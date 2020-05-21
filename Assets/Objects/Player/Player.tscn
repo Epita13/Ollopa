@@ -8,8 +8,6 @@
 [ext_resource path="res://Assets/Objects/Tools/Raygun/Raygun.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Objects/Player/PlayerBuildingActions.cs" type="Script" id=7]
 
-
-
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
 

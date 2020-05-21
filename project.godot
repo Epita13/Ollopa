@@ -119,6 +119,7 @@ escape={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Blocks"
 2d_physics/layer_3="Trees"
+2d_physics/layer_4="Enemy"
 
 [mono]
 
