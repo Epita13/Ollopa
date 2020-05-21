@@ -4,7 +4,7 @@ using System.Reflection;
 
 public class Raygun : Node2D
 {
-	public const float POWER = 0.8f;
+	public const float POWER = 80f;
 	public const float RADIUS = 350f;
 	public const float POWERENERGY = 0.55f;
 
@@ -38,7 +38,7 @@ public class Raygun : Node2D
 		beam.Visible = false;
 	}
 	
-	public void shoot()
+	public void shoot(float delta)
 	{
 		begin.Visible = true;
 		beam.Visible = true;
@@ -60,18 +60,18 @@ public class Raygun : Node2D
 			// Collide with a block
 			if (hit_collider is TileMap)
 			{
-				BlockCollision();
+				BlockCollision(delta);
 			}else if (hit_collider is StaticBody2D)
 			{
 				// Collide with a tree
 				StaticBody2D s = (StaticBody2D) hit_collider;
 				if (s.GetGroups().Contains("tree"))
 				{
-					TreeCollosion();
+					TreeCollosion(delta);
 				}
 			}else if (hit_collider is Ennemy_Fly)
 			{
-				EnemyCollision();
+				EnemyCollision(delta);
 			}
 		}
 		else
@@ -88,13 +88,13 @@ public class Raygun : Node2D
 		particule.Emitting = true;
 	}
 
-	private void EnemyCollision()
+	private void EnemyCollision(float delta)
 	{
 		Ennemy_Fly t = (Ennemy_Fly)raycast.GetCollider();
-		t.Damage(POWER);
+		t.Damage(POWER * delta);
 	}
 
-	private void BlockCollision()
+	private void BlockCollision(float delta)
 	{
 		TileMap tilemap = (TileMap)raycast.GetCollider();
 		var hit_pos = raycast.GetCollisionPoint();
@@ -120,13 +120,16 @@ public class Raygun : Node2D
 
 		Block block_hit = World.GetBlock((int) block_posF.x, (int) block_posF.y);
 		if (block_hit.GetType != Block.Type.Air)
-			block_hit.Damage(POWER);
+		{
+			block_hit.Damage(POWER * delta);
+		}
+			
 	}
 
-	private void TreeCollosion()
+	private void TreeCollosion(float delta)
 	{
 		Tree t = (Tree)raycast.GetCollider();
-		t.Damage(POWER);
+		t.Damage(POWER * delta);
 	}
 
 
@@ -158,7 +161,7 @@ public class Raygun : Node2D
 		{
 			if (Player.energy > 0)
 			{
-				shoot();
+				shoot(delta);
 				particule.Emitting = true;
 				Player.RemoveEnergy(POWERENERGY*delta);
 				if (!isalreadyshooting)
