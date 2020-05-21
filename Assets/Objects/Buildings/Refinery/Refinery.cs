@@ -9,8 +9,8 @@ public class Refinery : Building
 	private static float oilToFuel = 0.5f;
 	public float oil;
 	public float fuel;
-	public float oilMAX = 500f;
-	public float fuelMAX = 500f;
+	public float oilMAX = 300f;
+	public float fuelMAX = 100f;
 	public float togive = 0;
 	public float toadd = 0;
 	private static float giveSpeed = 2.5f;
@@ -53,13 +53,13 @@ public class Refinery : Building
 	
 	public void _on_Timer_timeout()
 	{
-		if (togive >= giveSpeed)
+		if (togive >= giveSpeed && Player.inventoryLiquids.CanAdd(Liquid.Type.Fuel, giveSpeed))
 		{
 			Player.inventoryLiquids.Add(Liquid.Type.Fuel, giveSpeed);
 			togive -= giveSpeed;
 			fuel -= giveSpeed;
 		}
-		else if(togive > 0)
+		else if(togive > 0 && Player.inventoryLiquids.CanAdd(Liquid.Type.Fuel, togive))
 		{
 			Player.inventoryLiquids.Add(Liquid.Type.Fuel, togive);
 			fuel -= togive;

@@ -6,7 +6,7 @@ public class O2Generator : Building
     public static int nbO2Generator;
     private static float power = 1f;
     private static readonly float O2produc = 2f;
-    public float o2MAX = 500f;
+    public float o2MAX = 200f;
     public float o2 = 0;
     public float togive = 0;
     public bool on = false;
@@ -68,7 +68,7 @@ public class O2Generator : Building
         on = (energy >= power2wake && !on || energy > 0 && on) && o2 < o2MAX;
     }
 
-    public O2Generator() : base(100, 200)
+    public O2Generator() : base(100, 150f)
     {
         
     }

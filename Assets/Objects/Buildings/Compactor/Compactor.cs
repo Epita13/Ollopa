@@ -19,7 +19,7 @@ public class Compactor : Building
     }
     /*************************/
     
-    public Compactor() : base (200, 200.0f)
+    public Compactor() : base (200, 100.0f)
     {
     }
 

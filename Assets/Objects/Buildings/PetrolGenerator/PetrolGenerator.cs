@@ -6,7 +6,7 @@ public class PetrolGenerator : Building
     public static int nbPetrolGenerator;
     private static float power = 1f;
     private static readonly float oilProduc = 1f;
-    public float oilMAX = 500f;
+    public float oilMAX = 100f;
     public float oil = 0;
     public float togive = 0;
     public bool on = false;
@@ -44,16 +44,20 @@ public class PetrolGenerator : Building
 
     public void _on_Timer_timeout()
     {
-        if (togive >= giveSpeed)
+        if (togive >= giveSpeed && Player.inventoryLiquids.CanAdd(Liquid.Type.Oil, giveSpeed))
         {
             Player.inventoryLiquids.Add(Liquid.Type.Oil, giveSpeed);
             togive -= giveSpeed;
             oil -= giveSpeed;
         }
-        else if(togive > 0)
+        else if(togive > 0 && Player.inventoryLiquids.CanAdd(Liquid.Type.Oil, togive))
         {
             Player.inventoryLiquids.Add(Liquid.Type.Oil, togive);
             oil -= togive;
+            togive = 0;
+        }
+        else
+        {
             togive = 0;
         }
 
@@ -81,7 +85,7 @@ public class PetrolGenerator : Building
         on = (energy >= power2wake && !on || energy > 0 && on) && oil < oilMAX;
     }
 
-    public PetrolGenerator() : base(100, 200)
+    public PetrolGenerator() : base(100, 100)
     {
         
     }

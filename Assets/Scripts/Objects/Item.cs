@@ -58,10 +58,10 @@ public class Item
     
     public static Dictionary<Type, int> ToComposite = new Dictionary<Type, int>
     {
-        {Type.Wood, 3},
-        {Type.Stone, 5},
-        {Type.Dirt, 7},
-        {Type.Sonar, 3},
-        {Type.Ospirit, 1},
+        {Type.Wood, 2},
+        {Type.Stone, 2},
+        {Type.Dirt, 1},
+        {Type.Sonar, 5},
+        {Type.Ospirit, 10},
     };
 }
