@@ -4,9 +4,7 @@ using System.Reflection;
 
 public class Raygun : Node2D
 {
-
-
-	public const float POWER = 0.6f;
+	public const float POWER = 0.8f;
 	public const float RADIUS = 350f;
 	public const float POWERENERGY = 0.4f;
 

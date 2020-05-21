@@ -37,9 +37,10 @@ public class RefineryInterface : BuildingInterface
 
     public void _on_BtnGive_button_down()
     {
-        if (refinery.fuel > 0)
+        float nb = Math.Min(refinery.fuel, Player.inventoryLiquids.max - Player.inventoryLiquids.GetItemCount(Liquid.Type.Fuel));
+        if (refinery.fuel > 0 && Player.inventoryLiquids.CanAdd(Liquid.Type.Fuel, nb))
         {
-            refinery.togive += refinery.fuel;
+            refinery.togive += nb;
         }
     }
 

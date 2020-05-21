@@ -44,20 +44,16 @@ public class PetrolGenerator : Building
 
     public void _on_Timer_timeout()
     {
-        if (togive >= giveSpeed && Player.inventoryLiquids.CanAdd(Liquid.Type.Oil, giveSpeed))
+        if (togive >= giveSpeed)
         {
             Player.inventoryLiquids.Add(Liquid.Type.Oil, giveSpeed);
             togive -= giveSpeed;
             oil -= giveSpeed;
         }
-        else if(togive > 0 && Player.inventoryLiquids.CanAdd(Liquid.Type.Oil, togive))
+        else if(togive > 0)
         {
             Player.inventoryLiquids.Add(Liquid.Type.Oil, togive);
             oil -= togive;
-            togive = 0;
-        }
-        else
-        {
             togive = 0;
         }
 
