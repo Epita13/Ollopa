@@ -80,7 +80,7 @@ public abstract class Building : Node2D
     
     public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
     {
-        {Type.SolarPanel, new Drop(new Drop.Loot(Item.Type.Sonar, 15), new Drop.Loot(Item.Type.Stone, 10), new Drop.Loot(Item.Type.Wood, 4))},
+        {Type.SolarPanel, new Drop(new Drop.Loot(Item.Type.Sonar, 12), new Drop.Loot(Item.Type.Stone, 10), new Drop.Loot(Item.Type.Wood, 4))},
         {Type.Storage, new Drop(new Drop.Loot(Item.Type.Stone, 30), new Drop.Loot(Item.Type.Wood, 5))},
         {Type.Printer3D, new Drop(new Drop.Loot(Item.Type.Composite, 40), new Drop.Loot(Item.Type.Ospirit,1))},
         {Type.Compactor, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Sonar,5), new Drop.Loot(Item.Type.Stone, 15))},
@@ -88,7 +88,7 @@ public abstract class Building : Node2D
         {Type.O2Generator, new Drop( new Drop.Loot(Item.Type.Wood,5),new Drop.Loot(Item.Type.Stone,15))},
         {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Stone, 35), new Drop.Loot(Item.Type.Ospirit,2))},
         {Type.Refinery, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone,40), new Drop.Loot(Item.Type.Ospirit,4))},
-        {Type.Drill, new Drop(new Drop.Loot(Item.Type.Composite, 10))},
+        {Type.Drill, new Drop(new Drop.Loot(Item.Type.Composite, 30),new Drop.Loot(Item.Type.Sonar, 10),new Drop.Loot(Item.Type.Ospirit, 5))},
         {Type.Grinder, new Drop(new Drop.Loot(Item.Type.Sonar, 1),new Drop.Loot(Item.Type.Dirt, 30),new Drop.Loot(Item.Type.Stone, 15))}
     };
     
