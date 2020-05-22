@@ -19,7 +19,8 @@ public abstract class Building : Node2D
         Infirmary,
         OilPump,
         Refinery,
-        Drill
+        Drill,
+        Thermogenerator,
     }
     
     // Dictionaire : Stock les scnenes batiment en fonction du type de batiment
@@ -34,7 +35,8 @@ public abstract class Building : Node2D
         {Type.OilPump, GD.Load<PackedScene>("res://Assets/Objects/Buildings/PetrolGenerator/PetrolGenerator.tscn")},
         {Type.Refinery, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Refinery/Refinery.tscn")},
         {Type.Drill, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Drill/Drill.tscn")},
-        {Type.Grinder, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Grinder/Grinder.tscn")}
+        {Type.Grinder, GD.Load<PackedScene>("res://Assets/Objects/Buildings/Grinder/Grinder.tscn")},
+        {Type.Thermogenerator, GD.Load<PackedScene>("res://Assets/Objects/Buildings/thermogenerator/thermogenerator.tscn")},
     };
     public static Dictionary<Type, Texture> textures = new Dictionary<Type, Texture>
     {
@@ -47,7 +49,8 @@ public abstract class Building : Node2D
         {Type.OilPump, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Oilwell/PetrolGenerator.png")},
         {Type.Refinery, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Refinery/Refinery.png")},
         {Type.Drill, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Drill/forreuse.png")},
-        {Type.Grinder, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Broyeur/Broyeur.png")}
+        {Type.Grinder, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Broyeur/Broyeur.png")},
+        {Type.Thermogenerator, GD.Load<Texture>("res://Assets/Ressources/Imgs/Buildings/Thermogenerator/generateur thermique.png")}
     };
     
     public static Dictionary<Type, string> descriptions = new Dictionary<Type, string>
@@ -61,7 +64,8 @@ public abstract class Building : Node2D
         {Type.OilPump, "Gives Oil"},
         {Type.Refinery, "Transforms oil in fuel"},
         {Type.Drill, "Extracts item from the ground"},
-        {Type.Grinder, "Grinds every item into composite"}
+        {Type.Grinder, "Grinds every item into composite"},
+        {Type.Thermogenerator, "Generate energy with wood or fuel"},
     };
     
     public static Dictionary<Type, float> times2Create = new Dictionary<Type, float>
@@ -75,7 +79,8 @@ public abstract class Building : Node2D
         {Type.OilPump, 60f},
         {Type.Refinery, 60f},
         {Type.Drill, 45f},
-        {Type.Grinder, 150f}
+        {Type.Grinder, 150f},
+        {Type.Thermogenerator, 60f},
     };
     
     public static Dictionary<Type, Drop> crafts = new Dictionary<Type, Drop>
@@ -89,7 +94,8 @@ public abstract class Building : Node2D
         {Type.OilPump, new Drop(new Drop.Loot(Item.Type.Composite, 10), new Drop.Loot(Item.Type.Stone, 35), new Drop.Loot(Item.Type.Ospirit,2))},
         {Type.Refinery, new Drop(new Drop.Loot(Item.Type.Composite, 25), new Drop.Loot(Item.Type.Stone,40), new Drop.Loot(Item.Type.Ospirit,4))},
         {Type.Drill, new Drop(new Drop.Loot(Item.Type.Composite, 30),new Drop.Loot(Item.Type.Sonar, 10),new Drop.Loot(Item.Type.Ospirit, 5))},
-        {Type.Grinder, new Drop(new Drop.Loot(Item.Type.Sonar, 1),new Drop.Loot(Item.Type.Dirt, 30),new Drop.Loot(Item.Type.Stone, 15))}
+        {Type.Grinder, new Drop(new Drop.Loot(Item.Type.Sonar, 1),new Drop.Loot(Item.Type.Dirt, 30),new Drop.Loot(Item.Type.Stone, 15))},
+        {Type.Thermogenerator, new Drop(new Drop.Loot(Item.Type.Stone, 15), new Drop.Loot(Item.Type.Sonar,2))}
     };
     
     public static List<Building.Type> buildingReceiverOfEnergy = new List<Type>

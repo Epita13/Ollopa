@@ -72,6 +72,7 @@
     <Compile Include="Assets\Objects\Buildings\Spaceship\SpaceShip.cs" />
     <Compile Include="Assets\Objects\Buildings\Storage\Storage.cs" />
     <Compile Include="Assets\Objects\Buildings\PetrolGenerator\PetrolGenerator.cs" />
+	<Compile Include="Assets\Objects\Buildings\thermogenerator\Thermogenerator.cs" />
     <Compile Include="Assets\Objects\Player\PlayerBuildingActions.cs" />
     <Compile Include="Assets\Objects\Player\PlayerInputs.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Objects\UI\Building\SpaceShipInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\StorageInterface.cs" />
     <Compile Include="Assets\Objects\UI\Building\PetrolGeneratorInterface.cs" />
+	<Compile Include="Assets\Objects\UI\Building\ThermogeneratorInterface.cs" />
     <Compile Include="Assets\Objects\UI\Graphics\Graph.cs" />
     <Compile Include="Assets\Objects\UI\Menus\DeathMenu.cs" />
     <Compile Include="Assets\Objects\UI\Menus\EndMenu.cs" />
