@@ -6,12 +6,13 @@ public abstract class Building : Node2D
 {
     
     // Enumeration : Type de batiment disponible
-    public static int nbBuildings = 10;
+    public static int nbBuildings = 11;
 
     public enum Type
     {
         SolarPanel,
         O2Generator,
+        Thermogenerator,
 		Storage,
         Grinder,
         Printer3D,
@@ -20,7 +21,6 @@ public abstract class Building : Node2D
         OilPump,
         Refinery,
         Drill,
-        Thermogenerator,
     }
     
     // Dictionaire : Stock les scnenes batiment en fonction du type de batiment
