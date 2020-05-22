@@ -17,12 +17,18 @@ public class Thermogenerator : Building
 	public struct SaveStruct
 	{
 		public Building.SaveStruct buildingSave;
+		public int wood;
+		public float oil;
+		public float time;
 	}
 
 	public SaveStruct GetSaveStruct()
 	{
 		SaveStruct s = new SaveStruct();
 		s.buildingSave = GetBuildingSaveStruct();
+		s.wood = wood;
+		s.oil = oil;
+		s.time = time;
 		return s;
 	}
 	/*************************/

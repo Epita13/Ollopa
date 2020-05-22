@@ -244,6 +244,9 @@ public class BuildingsDataModel
     public int nbGrinder;
     public List<Grinder.SaveStruct> grinders;
     
+    public int nbThermogenerator;
+    public List<Thermogenerator.SaveStruct> thermoGenerators;
+    
 
     //public Dictionary<(Building.Type, int), List<(Building.Type, int)>> buildingsLinks;
     public Dictionary<Building.Type, Dictionary<int, List<(Building.Type, int)>>> buildingsLinks;
@@ -319,6 +322,13 @@ public class BuildingsDataModel
         foreach (var grinder in Building.GetBuildingTypeList<Grinder>())
         {
             grinders.Add(grinder.GetSaveStruct());
+        }
+        
+        thermoGenerators = new List<Thermogenerator.SaveStruct>();
+        nbThermogenerator = Thermogenerator.nbGenerator;
+        foreach (var thermo in Building.GetBuildingTypeList<Thermogenerator>())
+        {
+            thermoGenerators.Add(thermo.GetSaveStruct());
         }
         
         
@@ -444,6 +454,17 @@ public class BuildingsDataModel
             Grinder sp = (Grinder)Building.prefabs[Building.Type.Grinder].Instance();
             sp.Place(saveGrinder.buildingSave.location);
             sp.SetBuildingSaveStruct(saveGrinder.buildingSave);
+        }
+        
+        Thermogenerator.nbGenerator = nbThermogenerator;
+        foreach (var saveThermo in thermoGenerators)
+        {
+            Thermogenerator sp = (Thermogenerator)Building.prefabs[Building.Type.Thermogenerator].Instance();
+            sp.Place(saveThermo.buildingSave.location);
+            sp.SetBuildingSaveStruct(saveThermo.buildingSave);
+            sp.oil = saveThermo.oil;
+            sp.wood = saveThermo.wood;
+            sp.time = saveThermo.time;
         }
         
 
