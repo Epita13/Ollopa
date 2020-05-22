@@ -61,7 +61,7 @@ public class Thermogenerator : Building
 
 		if (time > 0)
 		{
-			AddEnergy(0.25F * timer.WaitTime);
+			AddEnergy(0.35F * timer.WaitTime);
 			time -= 1 * timer.WaitTime;
 		}
 
