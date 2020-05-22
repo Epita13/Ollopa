@@ -157,6 +157,7 @@ public class PlayerInputs : Node2D
 		Vector2 vec = mousePos;
 		int x = (int) mousePos.x;
 		int y = (int) mousePos.y;
+		bool res = y > 0 && y <= Chunk.height;
 		World.UIBlockTilemap.Clear();
 		Vector2 playerPos = Convertion.Location2World(PlayerMouvements.instance.Position);
 		bool right = playerPos.x-1 < mousePos.x;
@@ -164,7 +165,7 @@ public class PlayerInputs : Node2D
 		Building.Type type = Player.BuildingSelected;
 		bool haveBuilding = Player.inventoryBuildings.GetItemCount(type) >= 1;
 		
-		if (right)
+		if (res && right)
 		{
 			if (haveBuilding && BasicPlacement.IsPlacableRight(x, y, 4, 4) && MouseInRange(9, true))
 			{
@@ -175,7 +176,7 @@ public class PlayerInputs : Node2D
 				PrintBatRight(0);
 			}
 		}
-		else 
+		else if(res)
 		{
 			if (haveBuilding && BasicPlacement.IsPlacableLeft(x, y, 4, 4) && MouseInRange(9, true))
 			{
@@ -218,7 +219,8 @@ public class PlayerInputs : Node2D
 	{
 		Vector2 playerPos = Convertion.Location2World(PlayerMouvements.instance.Position);
 		bool right = playerPos.x-1 < mousePos.x;
-		if (MouseInRange(9,true))
+		bool res = mousePos.y > 0 && mousePos.y <= Chunk.height;
+		if (res && MouseInRange(9,true))
 		{
 			Building.Type type = Player.BuildingSelected;
 			if (Player.inventoryBuildings.GetItemCount(type) >= 1)
