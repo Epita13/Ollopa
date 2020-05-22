@@ -9,8 +9,8 @@ public class Thermogenerator : Building
 	public float time = 0;
 	public int wood = 0;
 	public float oil = 0;
-	public static int woodMax = 10;
-	public static float oilMax = 50F;
+	public static int woodMax = 20;
+	public static float oilMax = 100F;
 
 	
 	/*Structure de sauvegarde*/
@@ -43,8 +43,6 @@ public class Thermogenerator : Building
 	{
 		id = nbGenerator;
 		nbGenerator+=1;
-		
-
 	}
 	
 	

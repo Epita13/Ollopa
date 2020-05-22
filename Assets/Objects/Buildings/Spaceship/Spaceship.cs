@@ -15,7 +15,7 @@ public class SpaceShip : Node2D
     public const int COMPOSITEWIN = 3000;*/
     public const float ENERGYWIN = 750f; 
     public const float FUELWIN = 400f;
-    public const int COMPOSITEWIN = 250;
+    public const int COMPOSITEWIN = 200;
     
     
     public static SpaceShip instance;

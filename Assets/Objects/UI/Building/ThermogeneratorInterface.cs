@@ -46,15 +46,11 @@ public class ThermogeneratorInterface : BuildingInterface
 		}
 		
 		
-		
-		
-		
-		
 		if (oilon)
 		{
 			if (Player.inventoryLiquids.GetItemCount(Liquid.Type.Oil) > 0)
 			{
-				float oil = 2.5F * delta;
+				float oil = 5F * delta;
 				oil = Player.inventoryLiquids.GetItemCount(Liquid.Type.Oil) < oil
 					? Player.inventoryLiquids.GetItemCount(Liquid.Type.Oil)
 					: oil;
