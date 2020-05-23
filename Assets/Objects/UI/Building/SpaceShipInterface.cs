@@ -148,12 +148,12 @@ public class SpaceShipInterface : Control
         if (EnergyeOn)
         {
             EnergyeOn = false;
-            BtnCompoT.Text = "OFF";
+            BtnEnerT.Text = "OFF";
         }
         else
         {
             EnergyeOn = true;
-            BtnCompoT.Text = "ON";
+            BtnEnerT.Text = "ON";
         }
     }
 

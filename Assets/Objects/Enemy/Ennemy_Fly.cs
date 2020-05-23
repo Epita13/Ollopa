@@ -30,7 +30,7 @@ public class Ennemy_Fly : Godot.KinematicBody2D
     
     private int EnemyDirection = 1;
     private int OppositeDirection = -1;
-    
+
     Timer time=new Timer();
     Timer time2=new Timer();
     Sprite Enemy_fly=new Sprite();
@@ -106,6 +106,8 @@ public class Ennemy_Fly : Godot.KinematicBody2D
         {
             Enemy_Die.FlipH = false;
         }
+        dead = true;
+        GetNode<CollisionShape2D>("Collision").Disabled = true;
         anim.Play("Die");
     }
 
@@ -113,13 +115,16 @@ public class Ennemy_Fly : Godot.KinematicBody2D
     {
         if (body.GetGroups().Contains("Player"))
         {
-            //Dégâts par l'ennemi volant
-            Player.RemoveHealth(attack);;
-            verifattack = true;
-            if (!veriftime2)
+            if (!dead)
             {
-                time2.Start();
-                veriftime2 = true;
+                //Dégâts par l'ennemi volant
+                Player.RemoveHealth(attack);
+                verifattack = true;
+                if (!veriftime2)
+                {
+                    time2.Start();
+                    veriftime2 = true;
+                }
             }
         }
     }
@@ -196,6 +201,9 @@ public class Ennemy_Fly : Godot.KinematicBody2D
     public override void _PhysicsProcess(float delta)
     {
 
+        if (dead)
+            return;
+        
         if (t >= lifeTime)
         {
             QueueFree();

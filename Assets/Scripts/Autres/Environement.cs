@@ -17,7 +17,7 @@ public class Environement : Node2D
     
     
     private static float length_day = 60*5.0f;  // seconde
-    public static float time = length_day/2; // seconde
+    public static float time = length_day/3; // seconde
     private int nb_day = 0;
 
     private static int hourNight = 21;
