@@ -51,6 +51,9 @@ public class Ennemy_Fly : Godot.KinematicBody2D
 
     void TimerTimeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         r = rand.Next(0, 2);
         if(r==1)
             EnemyDirection = EnemyDirection * OppositeDirection;
@@ -200,6 +203,9 @@ public class Ennemy_Fly : Godot.KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
+        
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
 
         if (dead)
             return;

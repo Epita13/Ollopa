@@ -126,6 +126,9 @@ public class Loot : Node2D
 
     public override void _PhysicsProcess(float delta)
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         if (dead)
             return;
         time += delta;

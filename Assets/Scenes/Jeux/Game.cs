@@ -4,6 +4,8 @@ using System;
 public class Game : Node2D
 {
 
+    public const string VERSION = "1.1";
+    
     public static bool load = false;
     public static string saveName = "";
 
@@ -73,6 +75,8 @@ public class Game : Node2D
     public override void _Process(float delta)
     {
         WorldScreenSizeX = GetViewport().Size.x * CurrentCamera.GetXZoom();
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
         timePlayed += delta;
     }
 

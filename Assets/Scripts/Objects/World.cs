@@ -81,6 +81,8 @@ public static class World
     {
         World.size = size;
     }
+
+    public static int GetSeed() => seed;
     public static void SetSeed(int seed)
     {
         World.seed = seed;
@@ -96,8 +98,9 @@ public static class World
         World.BackBlockTilemap = BackBlockTilemap;
         
         if (seed==-1){
-            World.random = new Random();
-            World.seed = random.Next();
+            Random r = new Random();
+            World.seed = r.Next(0, 2076782335);
+            World.random = new Random(seed);
         }else{
             World.random = new Random(seed);
             World.seed = seed;

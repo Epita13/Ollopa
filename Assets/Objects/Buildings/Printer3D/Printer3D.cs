@@ -76,6 +76,9 @@ public class Printer3D : Building
     
     public void _on_Timer_timeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         if (isPrinting)
         {
             if (!isFinish && !isInPause && power * timer.WaitTime > energy)

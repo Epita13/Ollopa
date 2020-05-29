@@ -209,6 +209,8 @@ public abstract class Building : Node2D
     /*Selection de batiment*/
     public static bool HasBuildingSelected = false;
     public static Building BuildingSelected = null;
+
+    private bool mouseOn = false;
     
     
     public int size = 4;
@@ -402,6 +404,9 @@ public abstract class Building : Node2D
 
     public override void _Process(float delta)
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         /*Teleportation Tree*/
         Vector2 p = GetViewportTransform().origin * CurrentCamera.GetXZoom();
         int viewportSizeX = Mathf.FloorToInt(GetViewport().Size.x * CurrentCamera.GetXZoom());
@@ -466,6 +471,21 @@ public abstract class Building : Node2D
         prev_x_viewport = vecMin.x;
         /*----------------------*/
         locationNow = Convertion.Location2World(Position);
+
+        if (HasBuildingSelected)
+        {
+            if (!BuildingInRange(10))
+            {
+                ResetOutline();
+                HasBuildingSelected = false;
+                BuildingSelected = null;
+            }
+        }
+
+        if (mouseOn)
+        {
+            _on_ZONE_mouse_entered();
+        }
     }
     
     public float AddEnergy(float amount, bool correction = false)
@@ -547,6 +567,8 @@ public abstract class Building : Node2D
     /*History for graphs*/
     public void _on_TimerHistory_timeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
         History<float>.Add(energyhistory, energy);
         History<float>.Add(powerInhistory, powerIn);
         History<float>.Add(powerOuthistory, powerOut);
@@ -556,21 +578,34 @@ public abstract class Building : Node2D
     private float timerEnergyWaitTime;
     public void _on_TimerEnergy_timeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
         powerIn = sumEnergyIn / timerEnergyWaitTime;
         powerOut = sumEnergyOut / timerEnergyWaitTime;
         sumEnergyIn = 0;
         sumEnergyOut = 0;
     }
-    
+
+    public bool BuildingInRange(float range)
+    {
+        float distance = Mathf.Sqrt(Mathf.Pow(PlayerMouvements.GetX() - location.x, 2) +
+                                    Mathf.Pow(PlayerMouvements.GetY() - location.y, 2));
+        return distance <= range;
+    }
     /*OUTLINE buildings*/
     public void _on_ZONE_mouse_entered()
     {
+        mouseOn = true;
         Sprite p = GetNode<Sprite>("OUTLINE");
+        GD.Print("on");
         if (PlayerState.Is(PlayerState.State.Normal, PlayerState.State.Build))
         {
-            SetOutline(1.5f, Color.Color8(0,150,255));
-            HasBuildingSelected = true;
-            BuildingSelected = this;
+            if (BuildingInRange(10))
+            {
+                SetOutline(1.5f, Color.Color8(0, 150, 255));
+                HasBuildingSelected = true;
+                BuildingSelected = this;
+            }
         } else if (PlayerState.Is(PlayerState.State.Link))
         {
             if (Building.buildingReceiverOfEnergy.Contains(type))
@@ -587,6 +622,13 @@ public abstract class Building : Node2D
     }
     public void _on_ZONE_mouse_exited()
     {
+        mouseOn = false;
+        if (HasBuildingSelected && BuildingSelected != this)
+        {
+            ResetOutline();
+            return;
+        }
+        GD.Print("OFF");
         if (PlayerState.IsNot(PlayerState.State.Link))
         {
             ResetOutline();

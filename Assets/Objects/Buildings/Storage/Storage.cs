@@ -60,6 +60,8 @@ public class Storage : Building
     
     public void _on_Timer_timeout()
     {
+	    if (PlayerState.Is(PlayerState.State.Pause))
+		    return;
 	    TransferToLink(timer.WaitTime);
 	    EmitSignal("EnergyChange", energy, energyMax);
     }

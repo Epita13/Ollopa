@@ -49,6 +49,9 @@ public class Thermogenerator : Building
 	
 	public void _on_Timer_timeout()
 	{
+		if (PlayerState.Is(PlayerState.State.Pause))
+			return;
+		
 		if (time < 1)
 		{
 			if (wood > 0)

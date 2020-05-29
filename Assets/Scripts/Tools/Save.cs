@@ -29,7 +29,11 @@ public static class Save
         {
             if (File.Exists(Path.Combine(path, "ollopa.save")))
             {
-                res.Add(File.ReadAllText(Path.Combine(path, "ollopa.save")));
+                ConfigDataModel conf = GetConfigData(path);
+                if (conf.version == Game.VERSION)
+                {
+                    res.Add(conf.name);
+                }
             }
         }
         return res;
@@ -72,11 +76,33 @@ public static class Save
         {    
             File.Delete(fileName);    
         }
-
+        ConfigDataModel data = new ConfigDataModel();
+        data.GetValues();
         using (StreamWriter sw = File.CreateText(fileName))
         {
             sw.Write(name);
         }
+        string json = JsonConvert.SerializeObject(data);
+        using (StreamWriter sw = File.CreateText(fileName))
+        {
+            sw.Write(json);
+        }
+    }
+
+    private static ConfigDataModel GetConfigData(string path)
+    {
+        string filePath = Path.Combine(path, "ollopa.save");
+        string jsonString = File.ReadAllText(filePath);
+        ConfigDataModel data = null;
+        try
+        {
+            data = ConfigDataModel.Deserialize(jsonString);
+        }
+        catch
+        {
+            throw new Exception("ConfigDataModel: invalid syntaxe json");
+        }
+        return data;
     }
 
 

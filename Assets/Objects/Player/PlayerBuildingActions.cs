@@ -16,6 +16,9 @@ public class PlayerBuildingActions : Node2D
 
     public override void _Process(float delta)
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         Vector2 playerPosition = new Vector2(PlayerMouvements.GetX(), PlayerMouvements.GetY());
         
         List<Building> buildingsNear = new List<Building>();

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/maskMoche.png-45292f355341777771113fa9bea4ebad.stex"
+path="res://.import/maskMoche.png-7a8a7054240a5f105815ddbef0c1ce47.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/Buildings/Spaceship/maskMoche.png"
-dest_files=[ "res://.import/maskMoche.png-45292f355341777771113fa9bea4ebad.stex" ]
+source_file="res://Assets/Ressources/Imgs/Buildings/SpaceShip/maskMoche.png"
+dest_files=[ "res://.import/maskMoche.png-7a8a7054240a5f105815ddbef0c1ce47.stex" ]
 
 [params]
 

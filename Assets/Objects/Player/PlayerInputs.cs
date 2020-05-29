@@ -46,7 +46,17 @@ public class PlayerInputs : Node2D
 		/*Escape*/
 		if (Input.IsActionJustPressed("escape"))
 		{
-			if (PlayerState.GetState() == PlayerState.State.Inventory)
+			if (PlayerState.GetState() == PlayerState.State.Pause)
+			{
+				PlayerState.SetState(PlayerState.prec_state);
+				PauseMenu.Close();
+			}
+			else if (PlayerState.GetState() == PlayerState.State.Normal)
+			{
+				PlayerState.SetState(PlayerState.State.Pause);
+				PauseMenu.Open();
+			}
+			else if (PlayerState.GetState() == PlayerState.State.Inventory)
 			{
 				UI_PlayerInventory2.Close();
 			}
@@ -239,7 +249,7 @@ public class PlayerInputs : Node2D
 
 	private void ClickOnBuilding()
 	{
-		if (MouseInRange(10, true))
+		if (PositionInRange(10, Building.BuildingSelected.location))
 		{
 			if (BuildingInterface.interfaceOpen && BuildingInterface.buildingInterface.building == Building.BuildingSelected)
 			{
@@ -275,6 +285,12 @@ public class PlayerInputs : Node2D
 		float distance = Mathf.Sqrt( Mathf.Pow((x-playerPos.x),2) + Mathf.Pow((y-playerPos.y),2));
 		return (distance<range); 
 	}
+	
+	private bool PositionInRange(int range, Vector2 pos)
+	{
+		float distance = Mathf.Sqrt( Mathf.Pow((pos.x-PlayerMouvements.GetX()),2) + Mathf.Pow((pos.y-PlayerMouvements.GetY()),2));
+		return (distance<=range); 
+	}
 
 
 	private void InventoryClick()
@@ -293,7 +309,7 @@ public class PlayerInputs : Node2D
 	
 	private void SpaceShipClick()
 	{
-		if (MouseInRange(10, true))
+		if (PositionInRange(15, SpaceShip.location))
 		{
 			if(!SpaceShip.inventoryOpen)
 				SpaceShip.open_interface();

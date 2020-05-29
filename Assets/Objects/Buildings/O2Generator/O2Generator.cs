@@ -43,6 +43,9 @@ public class O2Generator : Building
 
     public void _on_Timer_timeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         if (togive >= giveSpeed)
         {
             Player.AddOxygene(giveSpeed);

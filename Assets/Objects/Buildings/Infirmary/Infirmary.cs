@@ -31,8 +31,11 @@ public class Infirmary : Building
         nbInfirmary++;
     }
 
-    public override void _Process(float delta)
+    public void _on_Timer_timeout(float delta)
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         if (togive >= 0.1f)
         {
             Player.AddHealth(0.1f);

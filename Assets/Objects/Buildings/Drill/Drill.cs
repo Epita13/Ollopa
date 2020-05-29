@@ -79,6 +79,9 @@ public class Drill : Building
     
     public void _on_Timer_timeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
         if (togive.Count > 0)
         {
             foreach (Item.Type item in togive)

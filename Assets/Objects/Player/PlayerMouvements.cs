@@ -181,6 +181,9 @@ public class PlayerMouvements : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
+	    if (PlayerState.Is(PlayerState.State.Pause))
+		    return;
+	    
         AnimationPlayer bond = GetNode<AnimationPlayer>("AnimationPlayer");
 		Sprite image = GetNode<Sprite>("Image");
 
@@ -209,7 +212,7 @@ public class PlayerMouvements : KinematicBody2D
 			bond.Play("Death");
 			canMove = false;
 			PlaySound(Sounds.Type.PlayerDeath);
-			PlayerState.SetState(PlayerState.State.Dead);
+			Player.Die();
 			vel = new Vector2();
 		}
 		
@@ -250,6 +253,9 @@ public class PlayerMouvements : KinematicBody2D
 
     public override void _Process(float delta)
   {
+	  if (PlayerState.Is(PlayerState.State.Pause))
+		  return;
+	  
   		timer += delta;
         if (World.IsInit)
         {

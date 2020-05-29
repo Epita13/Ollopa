@@ -57,6 +57,8 @@ public class SolarPanel : Building
 
     public void _on_Timer_timeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
         if (isPlaced && Environement.sunPower>0)
         {
             Color color = Color.Color8(66, 190, 40);

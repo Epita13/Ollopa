@@ -98,6 +98,10 @@ public class Environement : Node2D
     }
     public override void _Process(float delta)
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
+        
+        
         time += delta;
         int hour = GetHour(time);
         int minute = GetMin(time);
@@ -129,6 +133,8 @@ public class Environement : Node2D
 
     public void _on_Timer_timeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
         History<float>.Add(sunPowerhistory, sunPower);
     }
 

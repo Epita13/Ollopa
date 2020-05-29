@@ -27,6 +27,8 @@ public class Enemies : Node2D
 
     void TimerTimeout()
     {
+        if (PlayerState.Is(PlayerState.State.Pause))
+            return;
         if (enemiesCount >= MaxEnemies)
             return;
         if(Environement.cycle==Environement.TimeState.NIGHT)

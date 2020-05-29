@@ -51,6 +51,9 @@ public class BasicPlacement : Node2D
 				res = false;
 			i++;
 		}
+		res = res && !SpaceShip.blocksSpaceShip.Contains(new Vector2(x, y));
+		//WAter
+		res = res && Liquid.list[Liquid.Type.Water].map[x, y] <= 0;
 		return res;
 	}
 	

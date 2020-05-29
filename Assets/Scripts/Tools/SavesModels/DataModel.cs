@@ -7,7 +7,21 @@ using Newtonsoft.Json;
 
 
 
+public class ConfigDataModel
+{
+    public string name;
+    public string version;
 
+    public void GetValues()
+    {
+        name = Game.saveName;
+        version = Game.VERSION;
+    }
+    public static ConfigDataModel Deserialize(string json)
+    {
+        return JsonConvert.DeserializeObject<ConfigDataModel>(json);
+    }
+}
 
 public class EnvironementDataModel 
 {

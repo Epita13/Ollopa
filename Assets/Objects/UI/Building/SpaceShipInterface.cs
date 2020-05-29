@@ -29,6 +29,9 @@ public class SpaceShipInterface : Control
     
     public static void close_interface()
     {
+        CompositeOn = false;
+        FuelOn = false;
+        EnergyeOn = false;
         inventory.QueueFree();
         SpaceShip.inventoryOpen = false;
         PlayerState.SetState(PlayerState.State.Normal);

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mask.png-11ea29e4e7075e048f632184bc4663f9.stex"
+path="res://.import/mask.png-b80f1c46da8f648ae93b07e02282b124.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/Buildings/Spaceship/mask.png"
-dest_files=[ "res://.import/mask.png-11ea29e4e7075e048f632184bc4663f9.stex" ]
+source_file="res://Assets/Ressources/Imgs/Buildings/SpaceShip/mask.png"
+dest_files=[ "res://.import/mask.png-b80f1c46da8f648ae93b07e02282b124.stex" ]
 
 [params]
 

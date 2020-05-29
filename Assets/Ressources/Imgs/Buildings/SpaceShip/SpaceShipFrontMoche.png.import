@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SpaceShipFrontMoche.png-e4fab937b89394a2cc30e32747ae3928.stex"
+path="res://.import/SpaceShipFrontMoche.png-8562c5082bdbb50851d4a01efb5bcb00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/Buildings/Spaceship/SpaceShipFrontMoche.png"
-dest_files=[ "res://.import/SpaceShipFrontMoche.png-e4fab937b89394a2cc30e32747ae3928.stex" ]
+source_file="res://Assets/Ressources/Imgs/Buildings/SpaceShip/SpaceShipFrontMoche.png"
+dest_files=[ "res://.import/SpaceShipFrontMoche.png-8562c5082bdbb50851d4a01efb5bcb00.stex" ]
 
 [params]
 

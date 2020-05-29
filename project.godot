@@ -22,7 +22,7 @@ config/windows_native_icon="res://icon.ico"
 
 [display]
 
-window/size/width=1500
+window/size/width=1920
 window/size/height=1080
 window/vsync/use_vsync=false
 window/stretch/aspect="keep"

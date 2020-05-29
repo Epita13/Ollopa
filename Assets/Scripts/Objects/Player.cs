@@ -96,24 +96,19 @@ public static class Player
         energy = energyMax;
     }
 
-    public static void PrintEnergy(){
-        GD.Print("Le Joueur a " + energy + "/" + energyMax + " d'energie.");
+    public static void Die()
+    {
+        BuildingInterface.CloseInterface();
+        UI_PlayerInventory2.Close();
+        PlayerState.SetState(PlayerState.State.Dead);
     }
-    public static void PrintOxygene(){
-        GD.Print("Le Joueur a " + oxygene + "/" + oxygeneMax + " d'oxygene.");
-    }
-    public static void PrintHealth(){
-        GD.Print("Le Joueur a " + health + "/" + healthMax + " de santé.");
-    }
-
-
     public static void Revive()
     {
         if (health <= 0)
         {
-            health = healthMax;
-            oxygene = oxygeneMax;
-            energy = energyMax;
+            FillHealth();
+            FillOxygene();
+            FillEnergy();
             inventoryUsables = new StorageUsables(inventoryUsablesSize);
             inventoryItems = new StorageItems(inventoryItemsSize);
             inventoryLiquids = new StorageLiquids(inventoryLiquidsSize);

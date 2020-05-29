@@ -53,6 +53,9 @@ public class Refinery : Building
 	
 	public void _on_Timer_timeout()
 	{
+		if (PlayerState.Is(PlayerState.State.Pause))
+			return;
+		
 		if (togive >= giveSpeed && Player.inventoryLiquids.CanAdd(Liquid.Type.Fuel, giveSpeed))
 		{
 			Player.inventoryLiquids.Add(Liquid.Type.Fuel, giveSpeed);

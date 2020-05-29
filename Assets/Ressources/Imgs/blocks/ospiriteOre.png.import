@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ospiriteOre.png-0e97d5dccbab17ec8217774aa8ffd647.stex"
+path="res://.import/ospiriteOre.png-6f25698d8e13410d3d6be05ee5e2573d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/Blocks/ospiriteOre.png"
-dest_files=[ "res://.import/ospiriteOre.png-0e97d5dccbab17ec8217774aa8ffd647.stex" ]
+source_file="res://Assets/Ressources/Imgs/blocks/ospiriteOre.png"
+dest_files=[ "res://.import/ospiriteOre.png-6f25698d8e13410d3d6be05ee5e2573d.stex" ]
 
 [params]
 
