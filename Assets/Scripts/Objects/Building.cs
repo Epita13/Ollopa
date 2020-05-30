@@ -472,7 +472,7 @@ public abstract class Building : Node2D
         /*----------------------*/
         locationNow = Convertion.Location2World(Position);
 
-        if (HasBuildingSelected)
+        if (HasBuildingSelected && BuildingSelected==this)
         {
             if (!BuildingInRange(10))
             {
@@ -597,7 +597,6 @@ public abstract class Building : Node2D
     {
         mouseOn = true;
         Sprite p = GetNode<Sprite>("OUTLINE");
-        GD.Print("on");
         if (PlayerState.Is(PlayerState.State.Normal, PlayerState.State.Build))
         {
             if (BuildingInRange(10))
@@ -628,7 +627,6 @@ public abstract class Building : Node2D
             ResetOutline();
             return;
         }
-        GD.Print("OFF");
         if (PlayerState.IsNot(PlayerState.State.Link))
         {
             ResetOutline();

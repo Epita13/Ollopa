@@ -74,7 +74,7 @@ public class PlayerInputs : Node2D
 				PlayerState.SetState(PlayerState.State.Normal);
 			}
 		}
-		
+
 		//Inputs
 		if (Input.IsActionJustPressed("mouse1"))
 		{

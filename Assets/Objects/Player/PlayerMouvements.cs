@@ -100,13 +100,16 @@ public class PlayerMouvements : KinematicBody2D
 			if(IsOnFloor())
 				bond.Play("Turn");
 		}                                                        ///Cannot input Turn because it wont be seen and will be replace by run
-		if (Input.IsActionPressed("ui_right") && move_left==false )
+		if (Input.IsActionPressed("ui_right"))
 		{
-			move_right = true;
-			image.FlipH = false;
+			if (move_left == false)
+			{
+				move_right = true;
+				image.FlipH = false;
+				if(IsOnFloor())
+					bond.Play("Run");
+			}
 			vel.x = SPEED * LiquidCoefMove;
-			if(IsOnFloor())
-				bond.Play("Run");
 		}
 		else if (Input.IsActionJustReleased("ui_right") && move_left==false)
 		{
@@ -122,13 +125,16 @@ public class PlayerMouvements : KinematicBody2D
 			if(IsOnFloor())
 				bond.Play("Turn");
 		}
-		if (Input.IsActionPressed("ui_left") && move_right==false)
+		if (Input.IsActionPressed("ui_left"))
 		{
-			move_left = true;
-			image.FlipH=true;
+			if (move_right == false)
+			{
+				move_left = true;
+				image.FlipH = true;
+				if(IsOnFloor())
+					bond.Play("Run");
+			}
 			vel.x = -SPEED * LiquidCoefMove;
-			if(IsOnFloor())
-				bond.Play("Run");
 		}
 		else if (Input.IsActionJustReleased("ui_left") && move_right==false)
 		{
@@ -233,6 +239,7 @@ public class PlayerMouvements : KinematicBody2D
 		
 		if(canMove && (PlayerState.GetState()==PlayerState.State.Normal || PlayerState.GetState()==PlayerState.State.Build || PlayerState.GetState()==PlayerState.State.Link))
 		{
+			GD.Print("eoooe");
 			HorizontalMouvement(delta);
 			JUMP(delta);
 			if (vel.x == 0)      ////////// Idle
